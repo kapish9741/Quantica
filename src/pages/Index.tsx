@@ -85,7 +85,7 @@ const Index = () => {
             </p>
           </motion.div>
           <motion.h1
-            className="text-6xl md:text-8xl lg:text-9xl font-bold mb-8"
+            className="text-5xl md:text-8xl lg:text-9xl font-bold mb-8"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -93,7 +93,7 @@ const Index = () => {
             <GlitchText text="QUANTICA" className="text-foreground" />
           </motion.h1>
           <motion.p
-            className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-8"
+            className="text-sm md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}

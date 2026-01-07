@@ -14,10 +14,10 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           { }
           <div className="md:col-span-2">
-            <h2 className="text-7xl font-bold text-foreground mb-4 glitch" data-text="QUANTICA">
+            <h2 className="text-5xl md:text-7xl font-bold text-foreground mb-4 glitch" data-text="QUANTICA">
               QUANTI<span className="text-primary">CA</span>
             </h2>
-            <p className="text-muted-foreground max-w-md">
+            <p className="text-sm md:text-sm text-muted-foreground max-w-md">
               Delhi NCR's biggest and first esports tournament. Experience the
               thrill of competitive gaming at its finest with massive prize
               pools and legendary battles.
@@ -49,16 +49,15 @@ const Footer = () => {
               </a>
             </div>
           </div>
-          {/* Quick Links */}
           <div>
-            <h3 className="text-foreground font-semibold mb-4 uppercase tracking-wider text-sm">
+            <h3 className="text-foreground font-semibold mb-4 uppercase tracking-wider text-md md:text-sm">
               Quick Links
             </h3>
             <ul className="space-y-3">
               <li>
                 <Link
                   to="/events"
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="text-sm md:text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   Events
                 </Link>
@@ -66,7 +65,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/about"
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="text-sm md:text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   About Us
                 </Link>
@@ -74,52 +73,19 @@ const Footer = () => {
               <li>
                 <Link
                   to="/contact"
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="text-sm md:text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   Contact
                 </Link>
               </li>
             </ul>
           </div>
-          {/* Events */}
-          <div>
-            <h3 className="text-foreground font-semibold mb-4 uppercase tracking-wider text-sm">
-              Tournaments
-            </h3>
-            <ul className="space-y-3">
-              <li>
-                <Link
-                  to="/events/bgmi"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  BGMI Championship
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/events/valorant"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Valorant Masters
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/events/freefire"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Free Fire League
-                </Link>
-              </li>
-            </ul>
-          </div>
         </div>
-        {/* Bottom bar */}
         <div className="border-t border-border mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-muted-foreground text-sm">
+          <p className="text-muted-foreground text-xs md:text-xs">
             © 2026 QUANTICA. All rights reserved.
           </p>
-          <p className="text-muted-foreground text-sm">
+          <p className="text-muted-foreground text-[10px] md:text-xs">
             Delhi NCR's Premier Esports Organization
           </p>
         </div>
