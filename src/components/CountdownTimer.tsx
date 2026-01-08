@@ -52,8 +52,7 @@ const CountdownTimer = ({ targetDate, color = "cyan" }: CountdownTimerProps) => 
     </div>
   );
   return (
-    /* use padding instead of horizontal margins, allow wrap on very small screens to avoid overflow */
-    <div className="flex flex-wrap gap-2 sm:gap-4 justify-center px-4 sm:px-8 items-center max-w-full">
+    <div className="flex gap-2 md:gap-4 justify-center mx-8">
       <TimeUnit value={timeLeft.days} label="Days" />
       <div className={`self-center ${textColor} text-lg sm:text-2xl font-bold`} style={{ filter: 'drop-shadow(0 6px 18px rgba(0,0,0,0.6))' }}>:</div>
       <TimeUnit value={timeLeft.hours} label="Hours" />

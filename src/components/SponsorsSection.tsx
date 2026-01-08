@@ -29,7 +29,7 @@ const sponsors = [
 const SponsorsSection = () => {
 	const [marqueeDuration, setMarqueeDuration] = useState<number>(() => {
 		if (typeof window === "undefined") return 20;
-		return window.innerWidth >= 768 ? 40 : 20; // desktop slower (40s), mobile keep 20s
+		return window.innerWidth >= 768 ? 40 : 20;
 	});
 
 	useEffect(() => {
