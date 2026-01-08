@@ -60,7 +60,7 @@ const Footer = () => {
             <h3 className="text-foreground font-semibold mb-4 uppercase tracking-wider text-md md:text-sm">
               Quick Links
             </h3>
-            <ul className="space-y-3">
+            <ul className="flex flex-row gap-4 md:flex-col md:space-y-3">
               <li>
                 <Link
                   to="/events"
