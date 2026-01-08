@@ -10,6 +10,7 @@ import CountdownTimer from "../components/CountdownTimer";
 import GallerySection from "../components/GallerySection";
 import LiveStreamSection from "../components/LiveStreamSection";
 import PastTournaments from "@/components/PastTournaments";
+import ParallaxGallery from "@/components/ParallaxGallery";
 const events = [
   {
     title: "BGMI 2026",
@@ -217,6 +218,8 @@ const Index = () => {
       <SponsorsSection />
       <LiveStreamSection />
       <PastTournaments />
+      <ParallaxGallery />
+      
       <section className="py-24 relative overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
