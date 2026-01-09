@@ -28,7 +28,7 @@ export function DraggableCardDemo() {
     {
       title: "Gaming",
       image:
-        "https://aesf-files.sgp1.digitaloceanspaces.com/cache/widen/63c6322a09b04_11450-apzfjlazmu-1564120794.jpg_1900x0.webp",
+        "https://assets.krafton.in/files/kie-banner.jpg",
     },
     {
       title: "Fair Play",

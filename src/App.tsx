@@ -11,6 +11,7 @@ import EventDetail from "./pages/EventDetail";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Leaderboard from "./pages/Leaderboard";
+import PlayArena from "./pages/PlayArena";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -31,6 +32,7 @@ const AnimatedRoutes = () => {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/play-arena" element={<PlayArena />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </AnimatePresence>

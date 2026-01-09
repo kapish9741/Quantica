@@ -25,6 +25,26 @@ const team = [
     role: "Marketing Head",
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400",
   },
+  {
+    name: "Arjun Verma",
+    role: "Founder & CEO",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400",
+  },
+  {
+    name: "Priya Sharma",
+    role: "Tournament Director",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400",
+  },
+  {
+    name: "Rahul Singh",
+    role: "Technical Lead",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400",
+  },
+  {
+    name: "Ananya Patel",
+    role: "Marketing Head",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400",
+  },
 ];
 const values = [
   {
@@ -72,7 +92,7 @@ const About = () => {
             </h1>
             <p className="text-xl text-muted-foreground">
               Delhi NCR's pioneering esports organization, dedicated to
-              elevating competitive gaming to unprecedented heights. Since our
+              elevating competitive gaming to unprecedented heights. Since 
               inception, we've been on a mission to create the biggest and most
               electrifying esports tournaments in the region.
             </p>
@@ -183,8 +203,8 @@ const About = () => {
             <p className="text-secondary uppercase tracking-[0.3em] text-sm mb-4">
               Meet The Squad
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              OUR <span className="text-primary">TEAM</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground uppercase">
+              Meet <span className="text-primary">Our Core Team</span>
             </h2>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
