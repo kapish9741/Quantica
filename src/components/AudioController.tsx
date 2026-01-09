@@ -96,6 +96,7 @@ const AudioController = () => {
     if (!isSfxOn) return;
     const handleMouseEnter = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
+      if (!target || !target.classList) return;
       if (
         target.tagName === "BUTTON" ||
         target.tagName === "A" ||
@@ -108,6 +109,7 @@ const AudioController = () => {
     };
     const handleClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
+      if (!target || !target.classList) return;
       if (
         target.tagName === "BUTTON" ||
         target.tagName === "A" ||
