@@ -46,6 +46,30 @@ const games: Game[] = [
     color: "#2196F3",
     type: 'iframe'
   },
+  {
+    id: "bomberman",
+    name: "Bomberman",
+    icon: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768043728/WhatsApp_Image_2026-01-10_at_16.44.17_1_fzommt.jpg",
+    url: "https://www.retrogames.cc/embed/20688-bomberman-japan.html",
+    color: "#f321d4ff",
+    type: 'iframe'
+  },
+  {
+    id: "streetfighter",
+    name: "Street Fighter",
+    icon: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768043728/WhatsApp_Image_2026-01-10_at_16.44.17_s30y6b.jpg",
+    url: "https://www.retrogames.cc/embed/10042-street-fighter-ii-champion-edition-yyc-bootleg-set-2-920313-etc-bootleg.html",
+    color: "#f36021ff",
+    type: 'iframe'
+  },
+  {
+    id: "streetfighter",
+    name: "Street Fighter",
+    icon: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768043728/WhatsApp_Image_2026-01-10_at_16.44.17_s30y6b.jpg",
+    url: "https://www.retrogames.cc/embed/9254-ms-pacman-champion-edition-super-zola-pac-gal.html",
+    color: "#f1d117ff",
+    type: 'iframe'
+  },
 ];
 
 interface GameCartridgeProps {
@@ -97,6 +121,11 @@ const PlayArena = () => {
   const [currentGame, setCurrentGame] = useState<Game | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [draggedGame, setDraggedGame] = useState<Game | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredGames = games.filter(game => 
+    game.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   const handleDragStart = (game: Game) => {
     setDraggedGame(game);
@@ -161,25 +190,45 @@ const PlayArena = () => {
               transition={{ delay: 0.2 }}
               className="lg:col-span-1"
             >
+              <div className="mt-8 p-4 bg-muted/20 border border-muted rounded">
+                  <p className="text-xs text-muted-foreground" style={{ fontFamily: "'Press Start 2P', monospace", lineHeight: "1.8" }}>
+                    💡 TIP: Drag a cartridge to the TV screen to play!
+                  </p>
+                </div>
               <div className="bg-card/50 border-2 border-primary/30 clip-corner p-6">
                 <h2 className="text-xl font-bold text-primary mb-6 uppercase tracking-wider" style={{ fontFamily: "'Press Start 2P', monospace" }}>
                   Game Library
                 </h2>
-                <div className="grid grid-cols-2 gap-4">
-                  {games.map((game) => (
-                    <GameCartridge
-                      key={game.id}
-                      game={game}
-                      onDragStart={handleDragStart}
-                      onDragEnd={handleDragEnd}
-                    />
-                  ))}
+                <div className="mb-6 relative group">
+                  <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+                    <span className="text-muted-foreground text-xs">🔍</span>
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="SEARCH GAMES..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full bg-black/20 border-2 border-muted focus:border-primary text-primary px-4 pl-9 py-3 text-xs w-full transition-colors outline-none font-bold"
+                    style={{ fontFamily: "'Press Start 2P', monospace" }}
+                  />
+                  <div className="absolute inset-0 border-2 border-primary/20 pointer-events-none group-hover:border-primary/40 transition-colors" />
                 </div>
 
-                <div className="mt-8 p-4 bg-muted/20 border border-muted rounded">
-                  <p className="text-xs text-muted-foreground" style={{ fontFamily: "'Press Start 2P', monospace", lineHeight: "1.8" }}>
-                    💡 TIP: Drag a cartridge to the TV screen to play!
-                  </p>
+                <div className="grid grid-cols-2 gap-4 overflow-y-auto max-h-[600px] pr-2 custom-scrollbar">
+                  {filteredGames.length > 0 ? (
+                    filteredGames.map((game) => (
+                      <GameCartridge
+                        key={game.id}
+                        game={game}
+                        onDragStart={handleDragStart}
+                        onDragEnd={handleDragEnd}
+                      />
+                    ))
+                  ) : (
+                    <div className="col-span-2 text-center py-8 text-muted-foreground text-xs" style={{ fontFamily: "'Press Start 2P', monospace" }}>
+                      NO GAMES FOUND
+                    </div>
+                  )}
                 </div>
               </div>
             </motion.div>
