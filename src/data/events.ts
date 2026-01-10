@@ -9,7 +9,7 @@ export const events = [
         slug: "bgmi",
         color: "cyan" as const,
         status: "registration starting soon",
-        registrationUrl: "https://forms.gle/bgmi2026",
+        registrationUrl: "https://unstop.com/o/LAH4Pbq?lb=6YYCRAfR&utm_medium=Share&utm_source=sahabsin46468&utm_campaign=Events",
         gameLogo: "https://trybgmi.com/assets/images/bgmi_logo.webp",
     },
     {
@@ -61,7 +61,7 @@ export const events = [
         slug: "tekken8",
         color: "magenta" as const,
         status: "registration starting soon",
-        registrationUrl: "https://forms.gle/efootball2026",
+        registrationUrl: "https://unstop.com/o/TqSZWtY?lb=6YYCRAfR&utm_medium=Share&utm_source=sahabsin46468&utm_campaign=Events",
         gameLogo: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f05a9b5b-ead5-460e-8573-73ba2fff9cde/dgs72ru-529a5528-da92-4eb3-a5b8-0f606390feeb.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi9mMDVhOWI1Yi1lYWQ1LTQ2MGUtODU3My03M2JhMmZmZjljZGUvZGdzNzJydS01MjlhNTUyOC1kYTkyLTRlYjMtYTViOC0wZjYwNjM5MGZlZWIucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.pk0wzVW-daWlpUgAbtp4co6Z8dR7c5hhfuJAdB20x_A",
     },
     {
