@@ -69,14 +69,12 @@ const Index = () => {
             <GlitchText text="QUANTICA" className="text-foreground text-[40px] md:text-9xl" />
           </motion.h1>
           <motion.p
-            className="text-sm md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8"
+            className="text-sm md:text-xl text-blue-500 max-w-2xl mx-auto mb-8 font-bold uppercase tracking-widest"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
-            Built for competitors. Driven by skill. Defined by champions.
-            <br/>
-            <span className="text-primary">Organised by SAGE</span>
+            Powered by SAGE
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}

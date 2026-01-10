@@ -24,7 +24,7 @@ const eventData = {
     teams: "64",
     format: "Squad (4 Players)",
     entryFee: "Free",
-    image: "https://wstatic-prod-boc.krafton.com/common/content/media/20250507/kcDutagb/33.1_Sanhok_Destruction_KV.jpg",
+    image: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1768036375/bgmi_xs2dud.jpg",
     color: "cyan",
     prizeDistribution: [
       { place: "1st Place", prize: "₹20,000" },
@@ -178,7 +178,7 @@ Good luck to all participating teams! Let's have a great tournament. 🏆`
     teams: "32",
     format: "5v5 Teams",
     entryFee: "Free",
-    image: "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/f657721a7eb06acae52a29ad3a951f20c1e5fc60-1920x1080.jpg?accountingTag=VAL?auto=format&fit=fill&q=80&w=1082",
+    image: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1768036269/valorant_wvxtwf.jpg",
     color: "magenta",
     prizeDistribution: [
       { place: "1st Place", prize: "₹10,000" },
@@ -407,7 +407,7 @@ within the campus premises
     teams: "48",
     format: "Squad (4 Players)",
     entryFee: "Free",
-    image: "https://us.v-cdn.net/6036147/uploads/GOQOTHGYG807/l-18-1-1200x675.jpg",
+    image: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1768036270/ff_bclrl6.jpg",
     color: "cyan",
     prizeDistribution: [
       { place: "1st Place", prize: "₹10,000" },
@@ -558,7 +558,7 @@ Further please refer to the general rules from ESFI’s rulebook.`,
     teams: "64",
     format: "1v1",
     entryFee: "Free",
-    image: "https://www.konami.com/games_cms/promo/eu/uploads/efootball_fifae_keyvvisual_16-9_release-1-1024x576.jpg",
+    image: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1768036270/efootball_ohpdk8.jpg",
     color: "cyan",
     prizeDistribution: [
       { place: "1st Place", prize: "₹2,500" },
@@ -706,7 +706,7 @@ match completion.`,
     teams: "32",
     format: "1v1",
     entryFee: "Free",
-    image: "https://static.bandainamcoent.eu/high/tekken/tekken-8/00-page-setup/TEKKEN8_Header_mobile_2.jpg",
+    image: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1768036269/tekken_uxsuqn.jpg",
     color: "magenta",
     prizeDistribution: [
       { place: "1st Place", prize: "₹2,500" },
@@ -829,7 +829,7 @@ disqualification.
     teams: "48",
     format: "1v1",
     entryFee: "Free",
-    image: "https://i.ytimg.com/vi/0GE8YCIQF2M/maxresdefault.jpg",
+    image: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1768036271/fifa_d267yz.jpg",
     color: "cyan",
     prizeDistribution: [
       { place: "1st Place", prize: "₹7,500" },
@@ -968,7 +968,7 @@ conclusion of a match.`,
     teams: "32",
     format: "1v1 Time Trial/Race",
     entryFee: "Free",
-    image: "https://cdn-1.motorsport.com/images/amp/YWKwXM1Y/s1000/f1-25.jpg",
+    image: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1768036271/f1_sowdra.jpg",
     color: "magenta",
     prizeDistribution: [
       { place: "1st Place", prize: "₹2,000" },
@@ -1080,7 +1080,7 @@ disqualification.
     teams: "48",
     format: "1v1",
     entryFee: "Free",
-    image: "https://img.redbull.com/images/c_fill,g_auto,w_1200,h_630/f_auto,q_auto/redbullcom/2016/07/15/1331806345697_2/the-quarter-finals-take-place-in-helsinki",
+    image: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1768036374/clashroyale_kjqawu.jpg",
     color: "cyan",
     prizeDistribution: [
       { place: "1st Place", prize: "₹2,500" },
@@ -1452,6 +1452,11 @@ const EventDetail = () => {
                   title={`${event.title} Rulebook`}
                 />
               )}
+            </div>
+            <div className="text-center mt-4">
+              <p className="text-blue-500 font-bold uppercase tracking-widest text-sm md:text-base">
+                Organised by SAGE
+              </p>
             </div>
           </motion.div>
         </div>

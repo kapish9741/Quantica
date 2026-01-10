@@ -9,7 +9,7 @@ const Footer = () => {
     <footer className="relative overflow-hidden border-t border-border">
       <div className="absolute inset-0 z-0">
         <img
-          src="/FooterBG.png"
+          src="https://res.cloudinary.com/dxo4ulvnf/image/upload/v1768039872/FooterBG_hgl0zb.png"
           alt="Footer Background"
           className="w-full h-full object-cover opacity-15 select-none"
         />
@@ -74,6 +74,14 @@ const Footer = () => {
                   className="text-sm md:text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   About Us
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/play-arena"
+                  className="text-sm md:text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Play Arena
                 </Link>
               </li>
               <li>

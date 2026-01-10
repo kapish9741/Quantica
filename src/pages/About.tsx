@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Target, Users, Trophy, Star } from "lucide-react";
+import { FaLinkedin, FaEnvelope } from "react-icons/fa";
 import PageTransition from "../components/PageTransition";
 import GlitchText from "../components/GlitchText";
 import DraggableCardDemo from "../components/Draggable";
@@ -9,31 +10,50 @@ const team = [
     name: "Deepanshu Chaudhary",
     role: "Founder",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400",
+    linkedin: "https://www.linkedin.com/in/deepanshu-chaudhary17/",
+    email: "deepanshu.chaudhary2024@nst.rishihood.edu.in",
   },
   {
     name: "Sarabjeet singh",
     role: "Tournament Director",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400",
+    image: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1768042995/Image_Converter_Output_u6ovyq.png",
+    linkedin: "https://www.linkedin.com/in/sarabjeet-singh-0695a8310/",
+    email: "sarabjeet.singh2024@nst.rishihood.edu.in",
   },
   {
     name: "Somil Thakur",
     role: "Marketing Head",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400",
+    image: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1768042608/IMG_2138_s3t05c.jpg",
+    linkedin: "https://www.linkedin.com/in/somil-thakur-682817323/",
+    email: "somil.thakur2024@makers.rishihood.edu.in",
   },
   {
     name: "Kapish Rohilla",
     role: "Technical Lead",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400",
+    image: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1768042237/Screenshot_2026-01-10_at_4.16.14_PM_kgcctf.png",
+    linkedin: "https://www.linkedin.com/in/kapishrohilla/",
+    email: "kapish.rohilla2024@nst.rishihood.edu.in",
   },
   {
     name: "Neelanshu karn",
     role: "Sponsorship Head",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400",
+    image: "https://media.licdn.com/dms/image/v2/D4E03AQG5IMAd_OxYLg/profile-displayphoto-shrink_400_400/B4EZWOxzmZH0Ag-/0/1741857176517?e=1769644800&v=beta&t=fYKbhOSEA5sgBhUWYUe5JHIzuftC46Nkjna8l-WrIfk",
+    linkedin: "https://www.linkedin.com/in/neelanshu-karn-05146130a/",
+    email: "neelanshu.2024@nst.rishihood.edu.in",
   },
   {
-    name: "Manas Saxena",
+    name: "Saumya Verma",
     role: "Outreach Head",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400",
+    image: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1768043928/IMG_0272_vf1xci.jpg",
+    linkedin: "https://www.linkedin.com/in/saumya-verma-bab439365/",
+    email: "saumya.v25413@nst.rishihood.edu.in",
+  },
+  {
+    name: "Kaustubh Singh",
+    role: "Design Lead",
+    image: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1768042241/WhatsApp_Image_2026-01-10_at_16.16.49_qyfd44.jpg",
+    linkedin: "https://www.linkedin.com/in/ikaustubhsingh/",
+    email: "kaustubh.s25008@design.rishihood.edu.in",
   },
 ];
 const values = [
@@ -80,10 +100,6 @@ const About = () => {
             <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-8">
               <GlitchText text="WE ARE QUANTICA" className="text-[40px] md:text-7xl" />
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground">
-              Delhi NCR's pioneering esports organization, dedicated to
-              elevating competitive gaming to unprecedented heights.
-            </p>
           </motion.div>
         </div>
       </section>
@@ -119,7 +135,7 @@ const About = () => {
             >
               <div className="clip-corner overflow-hidden border border-primary">
                 <img
-                  src="https://res.cloudinary.com/dxo4ulvnf/image/upload/v1767969916/Screenshot_2026-01-09_at_7.18.44_PM_caxmwt.png"
+                  src="https://res.cloudinary.com/dxo4ulvnf/image/upload/v1768039904/image_te3zex.png"
                   alt="Gaming Setup"
                   className="w-full h-[400px] object-cover"
                 />
@@ -206,7 +222,23 @@ const About = () => {
                 <h3 className="text-lg font-bold text-foreground">
                   {member.name}
                 </h3>
-                <p className="text-primary text-sm">{member.role}</p>
+                <p className="text-primary text-sm mb-3">{member.role}</p>
+                <div className="flex gap-4 justify-center mt-2">
+                  <a
+                    href={member.email ? `mailto:${member.email}` : "#"}
+                    className="text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform duration-200"
+                  >
+                    <FaEnvelope size={20} />
+                  </a>
+                  <a
+                    href={member.linkedin || "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-[#0077b5] transition-colors hover:scale-110 transform duration-200"
+                  >
+                    <FaLinkedin size={20} />
+                  </a>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -215,14 +247,14 @@ const About = () => {
       { }
       <section className="py-24 relative">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
             >
               <p className="text-3xl md:text-6xl font-bold text-primary mb-2">
-                8+
+                10+
               </p>
               <p className="text-muted-foreground uppercase tracking-wider text-sm">
                 Events Hosted
@@ -252,19 +284,6 @@ const About = () => {
               </p>
               <p className="text-muted-foreground uppercase tracking-wider text-sm">
                 Prize Distributed
-              </p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-            >
-              <p className="text-3xl md:text-6xl font-bold text-secondary mb-2">
-                1K+
-              </p>
-              <p className="text-muted-foreground uppercase tracking-wider text-sm">
-                Community Members
               </p>
             </motion.div>
           </div>

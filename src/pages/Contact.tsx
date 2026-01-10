@@ -12,8 +12,12 @@ const Contact = () => {
   });
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(formData);
-    alert("Message sent! We'll get back to you soon.");
+    const mailtoLink = `mailto:info@quantica.fun?subject=${encodeURIComponent(
+      formData.subject
+    )}&body=${encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    )}`;
+    window.location.href = mailtoLink;
     setFormData({ name: "", email: "", subject: "", message: "" });
   };
   return (

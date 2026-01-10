@@ -21,7 +21,7 @@ import SmoothScroll from "./components/SmoothScroll";
 import AudioController from "./components/AudioController";
 import GlitchOverlay from "./components/GlitchOverlay";
 import TargetCursor from "./components/TargetCursor";
-import ScrollToTop from "./components/ScrollToTop";
+
 const queryClient = new QueryClient();
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -67,9 +67,8 @@ const App = () => {
         <GlitchOverlay />
         <AudioController />
         {!isMobile && <TargetCursor targetSelector="button, a.cyber-btn, a.cyber-btn-outline, .cursor-target" />}
-        <SmoothScroll>
-          <BrowserRouter>
-            <ScrollToTop />
+        <BrowserRouter>
+          <SmoothScroll>
             <div className="min-h-screen bg-background">
               <Navbar />
               <main>
@@ -78,8 +77,8 @@ const App = () => {
               <Footer />
             </div>
             <Analytics />
-          </BrowserRouter>
-        </SmoothScroll>
+          </SmoothScroll>
+        </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
   );

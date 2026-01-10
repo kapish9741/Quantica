@@ -13,11 +13,11 @@ const sponsors = [
 		className: "scale-20",
 	},
 
-	{
-		name: "Red Bull",
-		logo: "https://www.svgrepo.com/show/303227/redbull-logo.svg",
-		link: "https://www.redbull.com",
-	},
+	// {
+	// 	name: "Red Bull",
+	// 	logo: "https://www.svgrepo.com/show/303227/redbull-logo.svg",
+	// 	link: "https://www.redbull.com",
+	// },
 	{
 		name: "Meta Space",
 		logo: "https://metaspacechain.b-cdn.net/img/logo.png",
@@ -29,30 +29,30 @@ const sponsors = [
 		link: "https://unstop.com",
 		className: "scale-80",
 	},
-	{
-		name: "ASUS",
-		logo: "https://upload.wikimedia.org/wikipedia/commons/2/2e/ASUS_Logo.svg",
-		link: "https://www.asus.com",
-		className: "brightness-0 invert",
-	},
-	{
-		name: "Acer",
-		logo: "https://images.acer.com/is/content/acer/acer-4",
-		link: "https://www.acer.com",
-		className: "scale-150",
-	},
+	// {
+	// 	name: "ASUS",
+	// 	logo: "https://upload.wikimedia.org/wikipedia/commons/2/2e/ASUS_Logo.svg",
+	// 	link: "https://www.asus.com",
+	// 	className: "brightness-0 invert",
+	// },
+	// {
+	// 	name: "Acer",
+	// 	logo: "https://images.acer.com/is/content/acer/acer-4",
+	// 	link: "https://www.acer.com",
+	// 	className: "scale-150",
+	// },
 	{
 		name: "Meta Nova",
 		logo: "https://metanovaesports.com/wp-content/uploads/2025/12/New-Project-2.png",
 		link: "https://metanovaesports.com/",
 		className: "scale-150",
 	},
-	{
-		name: "PlayStation",
-		logo: "https://upload.wikimedia.org/wikipedia/commons/4/4e/Playstation_logo_colour.svg",
-		link: "https://www.playstation.com",
-		className: "brightness-0 invert",
-	},
+	// {
+	// 	name: "PlayStation",
+	// 	logo: "https://upload.wikimedia.org/wikipedia/commons/4/4e/Playstation_logo_colour.svg",
+	// 	link: "https://www.playstation.com",
+	// 	className: "brightness-0 invert",
+	// },
 ];
 
 const SponsorsSection = () => {
