@@ -62,13 +62,13 @@ export function DraggableCardDemo() {
 
   return (
     <DraggableCardContainer className="relative flex min-h-screen w-full items-center justify-center overflow-clip">
-      <p className="absolute top-80 mx-auto max-w-md -translate-y-3/4 text-center text-4xl font-black text-neutral-400 md:text-4xl dark:text-neutral-800">
+      <p className="absolute top-80 mx-auto max-w-md -translate-y-3/4 text-center text-2xl font-black text-neutral-400 md:text-4xl dark:text-neutral-800">
         No warm-ups. No excuses. If you are here, you compete.
       </p>
       {items.map((item, index) => (
         <DraggableCardBody
           key={item.title}
-          className="absolute"
+          className="absolute min-h-[18rem] w-48 md:min-h-96 md:w-80"
           style={{
             top: positions[index] ? `${positions[index].top}%` : "50%",
             left: positions[index] ? `${positions[index].left}%` : "50%",
@@ -79,9 +79,9 @@ export function DraggableCardDemo() {
           <img
             src={item.image}
             alt={item.title}
-            className="pointer-events-none relative z-10 h-80 w-80 object-cover"
+            className="pointer-events-none relative z-10 h-40 w-40 object-cover md:h-80 md:w-80"
           />
-          <h3 className="mt-4 text-center text-2xl font-bold text-white dark:text-neutral-300">
+          <h3 className="mt-4 text-center text-sm font-bold text-white md:text-2xl dark:text-neutral-300">
             {item.title}
           </h3>
         </DraggableCardBody>
