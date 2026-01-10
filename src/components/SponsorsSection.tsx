@@ -47,12 +47,12 @@ const sponsors = [
 		link: "https://metanovaesports.com/",
 		className: "scale-150",
 	},
-	{
-		name: "PlayStation",
-		logo: "https://upload.wikimedia.org/wikipedia/commons/4/4e/Playstation_logo_colour.svg",
-		link: "https://www.playstation.com",
-		className: "brightness-0 invert",
-	},
+	// {
+	// 	name: "PlayStation",
+	// 	logo: "https://upload.wikimedia.org/wikipedia/commons/4/4e/Playstation_logo_colour.svg",
+	// 	link: "https://www.playstation.com",
+	// 	className: "brightness-0 invert",
+	// },
 ];
 
 const SponsorsSection = () => {
