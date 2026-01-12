@@ -1,0 +1,140 @@
+import { motion } from "framer-motion";
+import { Trophy, Medal, Award, Users } from "lucide-react";
+import { useLeaderboard } from "../hooks/useLeaderboard";
+import type { LeaderboardTeam } from "../hooks/useLeaderboard";
+import LoaderLeader from "./loaderleader";
+
+interface EventLeaderboardProps {
+  eventSlug: string;
+  eventName: string;
+}
+
+const EventLeaderboard = ({ eventSlug, eventName }: EventLeaderboardProps) => {
+  const { teams, loading, error } = useLeaderboard(eventSlug);
+
+  const getRankColor = (rank: number) => {
+    if (rank === 1) return "text-yellow-400";
+    if (rank === 2) return "text-gray-300";
+    if (rank === 3) return "text-orange-400";
+    return "text-muted-foreground";
+  };
+
+  const getRankIcon = (rank: number) => {
+    if (rank === 1) return <Trophy className="w-6 h-6 text-yellow-400" />;
+    if (rank === 2) return <Medal className="w-6 h-6 text-gray-300" />;
+    if (rank === 3) return <Award className="w-6 h-6 text-orange-400" />;
+    return (
+      <span className="w-6 h-6 flex items-center justify-center text-muted-foreground font-bold">
+        {rank}
+      </span>
+    );
+  };
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-[400px] w-full">
+        <LoaderLeader />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="text-center py-12 text-red-500">
+        <p>Error loading leaderboard: {error}</p>
+      </div>
+    );
+  }
+
+  if (teams.length === 0) {
+    return (
+      <div className="text-center py-12 text-muted-foreground">
+        <Users className="w-16 h-16 mx-auto mb-4 opacity-50" />
+        <p className="text-lg">No teams registered for {eventName} yet</p>
+        <p className="text-sm mt-2">Check back soon!</p>
+      </div>
+    );
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="overflow-x-auto"
+    >
+      <table className="w-full">
+        <thead>
+          <tr className="border-b border-border">
+            <th className="py-4 px-4 text-left text-primary uppercase tracking-wider text-sm">
+              Rank
+            </th>
+            <th className="py-4 px-4 text-left text-primary uppercase tracking-wider text-sm">
+              Team
+            </th>
+            <th className="py-4 px-4 text-center text-primary uppercase tracking-wider text-sm">
+              Points
+            </th>
+            <th className="py-4 px-4 text-center text-primary uppercase tracking-wider text-sm">
+              Wins
+            </th>
+            <th className="py-4 px-4 text-center text-primary uppercase tracking-wider text-sm">
+              Kills
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {teams.map((team, index) => {
+            const currentRank = team.rank || index + 1;
+            return (
+              <motion.tr
+                key={team.id}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.05 }}
+                className={`border-b border-border/50 hover:bg-card/50 transition-colors ${
+                  currentRank <= 3 ? "bg-card/30" : ""
+                }`}
+              >
+                <td className="py-4 px-4">
+                  <div className="flex items-center gap-2">
+                    {getRankIcon(currentRank)}
+                  </div>
+                </td>
+                <td className="py-4 px-4">
+                  <div className="flex flex-col gap-1">
+                    <span className={`font-bold ${getRankColor(currentRank)}`}>
+                      {team.name}
+                    </span>
+                    {team.participants && team.participants.length > 0 && (
+                      <span className="text-xs text-muted-foreground">
+                        {team.participants.map((p) => p.name).join(", ")}
+                      </span>
+                    )}
+                  </div>
+                </td>
+                <td className="py-4 px-4 text-center font-bold text-secondary text-lg">
+                  {team.total_points}
+                </td>
+                <td className="py-4 px-4 text-center text-muted-foreground">
+                  {team.wins}
+                </td>
+                <td className="py-4 px-4 text-center text-muted-foreground">
+                  {team.total_kills}
+                </td>
+              </motion.tr>
+            );
+          })}
+        </tbody>
+      </table>
+
+      <div className="mt-4 p-4 bg-card/30 border border-border/50 rounded">
+        <p className="text-xs text-muted-foreground text-center">
+          <span className="inline-block w-2 h-2 bg-green-400 rounded-full mr-2 mb-[2px] animate-pulse"></span>
+          Live updates enabled - Leaderboard refreshes automatically
+        </p>
+      </div>
+    </motion.div>
+  );
+};
+
+export default EventLeaderboard;

@@ -12,6 +12,7 @@ import EventDetail from "./pages/EventDetail";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Leaderboard from "./pages/Leaderboard";
+import Admin from "./pages/Admin";
 import PlayArena from "./pages/PlayArena";
 import GeneralPass from "./pages/GeneralPass";
 import NotFound from "./pages/NotFound";
@@ -35,7 +36,8 @@ const AnimatedRoutes = () => {
         <Route path="/events/:slug" element={<EventDetail />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/OiCrHf24ULCB3xasxA9P" element={<Leaderboard />} />
+        <Route path="/admin" element={<Admin />} />
         <Route path="/play-arena" element={<PlayArena />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

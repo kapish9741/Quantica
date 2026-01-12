@@ -154,7 +154,6 @@ const PastTournaments = () => {
                       </div>
 
                       <CardContent className="p-6 flex flex-col gap-4 flex-grow relative justify-between">
-                        {/* Winner Section */}
                         <div className="p-4 bg-muted/20 rounded-lg border border-border/50 group-hover:border-primary/30 transition-colors">
                           <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2 flex items-center gap-2">
                             <Trophy className="w-4 h-4 text-yellow-500" />
@@ -165,7 +164,6 @@ const PastTournaments = () => {
                           </p>
                         </div>
 
-                        {/* Stats Grid */}
                         <div className="grid grid-cols-3 gap-4 text-center border-t border-white/5 pt-4">
                           <div>
                             <Calendar className="w-5 h-5 text-primary mx-auto mb-2" />
@@ -184,7 +182,6 @@ const PastTournaments = () => {
                           </div>
                         </div>
 
-                        {/* Hover Shine Effect */}
                         <div className="absolute top-0 -left-[100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/5 to-transparent skew-x-12 group-hover:animate-shine pointer-events-none" />
                       </CardContent>
                     </Card>
