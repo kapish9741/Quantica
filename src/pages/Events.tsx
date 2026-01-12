@@ -197,12 +197,12 @@ const Events = () => {
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto pb-8">
               Choose your game. Register your team. Compete for glory.
             </p>
-            <Link
+            {/* <Link
               to="/general-pass"
               className="cyber-btn inline-block"
             >
               Buy General Pass
-            </Link>
+            </Link> */}
           </motion.div>
         </div>
       </section>
