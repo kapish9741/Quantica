@@ -16,10 +16,10 @@ const streams = [
   {
     id: 2,
     title: "Valorant Masters - Qualifier Round",
-    platform: "Twitch",
+    platform: "YouTube",
     viewers: "8.2K",
     isLive: true,
-    embedId: "quantica_esports",
+    embedId: "81f_YEzdsq8",
     thumbnail: "https://images.alphacoders.com/102/thumb-1920-1025938.png",
     channel: "QUANTICA Esports",
   },
