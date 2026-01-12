@@ -20,7 +20,8 @@ const games: Game[] = [
     icon: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1767979054/mario-8bit_qrnhc1.jpg",
     url: "https://www.retrogames.cc/embed/43803-super-luigi-bros-by-thenintendude64.html",
     color: "#2196F3",
-    type: 'iframe'
+    type: 'iframe',
+    core: 'nes'
   },
   {
     id: "dragonball",
@@ -28,7 +29,8 @@ const games: Game[] = [
     icon: "https://i.pinimg.com/736x/3c/e1/a3/3ce1a31efac15a71472b00dadff0882a.jpg",
     url: "https://www.retrogames.cc/embed/28096-dragon-ball-z-supersonic-warriors-k-projectg.html",
     color: "#ff3700ff",
-    type: 'iframe'
+    type: 'iframe',
+    core: 'nes'
   },
   {
     id: "Dodgeball",
@@ -37,6 +39,7 @@ const games: Game[] = [
     url: "https://www.retrogames.cc/embed/16864-super-mario-bros.html",
     color: "#E52521",
     type: 'iframe',
+    core: 'nes'
   },
   {
     id: "tekken",
@@ -44,7 +47,8 @@ const games: Game[] = [
     icon: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1767979054/tekken_rf6z2n.jpg",
     url: "https://www.retrogames.cc/embed/40238-tekken-3.html",
     color: "#4CAF50",
-    type: 'iframe'
+    type: 'iframe',
+    core: 'nes'
   },
   {
     id: "contra",
@@ -52,7 +56,8 @@ const games: Game[] = [
     icon: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1767979054/contra-8bit_lb9cij.jpg",
     url: "https://www.retrogames.cc/embed/16841-contra-usa.html",
     color: "#2196F3",
-    type: 'iframe'
+    type: 'iframe',
+    core: 'nes'
   },
   {
     id: "bomberman",
@@ -60,7 +65,8 @@ const games: Game[] = [
     icon: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768043728/WhatsApp_Image_2026-01-10_at_16.44.17_1_fzommt.jpg",
     url: "https://www.retrogames.cc/embed/20688-bomberman-japan.html",
     color: "#f321d4ff",
-    type: 'iframe'
+    type: 'iframe',
+    core: 'nes'
   },
   {
     id: "streetfighter",
@@ -68,7 +74,8 @@ const games: Game[] = [
     icon: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768043728/WhatsApp_Image_2026-01-10_at_16.44.17_s30y6b.jpg",
     url: "https://www.retrogames.cc/embed/10042-street-fighter-ii-champion-edition-yyc-bootleg-set-2-920313-etc-bootleg.html",
     color: "#f36021ff",
-    type: 'iframe'
+    type: 'iframe',
+    core: 'nes'
   },
   {
     id: "pacman",
@@ -76,7 +83,8 @@ const games: Game[] = [
     icon: "https://i.pinimg.com/1200x/9c/5b/d7/9c5bd79d0a40e6f7394e32996c119c7c.jpg",
     url: "https://www.retrogames.cc/embed/9254-ms-pacman-champion-edition-super-zola-pac-gal.html",
     color: "#f1d117ff",
-    type: 'iframe'
+    type: 'iframe',
+    core: 'nes'
   },
 ];
 
