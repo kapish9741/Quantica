@@ -252,6 +252,61 @@ const About = () => {
           </div>
         </div>
       </section>
+      <section className="py-24 bg-card">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground uppercase">
+              The Players <span className="text-primary">Behind the Game</span>
+            </h2>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {team.map((member, index) => (
+              <motion.div
+                key={member.name}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="group"
+              >
+                <div className="relative overflow-hidden clip-corner mb-4">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-64 object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                  />
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
+                <h3 className="text-lg font-bold text-foreground">
+                  {member.name}
+                </h3>
+                <p className="text-primary text-sm mb-3">{member.role}</p>
+                <div className="flex gap-4 justify-center mt-2">
+                  <a
+                    href={member.email ? `mailto:${member.email}` : "#"}
+                    className="text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform duration-200"
+                  >
+                    <FaEnvelope size={20} />
+                  </a>
+                  <a
+                    href={member.linkedin || "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-[#0077b5] transition-colors hover:scale-110 transform duration-200"
+                  >
+                    <FaLinkedin size={20} />
+                  </a>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
       { }
       <section className="py-24 relative">
         <div className="container mx-auto px-4">

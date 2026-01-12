@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { Save, Play, CheckCircle } from "lucide-react";
 import { supabase } from "../../lib/supabase";
 import type { Database } from "../../types/database.types";
-import AdminLoader from "../adminloader";
 
 type Event = Database['public']['Tables']['events']['Row'];
 type Team = Database['public']['Tables']['teams']['Row'];
@@ -211,7 +210,7 @@ const MatchScoring = () => {
       ) : (
         <div className="text-center py-12 text-muted-foreground">
           <div className="flex items-center justify-center">
-            <AdminLoader />
+            <Play className="w-12 h-12 text-primary" />
           </div>
           <p>Select an event to start scoring</p>
         </div>
