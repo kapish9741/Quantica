@@ -252,7 +252,7 @@ const About = () => {
           </div>
         </div>
       </section>
-      <section className="py-24 bg-card">
+      {/* <section className="py-24 bg-card">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0 }}
@@ -306,7 +306,7 @@ const About = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
       { }
       <section className="py-24 relative">
         <div className="container mx-auto px-4">
