@@ -5,7 +5,7 @@ import PageTransition from "../components/PageTransition";
 import GlitchText from "../components/GlitchText";
 import DraggableCardDemo from "../components/Draggable";
 
-const team = [
+const coreTeam = [
   {
     name: "Deepanshu Chaudhary",
     role: "Founder",
@@ -62,6 +62,178 @@ const team = [
     image: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1768198235/WhatsApp_Image_Jan_12_2026_from_Kushagra_Maheshwari_kfqxkg.jpg",
     linkedin: "https://www.linkedin.com/in/kushm11/",
     email: "kushagra.maheshwari2024@nst.rishihood.edu.in",
+  },
+];
+
+const additionalTeams = [
+  {
+    title: "Tech Team",
+    subtitle: "Code. Conquer. Control the Game.",
+    members: [
+      {
+        name: "Yuvansh Juneja",
+        role: "Tech Team",
+        image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768236781/Yuvansh_w1bxvd.jpg",
+        linkedin: "https://www.linkedin.com/in/yuvansh-juneja-905679332/",
+        email: "yuvansh.j25537@nst.rishihood.edu.in",
+      },
+      {
+        name: "Yatharth Khandelwal",
+        role: "Tech Team",
+        image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768237165/Yatharth_uwywey.png",
+        linkedin: "https://www.linkedin.com/in/khandelwalyatharth/",
+        email: "yatharth.k25530@nst.rishihood.edu.in",
+      },
+    ],
+  },
+  {
+    title: "Design Team",
+    subtitle: "Pixels with Purpose",
+    members: [
+      {
+        name: "Prateek Girdhar",
+        role: "Design Team",
+        image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768237639/IMG_0638_-_Prateek_Girdhar_kczc5l.jpg",
+        linkedin: "https://www.linkedin.com/in/prateek-girdhar-b0250327a/",
+        email: "prateek.g25035@design.rishihood.edu.in",
+      },
+      {
+        name: "Arit Dey",
+        role: "Design Team",
+        image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768237643/IMG_0082_-_Arit_Dey_kyn6rt.jpg",
+        linkedin: "https://www.linkedin.com/in/arit-dey-39412136b/",
+        email: "arit.d25002@design.rishihood.edu.in",
+      },
+    ],
+  },
+  {
+    title: "Outreach Team",
+    subtitle: "Ping Sent. Connection Made.",
+    members: [
+      {
+        name: "Anindya Sarkar",
+        role: "Outreach Team",
+        image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768237644/Picture_-_Anindya_Sarkar_y1ol4o.jpg",
+        linkedin: "https://www.linkedin.com/in/anindya-sarkar2007/",
+        email: "anindya.s25058@nst.rishihood.edu.in",
+      },
+      {
+        name: "Dhaval sethi",
+        role: "Outreach Team",
+        image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768237641/20251201_004223_-_Dhaval_Sethi_d1guoj.jpg",
+        linkedin: "/",
+        email: "dhaval.s25141@nst.rishihood.edu.in",
+      },
+      {
+        name: "Garvit Gandhi",
+        role: "Outreach Team",
+        image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768238614/dc8d3997-de7e-40d9-b577-ca36b6cea119_-_Garvit_Gandhi_p1vhxl.jpg",
+        linkedin: "http://www.linkedin.com/in/garvit-gandhi-26321a362",
+        email: "garvit.g25166@nst.rishihood.edu.in",
+      },
+      {
+        name: "Ansh singh",
+        role: "Outreach Team",
+        image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768237646/Screenshot_2026-01-12-11-32-02-59_92460851df6f172a4592fca41cc2d2e6_-_Ansh_Singh_kp5f2n.jpg",
+        linkedin: "https://www.linkedin.com/in/ansh-singh-nst",
+        email: "ansh.s25070@nst.rishihood.edu.in",
+      },
+    ],
+  },
+  {
+    title: "Marketing Team",
+    subtitle: "Visibility Wins Games",
+    members: [
+      {
+        name: "Aayush Ray",
+        role: "Marketing Team",
+        image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768237644/PHOTO-2026-01-12-01-43-40_-_Aayush_Ray_x2outo.jpg",
+        linkedin: "https://www.linkedin.com/in/aayushray/",
+        email: "aayush.r25009@nst.rishihood.edu.in",
+      },
+      {
+        name: "ALOK RAWAT",
+        role: "Marketing Team",
+        image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768237641/IMG_7367_-_Alok_Rawat_zr3wan.jpg",
+        linkedin: "https://www.linkedin.com/in/alok-rawat-1698172aa/",
+        email: "alok.r25012@csds.rishihood.edu.in",
+      },
+      {
+        name: "Lakshay Chaudhary",
+        role: "Marketing Team",
+        image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768237645/IMG_20251212_182736_-_Lakshay_Chaudhary_uhohoh.jpg",
+        linkedin: "/",
+        email: "lakshay.c25623@nst.rishihood.edu.in",
+      },
+      {
+        name: "Parth Mittal",
+        role: "Marketing Team",
+        image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768237641/IMG_4643_-_Parth_Mittal_l8hb6e.jpg",
+        linkedin: "https://www.linkedin.com/in/parth-mittal-159228371/",
+        email: "parth.m25657@nst.rishihood.edu.in",
+      },
+      {
+        name: "Krishna Agarwal",
+        role: "Marketing Team",
+        image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768237642/IMG_3337_-_Krishna_Agarwal_yivrtu.png",
+        linkedin: "https://www.linkedin.com/in/krishna-agarwal-1a963626b/",
+        email: "krishna.a25010@design.rishihood.edu.in",
+      },
+      {
+        name: "Sneha Rawat",
+        role: "Marketing Team",
+        image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768239223/48240D19-7A60-4372-BEE0-58BF9751600F_1_201_a_-_Sneha_Rawat_gxqb3u.jpg",
+        linkedin: "https://www.linkedin.com/in/sneha-rawat-74093535a/",
+        email: "sneha.r25034@design.rishihood.edu.in",
+      },
+    ],
+  },
+  {
+    title: "Events Team",
+    subtitle: "Orchestrating the Experience",
+    members: [
+      {
+        name: "Aayush Kumar",
+        role: "Events Team",
+        image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768237645/IMG-20251201-WA0161_-_Aayush_Kumar_l4pfuf.jpg",
+        linkedin: "https://www.linkedin.com/in/aayush-kumar2007",
+        email: "aayush.k25011@nst.rishihood.edu.in",
+      },
+      {
+        name: "SAURABH",
+        role: "Events Team",
+        image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768237638/8FFDD2D9-1FD4-4C8F-8846-5A29A0C52094_-_Saurabh_xqgrxi.jpg",
+        linkedin: "https://www.linkedin.com/in/saurabh-yadav-53327a37a/",
+        email: "saurabh.25415@nst.rishihood.edu.in",
+      },
+      {
+        name: "Chirag Tyagi",
+        role: "Events Team",
+        image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768237643/IMG-20250805-WA0002_-_Chirag_Tyagi_hwoxcb.jpg",
+        linkedin: "https://www.linkedin.com/in/chirag-tyagi-77521037b/",
+        email: "chirag.t25126@nst.rishihood.edu.in",
+      },
+    ],
+  },
+  {
+    title: "Operations Team",
+    subtitle: "Orchestrating the Experience",
+    members: [
+      {
+        name: "Chirag Antil",
+        role: "Operations Team",
+        image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768239856/IMG_20251219_013526_478_1_-_Chirag_Antil_n8mtpw.jpg",
+        linkedin: "https://www.linkedin.com/in/chiragantil",
+        email: "chirag.a25125@nst.rishihood.edu.in",
+      },
+      {
+        name: "AKSHAY KUMAR SINGH",
+        role: "Events Team",
+        image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768237650/IMG20250617174150_-_AKSHAY_KUMAR_SINGH_ixlq6i.jpg",
+        linkedin: "https://www.linkedin.com/in/akshay-kumar-singh-327280374/",
+        email: "akshay.s25582@nst.rishihood.edu.in",
+      },
+    ],
   },
 ];
 const values = [
@@ -193,7 +365,6 @@ const About = () => {
           </div>
         </div>
       </section>
-      { }
       <section className="py-24 bg-card">
         <div className="container mx-auto px-4">
           <motion.div
@@ -210,7 +381,7 @@ const About = () => {
             </h2>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, index) => (
+            {coreTeam.map((member, index) => (
               <motion.div
                 key={member.name}
                 initial={{ opacity: 0, y: 30 }}
@@ -252,61 +423,96 @@ const About = () => {
           </div>
         </div>
       </section>
-      {/* <section className="py-24 bg-card">
-        <div className="container mx-auto px-4">
+
+      <section className="py-24 relative">
+        <div className="absolute inset-0 grid-bg opacity-10" />
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             className="text-center mb-16"
           >
+            <p className="text-secondary uppercase tracking-[0.3em] text-sm mb-4">
+              Extended Squad
+            </p>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground uppercase">
               The Players <span className="text-primary">Behind the Game</span>
             </h2>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, index) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group"
-              >
-                <div className="relative overflow-hidden clip-corner mb-4">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-64 object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-                  />
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </div>
-                <h3 className="text-lg font-bold text-foreground">
-                  {member.name}
-                </h3>
-                <p className="text-primary text-sm mb-3">{member.role}</p>
-                <div className="flex gap-4 justify-center mt-2">
-                  <a
-                    href={member.email ? `mailto:${member.email}` : "#"}
-                    className="text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform duration-200"
-                  >
-                    <FaEnvelope size={20} />
-                  </a>
-                  <a
-                    href={member.linkedin || "#"}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-[#0077b5] transition-colors hover:scale-110 transform duration-200"
-                  >
-                    <FaLinkedin size={20} />
-                  </a>
-                </div>
-              </motion.div>
+
+          <div className="space-y-20">
+            {additionalTeams.map((teamGroup, groupIndex) => (
+              teamGroup.members.length > 0 && (
+                <motion.div
+                  key={teamGroup.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: groupIndex * 0.1 }}
+                >
+                  <div className="text-center mb-12">
+                    <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+                      {teamGroup.title}
+                    </h3>
+                    <p className="text-secondary text-sm uppercase tracking-widest">
+                      {teamGroup.subtitle}
+                    </p>
+                  </div>
+
+                  <div className="flex flex-wrap justify-center gap-8">
+                    {teamGroup.members.map((member, memberIndex) => (
+                      <motion.div
+                        key={member.name}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: memberIndex * 0.1 }}
+                        className="group w-full max-w-[280px]"
+                      >
+                        <div className="relative overflow-hidden clip-corner mb-4">
+                          <img
+                            src={member.image}
+                            alt={member.name}
+                            className="w-full h-64 object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </div>
+                        <h4 className="text-md font-bold text-foreground">
+                          {member.name}
+                        </h4>
+                        <p className="text-primary text-sm mb-3">{member.role}</p>
+                        <div className="flex gap-4 justify-center mt-2">
+                          <a
+                            href={member.email ? `mailto:${member.email}` : "#"}
+                            className="text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform duration-200"
+                          >
+                            <FaEnvelope size={20} />
+                          </a>
+                          <a
+                            href={member.linkedin || "#"}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-muted-foreground hover:text-[#0077b5] transition-colors hover:scale-110 transform duration-200"
+                          >
+                            <FaLinkedin size={20} />
+                          </a>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              )
             ))}
           </div>
+
+          {additionalTeams.every((team) => team.members.length === 0) && (
+            <div className="text-center text-muted-foreground py-12">
+              <p className="text-lg">More team members coming soon!</p>
+            </div>
+          )}
         </div>
-      </section> */}
+      </section>
       { }
       <section className="py-24 relative">
         <div className="container mx-auto px-4">
