@@ -38,7 +38,7 @@ const team = [
   {
     name: "Neelanshu karn",
     role: "Sponsorship Head",
-    image: "https://media.licdn.com/dms/image/v2/D4E03AQG5IMAd_OxYLg/profile-displayphoto-shrink_400_400/B4EZWOxzmZH0Ag-/0/1741857176517?e=1769644800&v=beta&t=fYKbhOSEA5sgBhUWYUe5JHIzuftC46Nkjna8l-WrIfk",
+    image: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1768198438/WhatsApp_Image_2026-01-12_at_00.52.58_p23jjf.jpg",
     linkedin: "https://www.linkedin.com/in/neelanshu-karn-05146130a/",
     email: "neelanshu.2024@nst.rishihood.edu.in",
   },
