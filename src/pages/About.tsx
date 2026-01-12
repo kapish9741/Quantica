@@ -56,6 +56,13 @@ const team = [
     linkedin: "https://www.linkedin.com/in/ikaustubhsingh/",
     email: "kaustubh.s25008@design.rishihood.edu.in",
   },
+  {
+    name: "Kushagra Maheshwari",
+    role: "Content Lead",
+    image: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1768198235/WhatsApp_Image_Jan_12_2026_from_Kushagra_Maheshwari_kfqxkg.jpg",
+    linkedin: "https://www.linkedin.com/in/kushm11/",
+    email: "kushagra.maheshwari2024@nst.rishihood.edu.in",
+  },
 ];
 const values = [
   {
