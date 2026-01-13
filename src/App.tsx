@@ -1,4 +1,5 @@
 import { Toaster } from "@/components/ui/toaster";
+import { Toaster as HotToaster } from "react-hot-toast";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -66,6 +67,30 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
+        <HotToaster
+          position="top-right"
+          toastOptions={{
+            style: {
+              background: '#0a0a0a',
+              color: '#fff',
+              border: '1px solid #8b5cf6',
+              borderRadius: '0px',
+              fontFamily: 'Space Grotesk, sans-serif',
+            },
+            success: {
+              iconTheme: {
+                primary: '#8b5cf6',
+                secondary: '#fff',
+              },
+            },
+            error: {
+              iconTheme: {
+                primary: '#ef4444',
+                secondary: '#fff',
+              },
+            },
+          }}
+        />
         <Sonner />
         {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
         <GlitchOverlay />

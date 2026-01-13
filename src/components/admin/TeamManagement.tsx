@@ -1,6 +1,17 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Plus, Trash2, Edit2, Save, X, Users } from "lucide-react";
+import toast from "react-hot-toast";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { supabase } from "../../lib/supabase";
 import type { Database } from "../../types/database.types";
 import LoaderLeader from "../loaderleader";
@@ -19,6 +30,7 @@ const TeamManagement = () => {
   const [editingTeam, setEditingTeam] = useState<string | null>(null);
   const [newTeamName, setNewTeamName] = useState("");
   const [showAddTeam, setShowAddTeam] = useState(false);
+  const [teamToDelete, setTeamToDelete] = useState<string | null>(null);
 
   useEffect(() => {
     fetchEvents();
@@ -45,7 +57,7 @@ const TeamManagement = () => {
 
     if (teamsData) {
       setTeams(teamsData as any);
-      
+
       const participantsMap: Record<string, Participant[]> = {};
       for (const team of teamsData) {
         const { data: partData } = await supabase
@@ -75,11 +87,89 @@ const TeamManagement = () => {
     }
   };
 
-  const handleDeleteTeam = async (teamId: string) => {
-    if (!confirm("Are you sure you want to delete this team?")) return;
+  const handleDeleteTeam = (teamId: string) => {
+    setTeamToDelete(teamId);
+  };
 
-    const { error } = await supabase.from('teams').delete().eq('id', teamId);
-    if (!error) fetchTeams();
+  const confirmDeleteTeam = async () => {
+    if (!teamToDelete) return;
+    const teamId = teamToDelete;
+
+    try {
+      // 1. Delete match scores
+      const { error: matchScoresError } = await supabase
+        .from('match_scores')
+        .delete()
+        .eq('team_id', teamId);
+
+      if (matchScoresError) {
+        console.error('Error deleting match scores:', matchScoresError);
+        toast.error(`Failed to delete associated match scores: ${matchScoresError.message}`);
+        throw new Error(`Failed to delete associated match scores: ${matchScoresError.message}`);
+      }
+
+      // 2. Clear references in matches (team1_id, team2_id, winner_team_id)
+      const { error: matchRefError1 } = await supabase
+        .from('matches')
+        .update({ team1_id: null } as any)
+        .eq('team1_id', teamId);
+
+      if (matchRefError1) console.warn("Failed to clear team1 refs", matchRefError1);
+
+      const { error: matchRefError2 } = await supabase
+        .from('matches')
+        .update({ team2_id: null } as any)
+        .eq('team2_id', teamId);
+
+      if (matchRefError2) console.warn("Failed to clear team2 refs", matchRefError2);
+
+      const { error: matchRefError3 } = await supabase
+        .from('matches')
+        .update({ winner_team_id: null } as any)
+        .eq('winner_team_id', teamId);
+
+      if (matchRefError3) console.warn("Failed to clear winner refs", matchRefError3);
+
+      // 3. Delete participants
+      const { error: participantsError } = await supabase
+        .from('participants')
+        .delete()
+        .eq('team_id', teamId);
+
+      if (participantsError) {
+        console.error('Error deleting participants:', participantsError);
+        toast.error(`Failed to delete associated participants: ${participantsError.message}`);
+        throw new Error(`Failed to delete associated participants: ${participantsError.message}`);
+      }
+
+      // 4. Finally delete the team
+      const { data, error: teamError } = await supabase
+        .from('teams')
+        .delete()
+        .eq('id', teamId)
+        .select();
+
+      if (teamError) throw teamError;
+
+      if (!data || data.length === 0) {
+        // Fallback check
+        const { data: check } = await supabase.from('teams').select('id').eq('id', teamId);
+        if (check && check.length > 0) {
+          const msg = "Team exists but could not be deleted. This usually means a permission issue.";
+          toast.error(msg);
+          throw new Error(msg);
+        }
+      }
+
+      console.log("Team deleted successfully");
+      toast.success("Team deleted successfully");
+      fetchTeams();
+    } catch (error: any) {
+      console.error('Error deleting team:', error);
+      toast.error(error.message || 'An error occurred while deleting the team');
+    } finally {
+      setTeamToDelete(null);
+    }
   };
 
   const handleUpdateTeam = async (teamId: string, newName: string) => {
@@ -159,8 +249,8 @@ const TeamManagement = () => {
 
       {loading ? (
         <div className="flex items-center justify-center min-h-[400px] w-full">
-        <LoaderLeader />
-      </div>
+          <LoaderLeader />
+        </div>
       ) : teams.length === 0 ? (
         <div className="text-center py-12 text-muted-foreground">
           <Users className="w-16 h-16 mx-auto mb-4 opacity-50" />
@@ -233,6 +323,24 @@ const TeamManagement = () => {
           ))}
         </div>
       )}
+
+
+      <AlertDialog open={!!teamToDelete} onOpenChange={(open) => !open && setTeamToDelete(null)}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone. This will permanently delete the team, remove all their match scores, and clear them from match history.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={confirmDeleteTeam} className="bg-red-600 hover:bg-red-700">
+              Delete Team
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 };
