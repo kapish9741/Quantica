@@ -73,7 +73,7 @@ const additionalTeams = [
       {
         name: "Yuvansh Juneja",
         role: "Tech Team",
-        image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768236781/Yuvansh_w1bxvd.jpg",
+        image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768410364/d9783e4b-29ce-41e6-bd7a-929dd30eca12_-_Yuvansh_Juneja_rfbh3o.jpg",
         linkedin: "https://www.linkedin.com/in/yuvansh-juneja-905679332/",
         email: "yuvansh.j25537@nst.rishihood.edu.in",
       },
