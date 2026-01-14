@@ -46,127 +46,75 @@ const eventData = {
     ],
     registerLink: "#register",
     rulebook: "/rulebook/bgmi-rules.pdf",
-    rulebookText: `QUANTICA FEST
-BGMI Rulebook
-Welcome to the BGMI tournament. Our goal is to have a fun, fair, and competitive event for
-everyone. All participants are expected to read and abide by the following rules.
+    rulebookText: `🥇 BGMI – 1st Prize: More Than a Win
+Winning QUANTICA BGMI isn’t the end of the journey —
+it’s the moment your grind gets recognized.
+This prize is built for teams who don’t just chase chicken dinners,
+but chase a future in esports.
 
-Common Rules & Regulations
-1. Identity Verification
-All players must carry a valid Aadhaar Card and School/College ID for verification.
-Failure to produce these documents when asked may result in disqualification.
-2. Damage to Property
-Any damage caused to equipment, venue assets, or college property by an
-individual or team will be the full responsibility of the respective team, and
-necessary compensation must be provided.
-3. Misconduct & Physical Altercations
-Any involvement in physical fights, aggressive behavior, or serious misconduct
-will result in strict action, including disqualification or further penalties, as decided
-by the Organising Team.
-4. Team Name Guidelines
-Team names must be appropriate and respectful. Names that are abusive,
-offensive, or hurt religious sentiments, individuals, or communities are strictly
-prohibited and may lead to disqualification.
-5. Authority of the Organising Team
-The Organising Team reserves the right to modify, amend, or introduce new
-rules at any time if required.
-All decisions made by the Organising Team will be final and binding in any matter.
-6. Prohibited Substances
-The consumption or possession of intoxicating substances, including alcohol, is
-strictly prohibited within the campus premises. Violation will result in immediate
-disciplinary action.
+💰 Total 1st Prize Value: ₹30,000
+🔹 ₹10,000 Cash Prize
+Instant reward for your dominance.
+Straight from the official prize pool.
+No conditions. No delays. Just winnings.
 
-1. General Rules
-● Eligibility: all players under the age of 28.
-● Code of Conduct:
-○ Sportsmanship: All players are expected to show good sportsmanship. Be respectful
-to fellow competitors and tournament organizers. Toxicity, harassment, or hate
-speech will not be tolerated and will result in immediate disqualification.
-○ Competitive Integrity: Play to the best of your ability in every match. Intentionally
-losing, splitting prize money with other teams (collusion), or any form of match-fixing
-is strictly forbidden.
-● Organizer's Authority: All decisions regarding rule interpretation, player eligibility, and
-penalties are at the sole discretion of the tournament organizers. All decisions are final.
+🚀 ₹20,000 Sponsor Team Stipend per month
+Powered by INGLU Esports
+This is where your story levels up.
+After winning QUANTICA BGMI:
+● Your team receives a ₹20,000 professional team stipend
+● Offered through a 1-month initial agreement
+● Designed to evaluate potential, synergy, and competitive growth
 
-2. Team & Player Rules
-● Roster Requirements:
-○ Each team must consist of 4 starting players.
-○ Teams can optionally register up to 1 substitute players.
-○ The roster submitted at the time of registration is final. No changes will be allowed
-once the tournament begins, except in emergency situations approved by the
-organizers.
-● Player Names (In-Game Name/IGN):
-○ Your in-game name should be appropriate and non-offensive.
-○ It is recommended to use the format: TeamTagPlayerName (e.g., SAGEJohn).
-● Team Names:
-○ Team names must be unique and appropriate. Offensive names will be rejected.
-○ Team names cannot impersonate professional organizations without permission.
+During this phase, INGLU Esports and your team will jointly discuss:
+● Competitive goals
+● Long-term vision
+● Tournament roadmap
+● Expectations from both sides
 
-3. In-Game Rules & Match Format
-Match Settings
-● Mode: Third Person Perspective (TPP)
-● Maps: Erangel, Miramar, Rondo
-● Aim Assist: Disabled
-● Sound Visualization: Disabled
-● Disabled Items: Red Zone & Flare Guns
-● Loot: All Weapons, Scopes, and Magazines spawn rate set to x3.
+⚠ Nothing is forced.
+The agreement moves forward only if both sides align and agree.
 
-Scoring System
-Points are awarded based on placement and finishes in each match.
-● Placement Points:
-○ 1st Place: 10 points
-○ 2nd Place: 6 points
-○ 3rd Place: 5 points
-○ 4th Place: 4 points
-○ 5th Place: 3 points
-○ 6th Place: 2 points
-○ 7th - 8th Place: 1 point
-○ 9th - 16th Place: 0 points
-● Finish Points: Each finish (kill) is worth 1 point.
+🔥 Your Identity Stays. Your Name Evolves.
+Here’s the best part:
+Your team does NOT lose its identity.
+If the agreement moves forward, your squad will compete as:
+INGLU Esports × Your Team Name
+Your legacy stays intact.
+Your brand gets amplified.
+Your name gets seen in bigger lobbies.
+This isn’t replacement —
+this is collaboration.
 
-Tiebreaker Rules
-If two teams have the same total points, the tie will be broken in the following order:
-1. Total number of Chicken Dinners (1st place finishes).
-2. Total accumulated placement points.
-3. Total accumulated finish points.
-4. Placement in the most recent match.
+🎯 What This Opportunity Unlocks
+By winning QUANTICA BGMI, your team gets:
+● A direct entry point into a professional esports ecosystem
+● Exposure to higher-tier tournaments & competitive lobbies
+● Guidance, visibility, and backing from a recognized org
+● A chance to extend or expand the agreement after 1 month, based on performance & mutual interest
 
-4. Prohibited Actions & Fair Play
-● No Cheating: Using any kind of cheating hardware, third-party software, hacks, mods, or
-cheat programs is strictly prohibited. This includes using emulators to play on a PC.
-● No Exploiting Bugs: Intentionally using any in-game bug or glitch to gain an unfair
-advantage is forbidden.
-● Use of self aid and emergency pickup is not allowed. Teams using these will get 0
-points for that match.
-● Authorized Devices: All games must be played on mobile phones or other handheld
-devices. Peripherals like controllers, adapters, or Bluetooth keyboards are not allowed.
+From college warriors to serious contenders —
+this is the bridge.
 
-5. Competitive Integrity: POV Recording
-To ensure a fair playing field, all players are required to record their in-game point-of-view
-(POV) for every match.
-● How to Record: Use your device's built-in screen recorder. Third-party recording apps
-are not allowed.
-● Submission: Tournament organizers may request your POV recording at any time to
-investigate cheating allegations.
-● Penalty: Failure to provide a requested POV recording may result in point deductions or
-disqualification for your team.
+🚀 Why This Matters
+Many tournaments end with prize money.
+Very few end with opportunity.
+QUANTICA is built to:
+● Reward raw skill
+● Recognize untapped potential
+● Push teams toward professional growth
 
-6. Match Procedures
-● Lobby Information: Lobby ID and password will be shared with the Team Captain before
-each match.
-● For qualified teams : Players are not permitted to leave their assigned positions until the
-match has officially ended, unless allowed by the organising team.
-● Peeking, screen-watching, or any form of visual assistance from opponents’ screens
-is prohibited and will be treated as a serious violation.
-● Punctuality: Teams are expected to be in the lobby and ready at the scheduled time.
-Delays may result in penalties.
-● Disconnects & Restarts:
-○ The tournament organizers may restart a match if multiple players face technical
-issues or disconnects at the very beginning of the game.
-○ Once the game has progressed, it will not be restarted for individual player
-disconnections. Players who disconnect may attempt to rejoin the match.
+If you play BGMI for fun — this is exciting.
+If you play BGMI to build a name — this is everything.
 
-Good luck to all participating teams! Let's have a great tournament. 🏆`
+🏆 Final Word
+Winning QUANTICA BGMI doesn’t just make you champions.
+It puts you on the radar.
+It gives your grind a direction.
+It gives your team a future.
+Play fearless.
+Win hard.
+Carry your name — with INGLU Esports beside it. 🔥`,
   },
   valorant: {
     title: "Valorant",

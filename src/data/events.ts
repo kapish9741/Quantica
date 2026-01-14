@@ -95,7 +95,7 @@ export const events = [
         game: "EAFC 26",
         date: "7-8 Feb 2026",
         targetDate: "2026-04-20T10:00:00",
-        prizePool: "₹15,000",
+        prizePool: "₹12,000",
         image: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1768036271/fifa_d267yz.jpg",
         slug: "eafootball26",
         color: "magenta" as const,
