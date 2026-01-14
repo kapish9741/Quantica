@@ -152,7 +152,7 @@ const additionalTeams = [
         email: "aayush.r25009@nst.rishihood.edu.in",
       },
       {
-        name: "ALOK RAWAT",
+        name: "Alok Rawat",
         role: "Marketing Team",
         image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768237641/IMG_7367_-_Alok_Rawat_zr3wan.jpg",
         linkedin: "https://www.linkedin.com/in/alok-rawat-1698172aa/",
@@ -200,7 +200,7 @@ const additionalTeams = [
         email: "aayush.k25011@nst.rishihood.edu.in",
       },
       {
-        name: "SAURABH",
+        name: "Saurabh",
         role: "Events Team",
         image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768237638/8FFDD2D9-1FD4-4C8F-8846-5A29A0C52094_-_Saurabh_xqgrxi.jpg",
         linkedin: "https://www.linkedin.com/in/saurabh-yadav-53327a37a/",
@@ -227,7 +227,7 @@ const additionalTeams = [
         email: "chirag.a25125@nst.rishihood.edu.in",
       },
       {
-        name: "AKSHAY KUMAR SINGH",
+        name: "Akshay Kumar Singh",
         role: "Operations Team",
         image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768237650/IMG20250617174150_-_AKSHAY_KUMAR_SINGH_ixlq6i.jpg",
         linkedin: "https://www.linkedin.com/in/akshay-kumar-singh-327280374/",
