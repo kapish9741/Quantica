@@ -106,6 +106,10 @@ export interface Database {
           status: 'scheduled' | 'live' | 'completed'
           scheduled_date: string
           created_at: string | null
+          round_name?: string | null
+          round_index?: number | null
+          next_match_id?: string | null
+          bracket_group?: string | null
         }
         Insert: {
           id?: string
@@ -119,6 +123,10 @@ export interface Database {
           status?: 'scheduled' | 'live' | 'completed'
           scheduled_date: string
           created_at?: string | null
+          round_name?: string | null
+          round_index?: number | null
+          next_match_id?: string | null
+          bracket_group?: string | null
         }
         Update: {
           id?: string
@@ -132,6 +140,10 @@ export interface Database {
           status?: 'scheduled' | 'live' | 'completed'
           scheduled_date?: string
           created_at?: string | null
+          round_name?: string | null
+          round_index?: number | null
+          next_match_id?: string | null
+          bracket_group?: string | null
         }
       }
       match_scores: {

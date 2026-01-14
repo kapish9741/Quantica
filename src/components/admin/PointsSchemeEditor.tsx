@@ -106,7 +106,6 @@ const PointsSchemeEditor = () => {
         </button>
       </div>
 
-      {/* Event Selector */}
       <div>
         <label className="block text-sm font-bold uppercase tracking-wider text-primary mb-2">
           Select Event
@@ -170,7 +169,6 @@ const PointsSchemeEditor = () => {
             </div>
           </div>
 
-          {/* Preview Example */}
           <div className="bg-muted border-2 border-border p-6">
             <h4 className="font-bold text-foreground mb-3">Example Calculation</h4>
             <div className="space-y-2 text-sm">
