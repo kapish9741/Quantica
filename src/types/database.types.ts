@@ -98,6 +98,11 @@ export interface Database {
           id: string
           event_id: string
           match_number: number
+          team1_id: string | null
+          team2_id: string | null
+          winner_team_id: string | null
+          team1_score: string | null
+          team2_score: string | null
           status: 'scheduled' | 'live' | 'completed'
           scheduled_date: string
           created_at: string | null
@@ -106,6 +111,11 @@ export interface Database {
           id?: string
           event_id: string
           match_number: number
+          team1_id?: string | null
+          team2_id?: string | null
+          winner_team_id?: string | null
+          team1_score?: string | null
+          team2_score?: string | null
           status?: 'scheduled' | 'live' | 'completed'
           scheduled_date: string
           created_at?: string | null
@@ -114,6 +124,11 @@ export interface Database {
           id?: string
           event_id?: string
           match_number?: number
+          team1_id?: string | null
+          team2_id?: string | null
+          winner_team_id?: string | null
+          team1_score?: string | null
+          team2_score?: string | null
           status?: 'scheduled' | 'live' | 'completed'
           scheduled_date?: string
           created_at?: string | null

@@ -20,7 +20,7 @@ const eventData = {
     date: "7-8 Feb 2026",
     time: "10:00 AM - 8:00 PM",
     location: "Rishihood University, Delhi NCR",
-    prizePool: "₹40,000",
+    prizePool: "₹50,000",
     teams: "64",
     format: "Squad (4 Players)",
     entryFee: "Free",
@@ -28,7 +28,7 @@ const eventData = {
     color: "cyan",
     registrationUrl: "https://unstop.com/o/LAH4Pbq?lb=6YYCRAfR&utm_medium=Share&utm_source=sahabsin46468&utm_campaign=Events",
     prizeDistribution: [
-      { place: "1st Place", prize: "₹20,000" },
+      { place: "1st Place", prize: "₹30,000" },
       { place: "2nd Place", prize: "₹12,500" },
       { place: "3rd Place", prize: "₹7,500" },
     ],
@@ -175,7 +175,7 @@ Good luck to all participating teams! Let's have a great tournament. 🏆`
     date: "7-8 Feb 2026",
     time: "11:00 AM - 9:00 PM",
     location: "Rishihood University, Delhi NCR",
-    prizePool: "₹15,000",
+    prizePool: "₹32,000",
     teams: "32",
     format: "5v5 Teams",
     entryFee: "Free",
@@ -183,8 +183,8 @@ Good luck to all participating teams! Let's have a great tournament. 🏆`
     color: "magenta",
     registrationUrl: "https://unstop.com/o/K3XE1FN?lb=6YYCRAfR&utm_medium=Share&utm_source=sahabsin46468&utm_campaign=Events",
     prizeDistribution: [
-      { place: "1st Place", prize: "₹10,000" },
-      { place: "2nd Place", prize: "₹5,000" },
+      { place: "1st Place", prize: "₹25,000" },
+      { place: "2nd Place", prize: "₹7,000" },
     ],
     rules: [
       "All players must be 16+ years old",
@@ -200,203 +200,73 @@ Good luck to all participating teams! Let's have a great tournament. 🏆`
     ],
     registerLink: "#register",
     rulebook: "/rulebook/valorant-rules.pdf",
-    rulebookText: `QUANTICA FEST – VALORANT
-TOURNAMENT
+    rulebookText: `🥇 VALORANT – 1st Prize: Aim Higher
+Winning QUANTICA VALORANT isn’t just about clutch rounds and perfect executes —
+it’s about stepping into something bigger.
+This prize is built for teams who don’t just queue ranked,
+but want to play the game at the next level.
 
-OFFICIAL RULEBOOK
+💰 Total 1st Prize Value: ₹25,000
+🔹 ₹5,000 Cash Prize
+A direct cash reward for the champions.
+Earned through pure skill, discipline, and teamwork.
+No strings. Just winnings.
 
-1. GAME & TOURNAMENT STRUCTURE
-● Game: VALORANT (Riot Games)
-● Tournament Format: Single Elimination
-● Match Type: 5v5
-● Roster Limit: Maximum 7 players
-○ 5 Starting Players
-○ Up to 2 Substitutes
-● Eligibility:
-○ Open to Indian citizens only
-○ Players must comply with Riot Games’ Terms of Service
-● Communication Platform:
-○ Discord is mandatory for all participating teams
-○ All official announcements, match coordination, and admin communication will
-take place via Discord
+🚀 ₹20,000 Sponsor Team Stipend per month
+Powered by INGLU Esports
+This is where your grind meets opportunity.
+After winning QUANTICA VALORANT:
+● Your team receives a ₹20,000 professional team stipend
+● Offered through a 1-month initial agreement
+● Designed to evaluate competitive potential and team chemistry
 
-2. TOURNAMENT SCHEDULE
-● Registrations: To be announced by Quantica Fest Organizers
-● Tournament Start Date: To be announced
-● Match Schedule:
-○ Shared on Discord prior to match day
-○ Teams are responsible for tracking their match timings
+During this period, INGLU Esports and your team will mutually discuss:
+● Competitive goals & vision
+● Tournament plans and roadmap
+● Expectations from both sides
 
-3. MATCH EXECUTION & CHECK-IN
-3.1 Joining the Match
+⚠ This agreement is completely mutual.
+It will move forward only if both parties agree.
 
-● Teams must join the Quantica Fest Discord 30 minutes before their scheduled match
-time
-● Match lobby details will be shared with team captains only
-● Captains must distribute lobby information to teammates
-Late Arrival Rule
-● 10-minute grace period from scheduled match time
-● Failure to join within this time results in automatic disqualification
-No-Show Proof
-● In case the opponent does not show up:
-○ Capture a lobby screenshot with timestamp
-○ Submit it in the designated #results channel
+🔥 Your Name Stays. Your Stage Gets Bigger.
+Your identity matters.
+If the agreement proceeds, your team will compete as:
+INGLU Esports × Your Team Name
+You keep your name.
+You keep your legacy.
+You gain a platform that pushes your brand further.
+This isn’t a takeover —
+this is a power-up.
 
-3.2 Preparation & Substitutions
-● Minimum 15 minutes break between consecutive matches
-● Full team must be present in the lobby 10 minutes before match start
-● Substitutions:
-○ Must be communicated to admins at least 1 hour in advance
+🎯 What This Opportunity Unlocks
+Winning QUANTICA VALORANT gives your team:
+● Direct interaction with a professional esports organization
+● Entry into higher-level scrims and tournaments
+● Visibility beyond college esports
+● A chance to extend or expand the agreement after 1 month, based on performance & alignment
 
-4. MATCH RULES
-4.1 Match Format
-● Best of 1 (BO1): All matches except Semi-Finals & Finals
-● Best of 3 (BO3): Semi-Finals and Grand Finals
+From campus champions to serious contenders —
+this is your opening.
 
-4.2 Map Pool
-● Ascent
-● Haven
-● Bind
-● Lotus
-● Sunset
-● Corrode
+🚀 Why This Matters
+Most VALORANT tournaments end after the finals.
+QUANTICA starts after the win.
+It exists to:
+● Reward mechanical skill and game sense
+● Identify teams with long-term potential
+● Create a bridge into the esports ecosystem
 
-(Maps will be assigned by the organisers. No map veto process will be followed.)
+If you play to win rounds — this is good.
+If you play to win careers — this is for you.
 
-4.3 In-Game Settings
-● Game Mode: Tournament Mode
-● Win Condition:
-○ First team to reach 13 rounds wins the match
-○ No overtime will be played
-● Warmup Time: 5 minutes
-● Agent Select: Locked once match begins
-● Agent Control Freeze: Enabled during pauses
-
-4.4 Game of Record (GoR)
-A match is officially considered Game of Record when:
-● All 10 players have joined the lobby
-● Map is loaded and freeze time has ended
-Restart Conditions
-● In case of restart, score resets to 0–0
-● Freeze time must expire again before GoR is re-established
-
-5. PLAYER ELIGIBILITY & TECHNICAL ISSUES
-● Minimum Players Required: 5 starting players
-● Minimum Account Level: Level 25
-● Rank Eligibility: Iron to Radiant (All ranks allowed)
-Disconnect Rules
-● Before first kill or spike plant (Round 1): Round restart
-● After Round 1:
-○ Technical pause will be initiated
-○ If the player cannot reconnect:
-■ Match continues 4v5
-■ If players drop below 4 → match forfeit
-
-6. GAMEPLAY RESTRICTIONS
-6.1 Strictly Prohibited
-● Exploits:
-○ Pixel walking
-○ Clipping
-○ Spike sound abuse
-○ Unintended map boosts
-● Third-Party Software:
-○ Scripts
-○ Modified game files
-○ HUD / radar / sprite alterations
-○ Discord or RivaTuner overlays
-○ FPS counters are allowed
-● Communication Abuse:
-○ Harassment or offensive language
-○ Non-game-related communication during live rounds
-
-6.2 Pauses & Timeouts
-● Technical Pauses:
-○ Maximum 5 minutes per match
-● Timeouts:
-○ 2 per map
-○ 60 seconds each
-○ Can only be used during buy phase
-● Emergency Pause:
-○ 1 per map
-○ Maximum 10 minutes
-○ Subject to admin review
-
-7. COACHING & SPECTATING
-Coaches
-● Allowed with prior declaration
-
-● Communication allowed only during:
-○ Timeouts
-○ Half-time
-○ Map switches (BO3 only)
-
-Spectators
-● Only Quantica Fest staff are allowed in streamed matches
-
-8. CONDUCT, REPORTING & PENALTIES
-8.1 Player Conduct
-Any form of the following will result in penalties or bans:
-● Racism or hate speech
-● Cheating or hacking
-● Bug abuse
-● Match sabotage
-● Misconduct toward admins, referees, or players
-
-8.2 Reporting Violations
-● Email: contact@quanticafest.fun
-● Include:
-○ Match date & time
-○ Lobby details
-○ Player/team involved
-○ Screenshots or video proof
-
-8.3 Team Responsibilities
-● Captain Responsibilities:
-○ Sole point of contact with organisers
-○ Result verification with screenshots
-○ Relaying all official communication to team members
-○ Signing off on team decisions
-● Naming Policy:
-
-○ No offensive, abusive, or trademarked names allowed
-
-9. DISPUTE RESOLUTION
-● All disputes will be reviewed by Quantica Fest Organising Team
-● Decisions taken by organisers and referees are final and binding
-● Players will be given a fair opportunity to present their case
-● Appeals after final judgment are not permitted
-
-10. COMMON RULES & REGULATIONS
-Identity Verification
-● All players must carry a valid Aadhaar Card and College ID for verification
-● Failure to produce these documents when asked may result in disqualification
-Damage to Property
-● Any damage caused to equipment, venue assets, or college property by an individual or
-team will be the full responsibility of the respective team
-● Necessary compensation must be provided
-Misconduct & Physical Altercations
-● Any involvement in physical fights, aggressive behavior, or serious misconduct will result
-in strict action, including disqualification or further penalties as decided by the
-Organising Team
-Team Name Guidelines
-● Team names must be appropriate and respectful
-● Names that are abusive, offensive, or hurt religious sentiments, individuals, or
-communities are strictly prohibited
-● Violations may lead to immediate disqualification
-Authority of the Organising Team
-● The Organising Team reserves the right to modify, amend, or introduce new rules at
-any time
-
-● All decisions made by the Organising Team will be final and binding
-Prohibited Substances
-● Consumption or possession of alcohol or intoxicating substances is strictly prohibited
-within the campus premises
-● Violations will result in immediate disciplinary action
-
-11. GENERAL PROTOCOLS
-● Players with active Riot Games or tournament bans are ineligible
-● Teams found violating this will be immediately disqualified
-● Intentional match fixing or throwing is strictly prohibited and will result in bans`,
+🏆 Final Word
+Winning QUANTICA VALORANT doesn’t just crown champions.
+It gives your team direction.
+It puts your name in bigger rooms.
+It sets the stage for what comes next.
+Lock in.
+Outplay.
+Carry your name — with INGLU Esports beside it. 🔥`,
   },
   freefire: {
     title: "Free Fire MAX",
@@ -405,7 +275,7 @@ within the campus premises
     date: "7-8 Feb 2026",
     time: "10:00 AM - 7:00 PM",
     location: "Rishihood University, Delhi NCR",
-    prizePool: "₹20,000",
+    prizePool: "₹37,000",
     teams: "48",
     format: "Squad (4 Players)",
     entryFee: "Free",
@@ -413,8 +283,8 @@ within the campus premises
     color: "cyan",
     registrationUrl: "https://unstop.com/o/sAkQy9Z?lb=6YYCRAfR&utm_medium=Share&utm_source=sahabsin46468&utm_campaign=Competitions",
     prizeDistribution: [
-      { place: "1st Place", prize: "₹10,000" },
-      { place: "2nd Place", prize: "₹6,000" },
+      { place: "1st Place", prize: "₹26,000" },
+      { place: "2nd Place", prize: "₹7,000" },
       { place: "3rd Place", prize: "₹4,000" },
     ],
     rules: [
@@ -431,124 +301,74 @@ within the campus premises
     ],
     registerLink: "#register",
     rulebook: "/rulebook/freefire-rules.pdf",
-    rulebookText: `QUANTICA FEST
-FREEFIRE MAX Rulebook
-Common Rules & Regulations
-1. Identity Verification
-All players must carry a valid Aadhaar Card and School/College ID for verification.
-Failure to produce these documents when asked may result in disqualification.
-2. Damage to Property
-Any damage caused to equipment, venue assets, or college property by an
-individual or team will be the full responsibility of the respective team, and
-necessary compensation must be provided.
-3. Misconduct & Physical Altercations
-Any involvement in physical fights, aggressive behavior, or serious misconduct
-will result in strict action, including disqualification or further penalties, as decided
-by the Organising Team.
-4. Team Name Guidelines
-Team names must be appropriate and respectful. Names that are abusive,
-offensive, or hurt religious sentiments, individuals, or communities are strictly
-prohibited and may lead to disqualification.
-5. Authority of the Organising Team
-The Organising Team reserves the right to modify, amend, or introduce new
-rules at any time if required.
-All decisions made by the Organising Team will be final and binding in any matter.
-6. Prohibited Substances
-The consumption or possession of intoxicating substances, including alcohol, is
-strictly prohibited within the campus premises. Violation will result in immediate
-disciplinary action.
-1. General Rules & Eligibility
-● 1.1. Game Title:
-The official game title for this tournament is FreeFire MAX (FFM) on the Mobile
-(iOS/Android) platform.
+    rulebookText: `🥇 FREE FIRE MAX – 1st Prize: From Battle to
+Breakthrough
+Winning QUANTICA FREE FIRE MAX isn’t just about Booyahs and highlights —
+it’s about proving you belong on a bigger stage.
+This prize is built for teams who don’t just play matches,
+but play to build a name.
 
-● 1.2. Acceptance of Rules:
-By registering, all participants agree to have read, understood, and accepted these
-regulations.
-● 1.3. Eligibility: all players under the age of 28.
-● 1.4. Team Roster:
-○ Teams must submit their final roster before the registration period closes. Any
-changes after this are at the sole discretion of the organizers.
-○ Players are not permitted to register with multiple teams or on multiple accounts.
-● 1.5. Registration Information:
-Every player must fill out their registration form with complete and accurate information.
-Providing false or incorrect information can lead to disqualification.
+💰 Total 1st Prize Value: ₹26,000
+🔹 ₹6,000 Cash Prize
+A direct cash reward for the champions.
+Earned through consistency, teamwork, and clutch moments.
+No conditions. Just victory.
 
-2. Tournament Format & Scoring
-(Note: The provided ESFI document states that specific match rules are published separately.
-The following is a standard competitive format that can be used for your finals.)
-● 2.1. Map Rotation: Bermuda, Purgatory, Kalahari, Alpine, Nexetera,solara.
-● 2.2. Scoring System:
-1. Kill Points: 1 point per kill.
-2. Placement Points:
-■ 1st Place (Booyah): 12 Points
-■ 2nd Place: 9 Points
-■ 3rd Place: 8 Points
-■ 4th Place: 7 Points
-■ 5th Place: 6 Points
-■ 6th Place: 5 Points
-■ 7th Place: 4 Points
-■ 8th Place: 3 Points
-■ 9th Place: 2 Points
-■ 10th Place: 1 Point
+🚀 ₹20,000 Sponsor Team Stipend per month
+Powered by INGLU Esports
+This is where opportunity meets performance.
+After winning QUANTICA FREE FIRE MAX:
+● Your team receives a ₹20,000 professional team stipend
+● Offered through a 1-month initial agreement
+● Designed to evaluate competitive strength, discipline, and growth potential
 
-● 2.3. Tiebreaker: In the event of a tie, the winner will be determined in the following
-order:
-1. Total number of Booyahs.
-2. Total kill count.
-3. Best placement in the final match.
+During this phase, INGLU Esports and your team will mutually discuss:
+● Team vision and long-term goals
+● Competitive roadmap & tournaments
+● Expectations from both sides
 
-3. Player Conduct
+⚠ This agreement is completely mutual.
+It proceeds only if both parties align and agree.
 
-All players must conduct themselves in a professional and fair manner at all times. Failure to
-adhere to these conduct rules will result in penalties.
-● 3.1. Prohibited Actions & Behavior:
-○ Cheating and Hacking: There is a zero-tolerance policy for cheating. Using
-cheats, exploits, bots, hacks, mods, or any unauthorized software designed to
-modify or interfere with the game is strictly prohibited.
-○ Unfair Play: Throwing a match, intentionally halting play, or showing a clear lack
-of effort is a violation of conduct.
-○ Vulgarity and Abuse: Any form of vulgarity, abuse, or dissent towards
-administrators, spectators, or other players will not be tolerated.
-○ Harassment and Discrimination: Abuse, bullying, harassment (including
-sexual/verbal), and discrimination on the basis of sex, caste, race, or religion will
-be taken with utmost seriousness.
-○ Impersonation: Attempting to impersonate another player is strictly prohibited.
-○ Illegal Substances: The use of alcohol, illegal drugs, or any
-performance-enhancing drugs is strictly prohibited.
+🔥 Your Name Stays. Your Platform Expands.
+Your identity matters.
+If the agreement moves forward, your team will compete as:
+INGLU Esports × Your Team Name
+Your squad keeps its name.
+Your grind keeps its story.
+Your brand gets a stronger spotlight.
+This isn’t replacement —
+this is recognition.
 
-4. Penalties for Misconduct
-● 4.1. Right to Penalize:
-If any of these regulations are violated, tournament organizers reserve the right to
-impose penalties. The player(s) in question will be given an opportunity to be heard
-before a final decision is made.
-● No Exploiting Bugs: Intentionally using any in-game bug or glitch to gain an unfair
-advantage is forbidden.
-● 4.2. Applicable Penalties:
-Penalties may be applied individually or in combination and include:
-○ A formal warning or reprimand.
-○ Forfeiture of a game or the entire tournament.
-○ Disqualification of the player or the entire team from the tournament.
-○ A ban from future tournaments hosted by the club, either temporarily or
-permanently.
+🎯 What This Opportunity Unlocks
+By winning QUANTICA FREE FIRE MAX, your team gains:
+● Direct access to a professional esports organization
+● Exposure to higher-level lobbies and competitive tournaments
+● Visibility beyond college and local circuits
+● A chance to extend or expand the agreement after 1 month, based on performance & mutual interest
 
-On-Site Player Conduct
-1. Remain Seated: Players must remain seated for the entire duration of a match. Getting
-up or leaving the designated play area is not allowed. In case of a critical issue or
-emergency, the player must raise their hand and get explicit permission from a
-tournament moderator before leaving their seat.
+From underdogs to contenders —
+this is the step forward.
 
-2. Screen Integrity: Peeking or attempting to look at the screen or device of another team
-is strictly forbidden and will be considered an act of cheating.
-Remote Player Integrity For any player competing from a location outside the campus venue, it
-is mandatory to have both a face/handcam recording running for the entire duration of every
-match. These recordings must be made available to the organizers upon request.
-Section Z: Code of Conduct & Prohibited Actions
-Z.1 Anti-Collusion Policy Teaming up with an opposing team or intentionally "donating" kills to
-another team, is a severe violation of competitive integrity. Any team found guilty of such actions
-will face immediate disqualification. This penalty will result in all associated teams being
-disqualified from the tournament.
-Further please refer to the general rules from ESFI’s rulebook.`,
+🚀 Why This Matters
+Many FREE FIRE tournaments end at the podium.
+Very few continue after the celebration.
+QUANTICA is built to:
+● Reward dedication and skill
+● Identify teams ready for growth
+● Open doors into the esports ecosystem
+
+If you play FREE FIRE MAX for fun — this is exciting.
+If you play FREE FIRE MAX for a future — this is your moment.
+
+🏆 Final Word
+Winning QUANTICA FREE FIRE MAX doesn’t just make you champions.
+It puts your name in serious conversations.
+It gives your grind direction.
+It moves your team closer to the pro scene.
+Drop in.
+Dominate.
+Carry your name — with INGLU Esports beside it. 🔥`,
   },
   efootball: {
     title: "EFootball",
@@ -830,7 +650,7 @@ disqualification.
     date: "7-8 Feb 2026",
     time: "10:00 AM - 7:00 PM",
     location: "Rishihood University, Delhi NCR",
-    prizePool: "₹15,000",
+    prizePool: "₹12,000",
     teams: "48",
     format: "1v1",
     entryFee: "₹150",
@@ -838,9 +658,9 @@ disqualification.
     color: "cyan",
     registrationUrl: "https://unstop.com/p/quantica-2026-ea-fc-26-solo-cup-quantica-2026-sage-rishihood-university-1621608",
     prizeDistribution: [
-      { place: "1st Place", prize: "₹7,500" },
-      { place: "2nd Place", prize: "₹4,500" },
-      { place: "3rd Place", prize: "₹3,000" },
+      { place: "1st Place", prize: "₹6,000" },
+      { place: "2nd Place", prize: "₹4,000" },
+      { place: "3rd Place", prize: "₹2,000" },
     ],
     rules: [
       "All players must be 15+ years old",
