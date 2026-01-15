@@ -114,6 +114,33 @@ const additionalTeams = [
     ],
   },
   {
+    title: "Sponsorship and Partnership Team",
+    subtitle: "Partnerships That Win Games.",
+    members: [
+      {
+        name: "Keshav Goel",
+        role: "Sponsorship Team",
+        image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768237642/IMG_20241006_195320_-_Keshav_Goel_kuyxv0.jpg",
+        linkedin: "https://www.linkedin.com/in/keshav-goel-6a7b47380/",
+        email: "keshav.g25720@nst.rishihood.edu.in",
+      },
+      {
+        name: "Rudransh Singh",
+        role: "Partnership Team",
+        image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768237645/IMG-20260112-WA0040_-_Rudransh_Singh_jmxknf.jpg",
+        linkedin: "https://www.linkedin.com/in/rudransh-singh-941a45304/",
+        email: "rudransh.s25390@nst.rishihood.edu.in",
+      },
+      {
+        name: "Sayan Bhattacharya ",
+        role: "Sponsorship Team",
+        image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768237644/IMG-20260108-WA0218_-_Sayan_Bhattacharya_x2qpxj.jpg",
+        linkedin: "https://www.linkedin.com/in/sayanbhattacharya01/",
+        email: "sayan.bhattacharya2024@nst.rishihood.edu.in",
+      },
+    ],
+  },
+  {
     title: "Outreach Team",
     subtitle: "Ping Sent. Connection Made.",
     members: [
@@ -267,6 +294,13 @@ const additionalTeams = [
         image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768237650/IMG20250617174150_-_AKSHAY_KUMAR_SINGH_ixlq6i.jpg",
         linkedin: "https://www.linkedin.com/in/akshay-kumar-singh-327280374/",
         email: "akshay.s25582@nst.rishihood.edu.in",
+      },
+      {
+        name: "Shlok Srivastava",
+        role: "Operations Team",
+        image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768481109/IMG-20251204-WA0062_-_Shlok_Srivastava_d2gvue.jpg",
+        linkedin: "https://www.linkedin.com/in/shlok-srivastava-a65906368/",
+        email: "shlok.s25434@nst.rishihood.edu.in",
       },
     ],
   },
