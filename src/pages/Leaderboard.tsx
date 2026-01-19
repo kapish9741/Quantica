@@ -7,7 +7,7 @@ import EventLeaderboard from "../components/EventLeaderboard";
 import TournamentBracket from "../components/TournamentBracket";
 import RoadmapTimeline from "../components/RoadmapTimeline";
 import { events } from "../data/events";
-import { FaFantasyFlightGames } from "react-icons/fa6";
+
 
 const Leaderboard = () => {
   const [activeEvent, setActiveEvent] = useState<string>(events[0]?.slug || "");
@@ -115,7 +115,7 @@ const Leaderboard = () => {
                     }`}
                 >
                   <div className="flex items-center gap-2">
-                    <FaFantasyFlightGames className="w-4 h-4" />
+                    <Trophy className="w-4 h-4" />
                     <span>{event.game}</span>
                   </div>
                 </button>
