@@ -293,8 +293,10 @@ const MatchScoring = () => {
               onClick={handleCancelEdit}
               className="px-2 py-1 md:px-4 md:py-2 bg-card border-2 border-border hover:border-red-500 text-foreground text-xs md:text-sm"
             >
-              <GiTireIronCross />
-              <div className="hidden md:block">Cancel</div>
+              <div className="flex items-center gap-2">
+                <GiTireIronCross className="w-4 h-4" />
+                <div className="hidden md:block">Cancel</div>
+              </div>
             </button>
           )}
           <button
@@ -363,10 +365,11 @@ const MatchScoring = () => {
                           type="number"
                           min="0"
                           value={scores[team.id]?.placement || 0}
+                          onFocus={(e) => e.target.select()}
                           onChange={(e) =>
                             handleScoreChange(team.id, 'placement', parseInt(e.target.value) || 0)
                           }
-                          className="w-12 md:w-20 px-1 py-1 md:px-3 md:py-2 bg-background border-2 border-border focus:border-primary outline-none text-center text-foreground text-xs md:text-base"
+                          className="w-12 md:w-20 px-1 py-1 md:px-3 md:py-2 bg-background border-2 border-border focus:border-primary outline-none text-center text-foreground text-xs md:text-base no-spinner"
                         />
                       </td>
                       <td className="px-2 py-2 md:px-4 md:py-3 text-center">
@@ -374,10 +377,11 @@ const MatchScoring = () => {
                           type="number"
                           min="0"
                           value={scores[team.id]?.kills || 0}
+                          onFocus={(e) => e.target.select()}
                           onChange={(e) =>
                             handleScoreChange(team.id, 'kills', parseInt(e.target.value) || 0)
                           }
-                          className="w-12 md:w-20 px-1 py-1 md:px-3 md:py-2 bg-background border-2 border-border focus:border-primary outline-none text-center text-foreground text-xs md:text-base"
+                          className="w-12 md:w-20 px-1 py-1 md:px-3 md:py-2 bg-background border-2 border-border focus:border-primary outline-none text-center text-foreground text-xs md:text-base no-spinner"
                         />
                       </td>
                       <td className="px-2 py-2 md:px-4 md:py-3 text-center font-bold text-secondary text-xs md:text-base">
@@ -390,10 +394,11 @@ const MatchScoring = () => {
                         type="number"
                         min="0"
                         value={scores[team.id]?.points || 0}
+                        onFocus={(e) => e.target.select()}
                         onChange={(e) =>
                           handleScoreChange(team.id, 'points', parseInt(e.target.value) || 0)
                         }
-                        className="w-16 md:w-20 px-2 py-2 bg-background border-2 border-border focus:border-primary outline-none text-center text-foreground text-xs md:text-base"
+                        className="w-16 md:w-20 px-2 py-2 bg-background border-2 border-border focus:border-primary outline-none text-center text-foreground text-xs md:text-base no-spinner"
                       />
                     </td>
                   )}
