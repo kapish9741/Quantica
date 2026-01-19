@@ -17,6 +17,11 @@ import Admin from "./pages/Admin";
 import PlayArena from "./pages/PlayArena";
 import GeneralPass from "./pages/GeneralPass";
 import NotFound from "./pages/NotFound";
+import CARegister from "./pages/ca/Register";
+import CALogin from "./pages/ca/Login";
+import CADashboard from "./pages/ca/Dashboard";
+import CALanding from "./pages/ca/Landing";
+import CAManagement from "./pages/admin/CAManagement";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import LoadingScreen from "./components/LoadingScreen";
@@ -37,9 +42,19 @@ const AnimatedRoutes = () => {
         <Route path="/events/:slug" element={<EventDetail />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        {/* <Route path="/result" element={<Leaderboard />} /> */}
-        {/* <Route path="/ZqS^VGh5mvZgjEI}2)Uq" element={<Admin />} /> */}
+        <Route path="/result" element={<Leaderboard />} />
+        <Route path="/admin" element={<Admin />} />
         <Route path="/play-arena" element={<PlayArena />} />
+
+        {/* CA Portal Routes */}
+        <Route path="/ca/register" element={<CARegister />} />
+        <Route path="/ca/login" element={<CALogin />} />
+        <Route path="/ca/dashboard" element={<CADashboard />} />
+        <Route path="/ca/:code" element={<CALanding />} />
+
+        {/* Admin Routes */}
+        <Route path="/admin/ca" element={<CAManagement />} />
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </AnimatePresence>

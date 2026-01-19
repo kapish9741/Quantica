@@ -42,7 +42,9 @@ const PointsSchemeEditor = () => {
   const fetchEvents = async () => {
     try {
       const { data } = await api.get<Event[]>('/events');
-      setEvents(data);
+      // Filter for only BGMI and Free Fire
+      const allowedSlugs = ['bgmi', 'freefire'];
+      setEvents(data.filter(event => allowedSlugs.includes(event.slug)));
     } catch (error) {
       console.error(error);
     }

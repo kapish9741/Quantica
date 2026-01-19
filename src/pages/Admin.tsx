@@ -7,7 +7,6 @@ import GlitchText from "../components/GlitchText";
 import AdminLogin from "../components/admin/AdminLogin";
 import TeamManagement from "../components/admin/TeamManagement";
 import MatchScoring from "../components/admin/MatchScoring";
-import PointsSchemeEditor from "../components/admin/PointsSchemeEditor";
 import BracketManagement from "../components/admin/BracketManagement";
 import LoaderLeader from "@/components/loaderleader";
 
@@ -67,12 +66,6 @@ const Admin = () => {
                 <span className="hidden md:inline">Scoring</span>
               </TabsTrigger>
               <TabsTrigger
-                value="points"
-                className="flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
-              >
-                <span className="hidden md:inline">Points Scheme</span>
-              </TabsTrigger>
-              <TabsTrigger
                 value="brackets"
                 className="flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
               >
@@ -86,10 +79,6 @@ const Admin = () => {
 
             <TabsContent value="scoring" className="bg-card border-2 border-border p-6 mt-6">
               <MatchScoring />
-            </TabsContent>
-
-            <TabsContent value="points" className="bg-card border-2 border-border p-6 mt-6">
-              <PointsSchemeEditor />
             </TabsContent>
 
             <TabsContent value="brackets" className="bg-card border-2 border-border p-6 mt-6">

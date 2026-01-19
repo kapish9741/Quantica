@@ -48,7 +48,8 @@ const MatchScoring = () => {
   const fetchEvents = async () => {
     try {
       const { data } = await api.get<Event[]>('/events');
-      setEvents(data);
+      const includedSlugs = ['bgmi', 'freefire'];
+      setEvents(data.filter(event => includedSlugs.includes(event.slug)));
     } catch (error) {
       console.error(error);
     }
