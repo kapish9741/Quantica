@@ -1,40 +1,51 @@
+
 import { useState, useEffect } from 'react';
-import { supabase } from '../lib/supabase';
+import api from '../lib/api';
 
 export function useAdminAuth() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setIsAuthenticated(!!session);
-      setIsLoading(false);
-    });
+    const checkAuth = async () => {
+      const token = localStorage.getItem('authToken');
+      if (!token) {
+        setIsAuthenticated(false);
+        setIsLoading(false);
+        return;
+      }
 
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setIsAuthenticated(!!session);
-      setIsLoading(false);
-    });
+      try {
+        await api.get('/auth/verify');
+        setIsAuthenticated(true);
+      } catch (error) {
+        // Token invalid or expired
+        localStorage.removeItem('authToken');
+        setIsAuthenticated(false);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-    return () => subscription.unsubscribe();
+    checkAuth();
   }, []);
 
   const login = async (email: string, password: string): Promise<boolean> => {
     try {
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
-      return !error;
-    } catch {
+      const response = await api.post('/auth/login', { email, password });
+      const { token } = response.data;
+      localStorage.setItem('authToken', token);
+      setIsAuthenticated(true);
+      return true;
+    } catch (error) {
+      console.error("Login failed", error);
       return false;
     }
   };
 
   const logout = async () => {
-    await supabase.auth.signOut();
+    localStorage.removeItem('authToken');
+    setIsAuthenticated(false);
   };
 
   return { isAuthenticated, isLoading, login, logout };

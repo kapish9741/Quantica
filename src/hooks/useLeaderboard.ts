@@ -1,129 +1,120 @@
+
 import { useEffect, useState } from 'react';
-import { supabase } from '../lib/supabase';
-import type { Database } from '../types/database.types';
+import api from '../lib/api';
 
-type Team = Database['public']['Tables']['teams']['Row'];
-type Match = Database['public']['Tables']['matches']['Row'];
-type MatchScore = Database['public']['Tables']['match_scores']['Row'];
-
-export interface LeaderboardTeam extends Team {
-  participants?: { name: string }[];
+// Define explicit types matching the backend response
+export interface Team {
+  id: string;
+  name: string;
+  eventId: string;
+  totalPoints: number | null;
+  totalKills: number | null;
+  wins: number | null;
+  rank: number | null;
+  participants: { name: string }[];
 }
 
-export interface LiveMatch extends Match {
-  scores?: MatchScore[];
+export interface MatchScore {
+  teamId: string;
+  placement: number;
+  kills: number;
+  points: number;
+  team?: Team;
+}
+
+export interface Match {
+  id: string;
+  matchNumber: number;
+  team1Id: string | null;
+  team2Id: string | null;
+  winnerTeamId: string | null;
+  team1Score: string | null;
+  team2Score: string | null;
+  status: 'scheduled' | 'live' | 'completed';
+  scheduledDate: string;
+  scores: MatchScore[];
+}
+
+export interface RoadmapItem {
+  id: string;
+  title: string;
+  description: string | null;
+  date: string;
+  status: 'upcoming' | 'ongoing' | 'completed';
+}
+
+export interface Event {
+  id: string;
+  name: string;
+  game: string;
+  date: string;
+  status: string;
+  slug: string;
 }
 
 export function useLeaderboard(eventSlug: string) {
-  const [teams, setTeams] = useState<LeaderboardTeam[]>([]);
+  const [teams, setTeams] = useState<Team[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [event, setEvent] = useState<Event | null>(null);
 
   useEffect(() => {
     async function fetchLeaderboard() {
       try {
         setLoading(true);
-        
-        const { data: eventData, error: eventError } = await supabase
-          .from('events')
-          .select('id')
-          .eq('slug', eventSlug)
-          .single();
+        // 1. Get Event ID from Slug
+        const eventsRes = await api.get<Event[]>('/events');
+        const foundEvent = eventsRes.data.find(e => e.slug === eventSlug);
 
-        if (eventError) throw eventError;
-        if (!eventData) {
+        if (!foundEvent) {
           setTeams([]);
+          setEvent(null);
           setLoading(false);
           return;
         }
+        setEvent(foundEvent);
 
-        const { data: teamsData, error: teamsError } = await supabase
-          .from('teams')
-          .select(`
-            *,
-            participants (name)
-          `)
-          .eq('event_id', (eventData as any).id)
-          .order('rank', { ascending: true });
-
-        if (teamsError) throw teamsError;
-
-        setTeams((teamsData as any) || []);
+        // 2. Fetch Teams for Event
+        const teamsRes = await api.get<Team[]>(`/teams?eventId=${foundEvent.id}`);
+        setTeams(teamsRes.data);
         setError(null);
-      } catch (err) {
+      } catch (err: any) {
         console.error('Error fetching leaderboard:', err);
-        setError(err instanceof Error ? err.message : 'Failed to fetch leaderboard');
+        setError(err.message || 'Failed to fetch leaderboard');
       } finally {
         setLoading(false);
       }
     }
 
-    fetchLeaderboard();
-
-    const channel = supabase
-      .channel(`leaderboard-${eventSlug}`)
-      .on(
-        'postgres_changes',
-        {
-          event: '*',
-          schema: 'public',
-          table: 'teams',
-        },
-        () => {
-          fetchLeaderboard();
-        }
-      )
-      .on(
-        'postgres_changes',
-        {
-          event: '*',
-          schema: 'public',
-          table: 'match_scores',
-        },
-        () => {
-          fetchLeaderboard();
-        }
-      )
-      .subscribe();
-
-    return () => {
-      supabase.removeChannel(channel);
-    };
+    if (eventSlug) {
+      fetchLeaderboard();
+      // Simple polling
+      const interval = setInterval(fetchLeaderboard, 30000);
+      return () => clearInterval(interval);
+    }
   }, [eventSlug]);
 
-  return { teams, loading, error };
+  return { teams, event, loading, error };
 }
 
 export function useLiveMatches(eventSlug: string) {
-  const [matches, setMatches] = useState<LiveMatch[]>([]);
+  const [matches, setMatches] = useState<Match[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchMatches() {
       try {
-        const { data: eventData } = await supabase
-          .from('events')
-          .select('id')
-          .eq('slug', eventSlug)
-          .single();
+        const eventsRes = await api.get<Event[]>('/events');
+        const event = eventsRes.data.find(e => e.slug === eventSlug);
 
-        if (!eventData) {
+        if (!event) {
           setMatches([]);
           setLoading(false);
           return;
         }
 
-        const { data: matchesData } = await supabase
-          .from('matches')
-          .select(`
-            *,
-            match_scores (*)
-          `)
-          .eq('event_id', (eventData as any).id)
-          .order('match_number', { ascending: false })
-          .limit(10);
-
-        setMatches((matchesData as any) || []);
+        const matchesRes = await api.get<Match[]>(`/matches?eventId=${event.id}`);
+        setMatches(matchesRes.data);
       } catch (err) {
         console.error('Error fetching matches:', err);
       } finally {
@@ -131,44 +122,25 @@ export function useLiveMatches(eventSlug: string) {
       }
     }
 
-    fetchMatches();
-
-    const channel = supabase
-      .channel(`matches-${eventSlug}`)
-      .on(
-        'postgres_changes',
-        {
-          event: '*',
-          schema: 'public',
-          table: 'matches',
-        },
-        () => {
-          fetchMatches();
-        }
-      )
-      .subscribe();
-
-    return () => {
-      supabase.removeChannel(channel);
-    };
+    if (eventSlug) {
+      fetchMatches();
+      const interval = setInterval(fetchMatches, 30000);
+      return () => clearInterval(interval);
+    }
   }, [eventSlug]);
 
   return { matches, loading };
 }
 
 export function useRoadmap() {
-  const [roadmapItems, setRoadmapItems] = useState<Database['public']['Tables']['roadmap_items']['Row'][]>([]);
+  const [roadmapItems, setRoadmapItems] = useState<RoadmapItem[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchRoadmap() {
       try {
-        const { data } = await supabase
-          .from('roadmap_items')
-          .select('*')
-          .order('date', { ascending: true });
-
-        setRoadmapItems(data || []);
+        const res = await api.get<RoadmapItem[]>('/roadmap');
+        setRoadmapItems(res.data);
       } catch (err) {
         console.error('Error fetching roadmap:', err);
       } finally {
@@ -177,44 +149,20 @@ export function useRoadmap() {
     }
 
     fetchRoadmap();
-
-    // Subscribe to real-time updates
-    const channel = supabase
-      .channel('roadmap-updates')
-      .on(
-        'postgres_changes',
-        {
-          event: '*',
-          schema: 'public',
-          table: 'roadmap_items',
-        },
-        () => {
-          fetchRoadmap();
-        }
-      )
-      .subscribe();
-
-    return () => {
-      supabase.removeChannel(channel);
-    };
   }, []);
 
   return { roadmapItems, loading };
 }
 
 export function useEvents() {
-  const [events, setEvents] = useState<Database['public']['Tables']['events']['Row'][]>([]);
+  const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchEvents() {
       try {
-        const { data } = await supabase
-          .from('events')
-          .select('*')
-          .order('date', { ascending: true });
-
-        setEvents(data || []);
+        const res = await api.get<Event[]>('/events');
+        setEvents(res.data);
       } catch (err) {
         console.error('Error fetching events:', err);
       } finally {

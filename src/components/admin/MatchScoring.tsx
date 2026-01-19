@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+
 import { useState, useEffect } from "react";
 import { Save, Play, CheckCircle } from "lucide-react";
 import toast from "react-hot-toast";
@@ -12,12 +12,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { supabase } from "../../lib/supabase";
-import type { Database } from "../../types/database.types";
-
-type Event = Database['public']['Tables']['events']['Row'];
-type Team = Database['public']['Tables']['teams']['Row'];
-type Match = Database['public']['Tables']['matches']['Row'];
+import api from "../../lib/api";
+import { Event, Team, Match } from "../../hooks/useLeaderboard"; // Reuse types
 
 const MatchScoring = () => {
   const [events, setEvents] = useState<Event[]>([]);
@@ -50,38 +46,45 @@ const MatchScoring = () => {
   }, [selectedEvent, editingMatch]);
 
   const fetchEvents = async () => {
-    const { data } = await supabase.from('events').select('*').order('date');
-    if (data) setEvents(data as any);
+    try {
+      const { data } = await api.get<Event[]>('/events');
+      setEvents(data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const fetchTeams = async () => {
-    const { data } = await supabase
-      .from('teams')
-      .select('*')
-      .eq('event_id', selectedEvent)
-      .order('name');
-    if (data) {
-      setTeams(data as any);
+    try {
+      const { data } = await api.get<Team[]>(`/teams?eventId=${selectedEvent}`);
+      setTeams(data);
       const initialScores: Record<string, { placement: number; kills: number; points: number }> = {};
-      data.forEach((team: any) => {
+      data.forEach((team) => {
         initialScores[team.id] = { placement: 0, kills: 0, points: 0 };
       });
       setScores(initialScores);
+    } catch (error) {
+      console.error(error);
     }
   };
 
   const fetchMatches = async () => {
-    const { data } = await supabase
-      .from('matches')
-      .select('*')
-      .eq('event_id', selectedEvent)
-      .order('match_number', { ascending: false });
+    try {
+      const { data } = await api.get<Match[]>(`/matches?eventId=${selectedEvent}`);
+      // Sort manually if backend sort isn't enough or different
+      const sorted = data.sort((a, b) => b.matchNumber - a.matchNumber);
 
-    if (data && data.length > 0) {
-      if (!editingMatch) {
-        setMatchNumber((data as any)[0].match_number + 1);
+      if (data && data.length > 0) {
+        if (!editingMatch) {
+          setMatchNumber(sorted[0].matchNumber + 1);
+        }
+        setMatches(sorted);
+      } else {
+        setMatches([]);
+        setMatchNumber(1);
       }
-      setMatches(data as any);
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -90,33 +93,28 @@ const MatchScoring = () => {
     const match = matches.find(m => m.id === matchId);
     if (!match) return;
 
-    setMatchNumber(match.match_number);
+    setMatchNumber(match.matchNumber);
 
-    // Fetch scores for this match
-    const { data: scoreData } = await supabase
-      .from('match_scores')
-      .select('*')
-      .eq('match_id', matchId);
+    // Populate scores from match.scores (included in fetching)
+    const newScores: Record<string, { placement: number; kills: number; points: number }> = {};
 
-    if (scoreData) {
-      const newScores: Record<string, { placement: number; kills: number; points: number }> = {};
+    // Initialize default
+    teams.forEach((team) => {
+      newScores[team.id] = { placement: 0, kills: 0, points: 0 };
+    });
 
-      // Initialize with default values for all teams first
-      teams.forEach((team: any) => {
-        newScores[team.id] = { placement: 0, kills: 0, points: 0 };
-      });
-
-      // Override with actual scores
-      scoreData.forEach((score: any) => {
-        newScores[score.team_id] = {
+    // Override with actual scores
+    if (match.scores) {
+      match.scores.forEach((score) => {
+        newScores[score.teamId] = {
           placement: score.placement,
           kills: score.kills || 0,
           points: score.points || 0
         };
       });
-
-      setScores(newScores);
     }
+
+    setScores(newScores);
   };
 
   const handleCancelEdit = () => {
@@ -125,7 +123,7 @@ const MatchScoring = () => {
     fetchTeams(); // Reset to default state
     // Reset match number to next available
     if (matches.length > 0) {
-      setMatchNumber((matches[0] as any).match_number + 1);
+      setMatchNumber(matches[0].matchNumber + 1);
     } else {
       setMatchNumber(1);
     }
@@ -149,57 +147,33 @@ const MatchScoring = () => {
     try {
       let matchId = editingMatch;
 
-      if (editingMatch) {
-        // Update existing match
-        const { error: matchError } = await supabase
-          .from('matches')
-          .update({
-            match_number: matchNumber,
-          })
-          .eq('id', editingMatch);
-
-        if (matchError) throw matchError;
-
-        // Delete existing scores to easier handle updates
-        const { error: deleteError } = await supabase
-          .from('match_scores')
-          .delete()
-          .eq('match_id', editingMatch);
-
-        if (deleteError) throw deleteError;
-      } else {
-        // Create new match
-        const { data: matchData, error: matchError } = await supabase
-          .from('matches')
-          .insert({
-            event_id: selectedEvent,
-            match_number: matchNumber,
-            status: 'completed',
-            scheduled_date: new Date().toISOString(),
-          } as any)
-          .select()
-          .single();
-
-        if (matchError) throw matchError;
-        if (!matchData) throw new Error('No match data returned');
-        matchId = (matchData as any).id;
-      }
-
-      const isBR = isBattleRoyale(selectedEvent);
-
-      const scoreInserts = Object.entries(scores).map(([teamId, score]) => ({
-        match_id: matchId,
-        team_id: teamId,
-        placement: score.placement || 0, // Always required
-        kills: isBR ? score.kills : null,
-        points: !isBR ? score.points : null, // Manual points for non-BR
+      // Prepare scores array for backend
+      const scoreData = Object.entries(scores).map(([teamId, score]) => ({
+        teamId: teamId,
+        placement: score.placement || 0,
+        kills: score.kills || 0,
+        points: score.points || 0, // Backend might recalc points based on scheme, but we send what we have
       }));
 
-      const { error: scoresError } = await supabase
-        .from('match_scores')
-        .insert(scoreInserts as any);
+      if (editingMatch) {
+        // Update match number (if changed) and Status
+        await api.put(`/matches/${editingMatch}`, { matchNumber });
 
-      if (scoresError) throw scoresError;
+        // Update Scores
+        await api.put(`/matches/${editingMatch}/score`, { scores: scoreData });
+      } else {
+        // Create new match
+        const { data: newMatch } = await api.post('/matches', {
+          eventId: selectedEvent,
+          matchNumber: matchNumber,
+          status: 'completed',
+          scheduledDate: new Date().toISOString(),
+        });
+        matchId = newMatch.id;
+
+        // Add scores to new match
+        await api.put(`/matches/${matchId}/score`, { scores: scoreData });
+      }
 
       toast.success(editingMatch ? 'Match updated successfully!' : 'Match scores saved successfully!');
 
@@ -211,7 +185,7 @@ const MatchScoring = () => {
 
       fetchTeams();
       fetchMatches();
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error saving match:', error);
       toast.error('Failed to save match scores');
     } finally {
@@ -220,7 +194,6 @@ const MatchScoring = () => {
   };
 
   const handleDeleteMatch = async (matchId: string) => {
-    // if (!confirm("Are you sure you want to delete this match? This action cannot be undone.")) return;
     setMatchToDelete(matchId);
   };
 
@@ -229,25 +202,9 @@ const MatchScoring = () => {
     const matchId = matchToDelete;
 
     try {
-      // 1. Delete associated scores first
-      const { error: scoresError } = await supabase
-        .from('match_scores')
-        .delete()
-        .eq('match_id', matchId);
-
-      if (scoresError) throw scoresError;
-
-      // 2. Delete the match
-      const { error: matchError } = await supabase
-        .from('matches')
-        .delete()
-        .eq('id', matchId);
-
-      if (matchError) throw matchError;
-
+      await api.delete(`/matches/${matchId}`);
       toast.success('Match deleted successfully');
 
-      // If we were editing this match, cancel edit
       if (editingMatch === matchId) {
         handleCancelEdit();
       } else {
@@ -255,7 +212,7 @@ const MatchScoring = () => {
       }
     } catch (error: any) {
       console.error('Error deleting match:', error);
-      toast.error('Failed to delete match: ' + error.message);
+      toast.error('Failed to delete match');
     } finally {
       setMatchToDelete(null);
     }
@@ -333,7 +290,7 @@ const MatchScoring = () => {
               </tr>
             </thead>
             <tbody>
-              {teams.map((team, index) => (
+              {teams.map((team) => (
                 <tr key={team.id} className="border-t border-border hover:bg-muted/50">
                   <td className="px-4 py-3 font-bold">{team.name}</td>
                   {isBattleRoyale(selectedEvent) ? (
@@ -375,7 +332,7 @@ const MatchScoring = () => {
                     </td>
                   )}
                   <td className="px-4 py-3 text-center font-bold text-secondary">
-                    {team.total_points}
+                    {team.totalPoints}
                   </td>
                 </tr>
               ))}
@@ -400,7 +357,7 @@ const MatchScoring = () => {
                 key={match.id}
                 className="flex items-center justify-between bg-card border border-border p-3"
               >
-                <span className="font-bold">Match #{match.match_number}</span>
+                <span className="font-bold">Match #{match.matchNumber}</span>
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => handleEditMatch(match.id)}

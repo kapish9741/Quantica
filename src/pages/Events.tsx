@@ -1,3 +1,4 @@
+
 import { motion, useTransform, useScroll } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Calendar, Users, Trophy, MapPin } from "lucide-react";
@@ -6,6 +7,7 @@ import EventCard from "../components/EventCard";
 import GlitchText from "@/components/GlitchText";
 import { events as allEvents } from "@/data/events";
 import { useRef, useState, useLayoutEffect, useEffect } from "react";
+import GeneralPassSection from "@/components/GeneralPassSection";
 
 type MiniGameLite = {
   title: string;
@@ -20,11 +22,11 @@ const miniGames: MiniGameLite[] = [
     image: "/mario-8bit.png",
     slug: "mario-bros",
   },
-  {
-    title: "Contra",
-    image: "/contra-8bit.png",
-    slug: "contra",
-  },
+  // {
+  //   title: "Contra",
+  //   image: "/contra-8bit.png",
+  //   slug: "contra",
+  // },
   {
     title: "Pac-Man",
     image: "/pacman-8bit.png",
@@ -179,7 +181,7 @@ const Events = () => {
   return (
     <PageTransition>
 
-      { }
+      {/* Hero Section */}
       <section className="pt-32 pb-16 relative">
         <div className="absolute inset-0 grid-bg opacity-10" />
         <div className="container mx-auto px-4 relative z-10">
@@ -197,16 +199,12 @@ const Events = () => {
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto pb-8">
               Choose your game. Register your team. Compete for glory.
             </p>
-            {/* <Link
-              to="/general-pass"
-              className="cyber-btn inline-block"
-            >
-              Buy General Pass
-            </Link> */}
           </motion.div>
         </div>
       </section>
-      { }
+
+      {/* <GeneralPassSection />
+
       <section className="py-12 bg-card border-y border-border">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
@@ -232,8 +230,9 @@ const Events = () => {
             </div>
           </div>
         </div>
-      </section>
-      { }
+      </section> */}
+
+      {/* Game Mode Selection */}
       <section className="pt-24 relative">
         <div className="container mx-auto px-4">
           <h2 className="text-center text-4xl md:text-5xl font-bold text-foreground leading-tight mb-4">
@@ -267,7 +266,8 @@ const Events = () => {
           </div>
         </div>
       </section>
-      { }
+
+      {/* Mini Games */}
       <section>
         <div className="container mx-auto px-4">
           <h3 className="text-center text-3xl md:text-6xl font-semibold text-foreground leading-tight mt-12 md:mt-24 mb-2">
@@ -276,7 +276,8 @@ const Events = () => {
         </div>
         <HorizontalMiniGamesCarousel items={miniGames} />
       </section>
-      { }
+
+      {/* Registration Steps */}
       <section className="py-24 bg-card relative">
         <div className="container mx-auto px-4">
           <motion.div

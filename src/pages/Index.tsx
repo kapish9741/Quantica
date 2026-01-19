@@ -56,6 +56,12 @@ const Index = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
+            <div className="mb-4">
+              <GlitchText
+                text="7 - 8 FEB"
+                className="text-white text-3xl md:text-5xl font-bold font-mono tracking-widest"
+              />
+            </div>
             <p className="text-primary uppercase tracking-[0.3em] text-sm mb-6">
               Delhi NCR's Biggest Esports Fest
             </p>
@@ -85,7 +91,7 @@ const Index = () => {
             <p className="text-sm text-muted-foreground uppercase tracking-wider mb-4">
               Next Event Starts In
             </p>
-            <CountdownTimer targetDate="2026-02-07T10:00:00" color="cyan" />
+            <CountdownTimer targetDate="2026-02-07T00:00:00" color="cyan" />
           </motion.div>
           <motion.div
             className="flex flex-col sm:flex-row gap-4 justify-center"

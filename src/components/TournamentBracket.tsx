@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import { Trophy, Clock, Video } from "lucide-react";
+
+import { Trophy, Clock } from "lucide-react";
 import { useLeaderboard, useLiveMatches } from "../hooks/useLeaderboard"; // reusing hooks for team data
 import LoaderLeader from "./loaderleader";
 
@@ -29,31 +29,18 @@ const TournamentBracket = ({ eventSlug, isEditable = false, onMatchUpdate }: Tou
         );
     }
 
-    // Group matches by round
-    // This requires the `matches` data to have `match_number` populated correctly.
-    // If no match data exists, we show placeholders or seeded teams.
-
-    // Placeholder structure if no matches exist in DB yet
     const getMatchData = (matchNum: number) => {
-        return matches.find(m => m.match_number === matchNum);
+        return matches.find(m => m.matchNumber === matchNum);
     };
 
-    const MatchNode = ({ matchNum, nextMatchNum }: { matchNum: number, nextMatchNum?: number }) => {
+    const MatchNode = ({ matchNum }: { matchNum: number, nextMatchNum?: number }) => {
         const match = getMatchData(matchNum);
-
-        // Find teams for this match if it's round 1, or winners from previous rounds
-        // This logic can get complex without a dedicated "Bracket" table. 
-        // For simplicity in this implementation, we will display what's in the matches table,
-        // and if empty, show TBD. 
-        // Ideally, we'd need a way to link "Winner of Match 1" to "Match 5 Team 1".
-
-        // Simplified display for MVP: Just render the match card.
 
         return (
             <div className={`relative flex flex-col items-center gap-2 w-64 md:w-72 shrink-0 group ${match?.status === 'live' ? 'z-10' : ''}`}>
                 <div className={`w-full bg-card border rounded-lg overflow-hidden shadow-lg transition-all duration-300 ${match?.status === 'live'
-                        ? 'border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.4)] scale-105'
-                        : 'border-border/50 hover:border-primary/50'
+                    ? 'border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.4)] scale-105'
+                    : 'border-border/50 hover:border-primary/50'
                     }`}>
                     <div className="p-2 border-b border-border/50 flex justify-between items-center bg-black/40">
                         <span className="text-xs text-muted-foreground">Match {matchNum}</span>
@@ -77,31 +64,31 @@ const TournamentBracket = ({ eventSlug, isEditable = false, onMatchUpdate }: Tou
                     </div>
 
                     {/* Team 1 */}
-                    <div className={`p-3 flex justify-between items-center ${match?.winner_team_id && match.team1_id === match.winner_team_id ? 'bg-primary/10' : ''}`}>
+                    <div className={`p-3 flex justify-between items-center ${match?.winnerTeamId && match.team1Id === match.winnerTeamId ? 'bg-primary/10' : ''}`}>
                         <div className="flex items-center gap-3">
                             <div className="w-8 h-8 bg-muted rounded-full flex items-center justify-center overflow-hidden border border-border">
-                                {teams.find(t => t.id === match?.team1_id)?.name.charAt(0) || '?'}
+                                {teams.find(t => t.id === match?.team1Id)?.name.charAt(0) || '?'}
                             </div>
-                            <span className={`text-sm font-bold ${match?.winner_team_id && match.team1_id === match.winner_team_id ? 'text-primary' : 'text-foreground'}`}>
-                                {teams.find(t => t.id === match?.team1_id)?.name || 'TBD'}
+                            <span className={`text-sm font-bold ${match?.winnerTeamId && match.team1Id === match.winnerTeamId ? 'text-primary' : 'text-foreground'}`}>
+                                {teams.find(t => t.id === match?.team1Id)?.name || 'TBD'}
                             </span>
                         </div>
                         {isEditable ? (
                             <input
                                 type="text"
                                 className="w-10 bg-background border border-border rounded text-center text-sm p-1"
-                                defaultValue={match?.team1_score || ''}
-                                onBlur={(e) => match && onMatchUpdate?.(match.id, { team1_score: e.target.value })}
+                                defaultValue={match?.team1Score || ''}
+                                onBlur={(e) => match && onMatchUpdate?.(match.id, { team1Score: e.target.value })}
                             />
                         ) : (
                             <span className="text-lg font-mono">
-                                {match?.team1_score || '-'}
+                                {match?.team1Score || '-'}
                             </span>
                         )}
-                        {isEditable && match?.team1_id && (
+                        {isEditable && match?.team1Id && (
                             <button
-                                onClick={() => match && onMatchUpdate?.(match.id, { winner_team_id: match.team1_id })}
-                                className={`ml-2 p-1 rounded hover:bg-muted ${match?.winner_team_id === match?.team1_id ? 'text-yellow-500' : 'text-muted-foreground'}`}
+                                onClick={() => match && onMatchUpdate?.(match.id, { winnerTeamId: match.team1Id })}
+                                className={`ml-2 p-1 rounded hover:bg-muted ${match?.winnerTeamId === match?.team1Id ? 'text-yellow-500' : 'text-muted-foreground'}`}
                                 title="Set Winner"
                             >
                                 <Trophy size={14} />
@@ -112,31 +99,31 @@ const TournamentBracket = ({ eventSlug, isEditable = false, onMatchUpdate }: Tou
                     <div className="h-[1px] bg-border/50 w-full" />
 
                     {/* Team 2 */}
-                    <div className={`p-3 flex justify-between items-center ${match?.winner_team_id && match.team2_id === match.winner_team_id ? 'bg-primary/10' : ''}`}>
+                    <div className={`p-3 flex justify-between items-center ${match?.winnerTeamId && match.team2Id === match.winnerTeamId ? 'bg-primary/10' : ''}`}>
                         <div className="flex items-center gap-3">
                             <div className="w-8 h-8 bg-muted rounded-full flex items-center justify-center overflow-hidden border border-border">
-                                {teams.find(t => t.id === match?.team2_id)?.name.charAt(0) || '?'}
+                                {teams.find(t => t.id === match?.team2Id)?.name.charAt(0) || '?'}
                             </div>
-                            <span className={`text-sm font-bold ${match?.winner_team_id && match.team2_id === match.winner_team_id ? 'text-primary' : 'text-foreground'}`}>
-                                {teams.find(t => t.id === match?.team2_id)?.name || 'TBD'}
+                            <span className={`text-sm font-bold ${match?.winnerTeamId && match.team2Id === match.winnerTeamId ? 'text-primary' : 'text-foreground'}`}>
+                                {teams.find(t => t.id === match?.team2Id)?.name || 'TBD'}
                             </span>
                         </div>
                         {isEditable ? (
                             <input
                                 type="text"
                                 className="w-10 bg-background border border-border rounded text-center text-sm p-1"
-                                defaultValue={match?.team2_score || ''}
-                                onBlur={(e) => match && onMatchUpdate?.(match.id, { team2_score: e.target.value })}
+                                defaultValue={match?.team2Score || ''}
+                                onBlur={(e) => match && onMatchUpdate?.(match.id, { team2Score: e.target.value })}
                             />
                         ) : (
                             <span className="text-lg font-mono">
-                                {match?.team2_score || '-'}
+                                {match?.team2Score || '-'}
                             </span>
                         )}
-                        {isEditable && match?.team2_id && (
+                        {isEditable && match?.team2Id && (
                             <button
-                                onClick={() => match && onMatchUpdate?.(match.id, { winner_team_id: match.team2_id })}
-                                className={`ml-2 p-1 rounded hover:bg-muted ${match?.winner_team_id === match?.team2_id ? 'text-yellow-500' : 'text-muted-foreground'}`}
+                                onClick={() => match && onMatchUpdate?.(match.id, { winnerTeamId: match.team2Id })}
+                                className={`ml-2 p-1 rounded hover:bg-muted ${match?.winnerTeamId === match?.team2Id ? 'text-yellow-500' : 'text-muted-foreground'}`}
                                 title="Set Winner"
                             >
                                 <Trophy size={14} />
@@ -145,7 +132,6 @@ const TournamentBracket = ({ eventSlug, isEditable = false, onMatchUpdate }: Tou
                     </div>
 
                     {/* Date/Time footer */}
-                    {/* Date/Time footer */}
                     <div className={`px-3 py-2 bg-black/20 flex items-center justify-between gap-2 text-[10px] text-muted-foreground border-t border-border/50 ${match?.status === 'live' ? 'bg-red-500/5' : ''}`}>
                         <div className="flex items-center gap-2">
                             <Clock className={`w-3 h-3 ${match?.status === 'live' ? 'text-red-400' : ''}`} />
@@ -153,13 +139,13 @@ const TournamentBracket = ({ eventSlug, isEditable = false, onMatchUpdate }: Tou
                                 <input
                                     type="datetime-local"
                                     className="bg-background border border-border rounded px-1 text-[10px] w-32"
-                                    value={match?.scheduled_date ? new Date(match.scheduled_date).toISOString().slice(0, 16) : ''}
-                                    onChange={(e) => match && onMatchUpdate?.(match.id, { scheduled_date: e.target.value })}
+                                    value={match?.scheduledDate ? new Date(match.scheduledDate).toISOString().slice(0, 16) : ''}
+                                    onChange={(e) => match && onMatchUpdate?.(match.id, { scheduledDate: e.target.value })}
                                 />
                             ) : (
                                 <span className={match?.status === 'live' ? 'text-red-400 font-bold' : ''}>
-                                    {match?.scheduled_date
-                                        ? new Date(match.scheduled_date).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })
+                                    {match?.scheduledDate
+                                        ? new Date(match.scheduledDate).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })
                                         : 'Date TBD'
                                     }
                                 </span>

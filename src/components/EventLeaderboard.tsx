@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Trophy, Medal, Award, Users } from "lucide-react";
 import { useLeaderboard } from "../hooks/useLeaderboard";
-import type { LeaderboardTeam } from "../hooks/useLeaderboard";
+import type { Team } from "../hooks/useLeaderboard";
 import LoaderLeader from "./loaderleader";
 
 interface EventLeaderboardProps {
@@ -91,9 +91,8 @@ const EventLeaderboard = ({ eventSlug, eventName }: EventLeaderboardProps) => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.05 }}
-                className={`border-b border-border/50 hover:bg-card/50 transition-colors ${
-                  currentRank <= 3 ? "bg-card/30" : ""
-                }`}
+                className={`border-b border-border/50 hover:bg-card/50 transition-colors ${currentRank <= 3 ? "bg-card/30" : ""
+                  }`}
               >
                 <td className="py-4 px-4">
                   <div className="flex items-center gap-2">
@@ -113,13 +112,13 @@ const EventLeaderboard = ({ eventSlug, eventName }: EventLeaderboardProps) => {
                   </div>
                 </td>
                 <td className="py-4 px-4 text-center font-bold text-secondary text-lg">
-                  {team.total_points}
+                  {team.totalPoints}
                 </td>
                 <td className="py-4 px-4 text-center text-muted-foreground">
                   {team.wins}
                 </td>
                 <td className="py-4 px-4 text-center text-muted-foreground">
-                  {team.total_kills}
+                  {team.totalKills}
                 </td>
               </motion.tr>
             );

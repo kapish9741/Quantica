@@ -1,11 +1,17 @@
+
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Save } from "lucide-react";
-import { supabase } from "../../lib/supabase";
-import type { Database } from "../../types/database.types";
+import api from "../../lib/api";
+import { Event } from "../../hooks/useLeaderboard"; // Reuse types
 
-type Event = Database['public']['Tables']['events']['Row'];
-type PointsScheme = Database['public']['Tables']['points_schemes']['Row'];
+// Interface for PointsScheme
+interface PointsScheme {
+  id: string;
+  eventId: string;
+  killPoints: number;
+  placementPoints: Record<string, number>;
+}
 
 const PointsSchemeEditor = () => {
   const [events, setEvents] = useState<Event[]>([]);
@@ -34,20 +40,23 @@ const PointsSchemeEditor = () => {
   }, [selectedEvent]);
 
   const fetchEvents = async () => {
-    const { data } = await supabase.from('events').select('*').order('date');
-    if (data) setEvents(data as any);
+    try {
+      const { data } = await api.get<Event[]>('/events');
+      setEvents(data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const fetchPointsScheme = async () => {
-    const { data } = await supabase
-      .from('points_schemes')
-      .select('*')
-      .eq('event_id', selectedEvent)
-      .single();
-
-    if (data) {
-      setKillPoints((data as any).kill_points);
-      setPlacementPoints((data as any).placement_points as Record<string, number>);
+    try {
+      const { data } = await api.get<PointsScheme | null>(`/points-schemes?eventId=${selectedEvent}`);
+      if (data) {
+        setKillPoints(data.killPoints);
+        setPlacementPoints(data.placementPoints);
+      }
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -64,16 +73,12 @@ const PointsSchemeEditor = () => {
     setSaving(true);
 
     try {
-      const { error } = await supabase
-        .from('points_schemes')
-        .upsert({
-          event_id: selectedEvent,
-          kill_points: killPoints,
-          placement_points: placementPoints,
-        } as any);
+      await api.post('/points-schemes', {
+        eventId: selectedEvent,
+        killPoints,
+        placementPoints,
+      });
 
-      if (error) throw error;
-      
       alert('Points scheme saved successfully!');
     } catch (error) {
       console.error('Error saving points scheme:', error);

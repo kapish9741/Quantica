@@ -1,12 +1,9 @@
+
 import { useState, useEffect } from "react";
 import { Save, Trophy } from "lucide-react";
-import { supabase } from "../../lib/supabase";
-import type { Database } from "../../types/database.types";
+import api from "../../lib/api";
 import TournamentBracket from "../TournamentBracket";
-
-type Event = Database['public']['Tables']['events']['Row'];
-type Team = Database['public']['Tables']['teams']['Row'];
-type Match = Database['public']['Tables']['matches']['Row'];
+import { Event, Team, Match } from "../../hooks/useLeaderboard"; // Reuse types
 
 interface BracketManagementProps {
     preSelectedEventId?: string;
@@ -37,151 +34,48 @@ const BracketManagement = ({ preSelectedEventId }: BracketManagementProps = {}) 
     }, [selectedEvent]);
 
     const fetchEvents = async () => {
-        const { data } = await supabase.from('events').select('*').order('date');
-        // Filter for knockout events if possible, or just show all
-        if (data) setEvents(data);
+        try {
+            const { data } = await api.get<Event[]>('/events');
+            setEvents(data);
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     const fetchTeams = async () => {
-        const { data } = await supabase.from('teams').select('*').eq('event_id', selectedEvent).order('name');
-        if (data) setTeams(data);
+        try {
+            const { data } = await api.get<Team[]>(`/teams?eventId=${selectedEvent}`);
+            setTeams(data);
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     const fetchMatches = async () => {
-        const { data } = await supabase.from('matches').select('*').eq('event_id', selectedEvent).order('match_number');
-        if (data) setMatches(data);
+        try {
+            const { data } = await api.get<Match[]>(`/matches?eventId=${selectedEvent}`);
+            setMatches(data);
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     const handleUpdateMatch = async (matchId: string, updates: Partial<Match>) => {
         setLoading(true);
-        const { error } = await supabase
-            .from('matches')
-            // @ts-ignore
-            // @ts-ignore
-            .update(updates)
-            .eq('id', matchId);
-
-        if (!error) {
+        try {
+            await api.put(`/matches/${matchId}`, updates);
             fetchMatches();
-        } else {
+        } catch (error) {
             console.error(error);
             alert("Failed to update match");
+        } finally {
+            setLoading(false);
         }
-        setLoading(false);
     };
 
-    const getMatch = (matchNum: number) => matches.find(m => m.match_number === matchNum);
-
-    const CreateMatchCard = ({ matchNum, title }: { matchNum: number, title: string }) => {
-        const match = getMatch(matchNum);
-
-        // Local state for score inputs not needed if we just prompt or use simple inputs 
-        // that update on blur/enter. For simplicity, let's use prompt or direct values.
-
-        // If match doesn't exist, we need to create it first? 
-        // Or assume pre-seeded matches. For this admin panel, let's assume we are UPDATING existing matches
-        // or inserting on first edit if missing.
-
-        // Helper to find team name
-        const getTeamName = (id: string | null) => teams.find(t => t.id === id)?.name || "TBD";
-
-        const assignTeam = async (slot: 'team1_id' | 'team2_id', teamId: string) => {
-            if (!match) {
-                // @ts-ignore
-                await supabase.from('matches').insert({
-                    event_id: selectedEvent,
-                    match_number: matchNum,
-                    status: 'scheduled',
-                    [slot]: teamId
-                });
-                fetchMatches();
-            } else {
-                handleUpdateMatch(match.id, { [slot]: teamId });
-            }
-        };
-
-
-        return (
-            <div className="bg-card border border-border p-4 rounded-lg w-full max-w-sm mb-4">
-                <div className="flex justify-between items-center mb-2">
-                    <span className="font-bold text-muted-foreground text-xs uppercase">{title} (Match {matchNum})</span>
-                    <select
-                        className="bg-background border border-border text-xs p-1 rounded"
-                        value={match?.status || 'scheduled'}
-                        onChange={(e) => match && handleUpdateMatch(match.id, { status: e.target.value as any })}
-                    >
-                        <option value="scheduled">Scheduled</option>
-                        <option value="live">Live</option>
-                        <option value="completed">Completed</option>
-                    </select>
-                </div>
-
-                {/* Team 1 */}
-                <div className="flex items-center justify-between gap-2 mb-2">
-                    <select
-                        className="bg-background border border-border text-sm p-2 rounded flex-1 w-full max-w-[140px]"
-                        value={match?.team1_id || ""}
-                        onChange={(e) => assignTeam('team1_id', e.target.value)}
-                    >
-                        <option value="">Select Team 1</option>
-                        {teams.map(t => <option key={t.id} value={t.id}>{t.name}</option>)}
-                    </select>
-                    <input
-                        type="text"
-                        placeholder="Score"
-                        className="w-12 bg-background border border-border p-2 rounded text-center"
-                        defaultValue={match?.team1_score || ""}
-                        onBlur={(e) => match && handleUpdateMatch(match.id, { team1_score: e.target.value })}
-                    />
-                    <button
-                        onClick={() => match && match.team1_id && handleUpdateMatch(match.id, { winner_team_id: match.team1_id })}
-                        className={`p-1 rounded ${match?.winner_team_id === match?.team1_id ? 'bg-primary text-black' : 'bg-muted text-muted-foreground'}`}
-                    >
-                        <Trophy size={14} />
-                    </button>
-                </div>
-
-                {/* Team 2 */}
-                <div className="flex items-center justify-between gap-2">
-                    <select
-                        className="bg-background border border-border text-sm p-2 rounded flex-1 w-full max-w-[140px]"
-                        value={match?.team2_id || ""}
-                        onChange={(e) => assignTeam('team2_id', e.target.value)}
-                    >
-                        <option value="">Select Team 2</option>
-                        {teams.map(t => <option key={t.id} value={t.id}>{t.name}</option>)}
-                    </select>
-                    <input
-                        type="text"
-                        placeholder="Score"
-                        className="w-12 bg-background border border-border p-2 rounded text-center"
-                        defaultValue={match?.team2_score || ""}
-                        onBlur={(e) => match && handleUpdateMatch(match.id, { team2_score: e.target.value })}
-                    />
-                    <button
-                        onClick={() => match && match.team2_id && handleUpdateMatch(match.id, { winner_team_id: match.team2_id })}
-                        className={`p-1 rounded ${match?.winner_team_id === match?.team2_id ? 'bg-primary text-black' : 'bg-muted text-muted-foreground'}`}
-                    >
-                        <Trophy size={14} />
-                    </button>
-                </div>
-            </div>
-        );
-    };
-
+    // Callback used by TournamentBracket visual editor
     const handleBracektUpdate = async (matchId: string, updates: any) => {
-        setLoading(true);
-        const { error } = await supabase
-            .from('matches')
-            // @ts-ignore
-            .update(updates)
-            .eq('id', matchId);
-
-        if (error) {
-            console.error(error);
-            alert("Failed to update match");
-        }
-        setLoading(false);
+        await handleUpdateMatch(matchId, updates);
     };
 
     const selectedEventSlug = events.find(e => e.id === selectedEvent)?.slug;
@@ -218,11 +112,13 @@ const BracketManagement = ({ preSelectedEventId }: BracketManagementProps = {}) 
                         value={events.find(e => e.id === selectedEvent)?.status || 'upcoming'}
                         onChange={async (e) => {
                             const newStatus = e.target.value;
-                            // Optimistic update local state (optional, or just wait for re-fetch)
-                            // For now just Trigger DB update
-                            // @ts-ignore
-                            await supabase.from('events').update({ status: newStatus as any }).eq('id', selectedEvent);
-                            fetchEvents(); // Refresh list to update UI
+                            try {
+                                await api.put(`/events/${selectedEvent}`, { status: newStatus });
+                                fetchEvents();
+                            } catch (error) {
+                                console.error(error);
+                                alert("Failed to update event status");
+                            }
                         }}
                         className="bg-background border border-border px-3 py-2 rounded"
                     >

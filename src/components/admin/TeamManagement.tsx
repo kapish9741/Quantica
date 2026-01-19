@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Plus, Trash2, Edit2, Save, X, Users } from "lucide-react";
@@ -12,20 +13,15 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { supabase } from "../../lib/supabase";
-import type { Database } from "../../types/database.types";
+import api from "../../lib/api";
 import LoaderLeader from "../loaderleader";
-
-type Team = Database['public']['Tables']['teams']['Row'];
-type TeamUpdate = Database['public']['Tables']['teams']['Update'];
-type Participant = Database['public']['Tables']['participants']['Row'];
-type Event = Database['public']['Tables']['events']['Row'];
+import { Event, Team } from "../../hooks/useLeaderboard"; // Reuse types
 
 const TeamManagement = () => {
   const [events, setEvents] = useState<Event[]>([]);
   const [selectedEvent, setSelectedEvent] = useState<string>("");
   const [teams, setTeams] = useState<Team[]>([]);
-  const [participants, setParticipants] = useState<Record<string, Participant[]>>({});
+  // Participants are now included in Team object
   const [loading, setLoading] = useState(true);
   const [editingTeam, setEditingTeam] = useState<string | null>(null);
   const [newTeamName, setNewTeamName] = useState("");
@@ -43,47 +39,43 @@ const TeamManagement = () => {
   }, [selectedEvent]);
 
   const fetchEvents = async () => {
-    const { data } = await supabase.from('events').select('*').order('date');
-    if (data) setEvents(data);
+    try {
+      const { data } = await api.get<Event[]>('/events');
+      setEvents(data);
+    } catch (error) {
+      console.error("Error fetching events", error);
+      toast.error("Failed to fetch events");
+    }
   };
 
   const fetchTeams = async () => {
     setLoading(true);
-    const { data: teamsData } = await supabase
-      .from('teams')
-      .select('*')
-      .eq('event_id', selectedEvent)
-      .order('rank');
-
-    if (teamsData) {
-      setTeams(teamsData as any);
-
-      const participantsMap: Record<string, Participant[]> = {};
-      for (const team of teamsData) {
-        const { data: partData } = await supabase
-          .from('participants')
-          .select('*')
-          .eq('team_id', (team as any).id);
-        if (partData) participantsMap[(team as any).id] = partData as any;
-      }
-      setParticipants(participantsMap);
+    try {
+      const { data } = await api.get<Team[]>(`/teams?eventId=${selectedEvent}`);
+      setTeams(data);
+    } catch (error) {
+      console.error("Error fetching teams", error);
+      toast.error("Failed to fetch teams");
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   const handleAddTeam = async () => {
     if (!newTeamName || !selectedEvent) return;
 
-    // @ts-ignore - Supabase type inference issue with insert
-    const { error } = await supabase.from('teams').insert({
-      name: newTeamName,
-      event_id: selectedEvent,
-    });
-
-    if (!error) {
+    try {
+      await api.post('/teams', {
+        name: newTeamName,
+        eventId: selectedEvent
+      });
       setNewTeamName("");
       setShowAddTeam(false);
       fetchTeams();
+      toast.success("Team added successfully");
+    } catch (error) {
+      console.error("Error adding team", error);
+      toast.error("Failed to add team");
     }
   };
 
@@ -93,97 +85,31 @@ const TeamManagement = () => {
 
   const confirmDeleteTeam = async () => {
     if (!teamToDelete) return;
-    const teamId = teamToDelete;
 
     try {
-      // 1. Delete match scores
-      const { error: matchScoresError } = await supabase
-        .from('match_scores')
-        .delete()
-        .eq('team_id', teamId);
-
-      if (matchScoresError) {
-        console.error('Error deleting match scores:', matchScoresError);
-        toast.error(`Failed to delete associated match scores: ${matchScoresError.message}`);
-        throw new Error(`Failed to delete associated match scores: ${matchScoresError.message}`);
-      }
-
-      // 2. Clear references in matches (team1_id, team2_id, winner_team_id)
-      const { error: matchRefError1 } = await supabase
-        .from('matches')
-        .update({ team1_id: null } as any)
-        .eq('team1_id', teamId);
-
-      if (matchRefError1) console.warn("Failed to clear team1 refs", matchRefError1);
-
-      const { error: matchRefError2 } = await supabase
-        .from('matches')
-        .update({ team2_id: null } as any)
-        .eq('team2_id', teamId);
-
-      if (matchRefError2) console.warn("Failed to clear team2 refs", matchRefError2);
-
-      const { error: matchRefError3 } = await supabase
-        .from('matches')
-        .update({ winner_team_id: null } as any)
-        .eq('winner_team_id', teamId);
-
-      if (matchRefError3) console.warn("Failed to clear winner refs", matchRefError3);
-
-      // 3. Delete participants
-      const { error: participantsError } = await supabase
-        .from('participants')
-        .delete()
-        .eq('team_id', teamId);
-
-      if (participantsError) {
-        console.error('Error deleting participants:', participantsError);
-        toast.error(`Failed to delete associated participants: ${participantsError.message}`);
-        throw new Error(`Failed to delete associated participants: ${participantsError.message}`);
-      }
-
-      // 4. Finally delete the team
-      const { data, error: teamError } = await supabase
-        .from('teams')
-        .delete()
-        .eq('id', teamId)
-        .select();
-
-      if (teamError) throw teamError;
-
-      if (!data || data.length === 0) {
-        // Fallback check
-        const { data: check } = await supabase.from('teams').select('id').eq('id', teamId);
-        if (check && check.length > 0) {
-          const msg = "Team exists but could not be deleted. This usually means a permission issue.";
-          toast.error(msg);
-          throw new Error(msg);
-        }
-      }
-
-      console.log("Team deleted successfully");
+      await api.delete(`/teams/${teamToDelete}`);
       toast.success("Team deleted successfully");
       fetchTeams();
     } catch (error: any) {
       console.error('Error deleting team:', error);
-      toast.error(error.message || 'An error occurred while deleting the team');
+      toast.error(error.response?.data?.message || 'Failed to delete team');
     } finally {
       setTeamToDelete(null);
     }
   };
 
   const handleUpdateTeam = async (teamId: string, newName: string) => {
-    const { error } = await supabase
-      .from('teams')
-      // @ts-ignore - Supabase type inference issue with Update types
-      .update({ name: newName })
-      .eq('id', teamId);
-
-    if (!error) {
+    try {
+      await api.put(`/teams/${teamId}`, { name: newName });
       setEditingTeam(null);
       fetchTeams();
+      toast.success("Team updated");
+    } catch (error) {
+      console.error("Error updating team", error);
+      toast.error("Failed to update team");
     }
   };
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -301,7 +227,7 @@ const TeamManagement = () => {
 
               <div className="grid grid-cols-3 gap-4 text-center mb-3">
                 <div>
-                  <div className="text-2xl font-bold text-secondary">{team.total_points}</div>
+                  <div className="text-2xl font-bold text-secondary">{team.totalPoints}</div>
                   <div className="text-xs text-muted-foreground">Points</div>
                 </div>
                 <div>
@@ -309,14 +235,14 @@ const TeamManagement = () => {
                   <div className="text-xs text-muted-foreground">Wins</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-foreground">{team.total_kills}</div>
+                  <div className="text-2xl font-bold text-foreground">{team.totalKills}</div>
                   <div className="text-xs text-muted-foreground">Kills</div>
                 </div>
               </div>
 
-              {participants[team.id] && participants[team.id].length > 0 && (
+              {team.participants && team.participants.length > 0 && (
                 <div className="text-xs text-muted-foreground">
-                  <strong>Players:</strong> {participants[team.id].map(p => p.name).join(", ")}
+                  <strong>Players:</strong> {team.participants.map(p => p.name).join(", ")}
                 </div>
               )}
             </motion.div>

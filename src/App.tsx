@@ -37,8 +37,8 @@ const AnimatedRoutes = () => {
         <Route path="/events/:slug" element={<EventDetail />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/OiCrHf24ULCB3xasxA9P" element={<Leaderboard />} />
-        <Route path="/ZqS^VGh5mvZgjEI}2)Uq" element={<Admin />} />
+        {/* <Route path="/result" element={<Leaderboard />} /> */}
+        {/* <Route path="/ZqS^VGh5mvZgjEI}2)Uq" element={<Admin />} /> */}
         <Route path="/play-arena" element={<PlayArena />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

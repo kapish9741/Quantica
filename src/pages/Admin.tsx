@@ -8,6 +8,7 @@ import AdminLogin from "../components/admin/AdminLogin";
 import TeamManagement from "../components/admin/TeamManagement";
 import MatchScoring from "../components/admin/MatchScoring";
 import PointsSchemeEditor from "../components/admin/PointsSchemeEditor";
+import BracketManagement from "../components/admin/BracketManagement";
 import LoaderLeader from "@/components/loaderleader";
 
 const Admin = () => {
@@ -71,6 +72,12 @@ const Admin = () => {
               >
                 <span className="hidden md:inline">Points Scheme</span>
               </TabsTrigger>
+              <TabsTrigger
+                value="brackets"
+                className="flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+              >
+                <span className="hidden md:inline">Brackets</span>
+              </TabsTrigger>
             </TabsList>
 
             <TabsContent value="teams" className="bg-card border-2 border-border p-6 mt-6">
@@ -83,6 +90,10 @@ const Admin = () => {
 
             <TabsContent value="points" className="bg-card border-2 border-border p-6 mt-6">
               <PointsSchemeEditor />
+            </TabsContent>
+
+            <TabsContent value="brackets" className="bg-card border-2 border-border p-6 mt-6">
+              <BracketManagement />
             </TabsContent>
           </Tabs>
         </div>
