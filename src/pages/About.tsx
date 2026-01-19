@@ -628,6 +628,7 @@ const About = () => {
               </motion.div>
             </div>
           </div>
+        </div>
       </section>
     </PageTransition>
   );
