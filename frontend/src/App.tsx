@@ -47,10 +47,10 @@ const AnimatedRoutes = () => {
         <Route path="/play-arena" element={<PlayArena />} />
 
         {/* CA Portal Routes */}
-        <Route path="/ca/register" element={<CARegister />} />
+        {/* <Route path="/ca/register" element={<CARegister />} />
         <Route path="/ca/login" element={<CALogin />} />
         <Route path="/ca/dashboard" element={<CADashboard />} />
-        <Route path="/ca/:code" element={<CALanding />} />
+        <Route path="/ca/:code" element={<CALanding />} /> */}
 
         {/* Admin Routes */}
         <Route path="/admin/ca" element={<CAManagement />} />

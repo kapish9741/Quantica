@@ -413,7 +413,7 @@ const BracketManagement = ({ preSelectedEventId }: BracketManagementProps = {}) 
                                     toast.error("Failed to update status.");
                                 }
                             }}
-                            className="bg-background border border-border px-3 py-2 rounded"
+                            className="bg-background border border-border px-3 py-2 rounded text-[10px]"
                         >
                             <option value="upcoming">Upcoming</option>
                             <option value="ongoing">Ongoing (Live)</option>
@@ -428,7 +428,7 @@ const BracketManagement = ({ preSelectedEventId }: BracketManagementProps = {}) 
                                     disabled={loading}
                                     className="bg-primary hover:bg-primary/80 text-primary-foreground px-4 py-2 rounded font-bold text-sm disabled:opacity-50"
                                 >
-                                    {loading ? 'Generating...' : '⚡ Generate Bracket'}
+                                    {loading ? 'Generating...' : 'Generate Bracket'}
                                 </button>
                             </AlertDialogTrigger>
                             <AlertDialogContent className="bg-card border-border">
@@ -454,8 +454,8 @@ const BracketManagement = ({ preSelectedEventId }: BracketManagementProps = {}) 
             {selectedEvent && selectedEventSlug && (
                 <div className="border border-border rounded-lg p-4 bg-black/20 overflow-hidden">
                     <div className="flex justify-between items-center mb-4">
-                        <p className="text-sm text-muted-foreground">
-                            💡 Click names to edit. Click trophy to set winner. Byes are auto-handled.
+                        <p className="text-xs md:text-sm text-muted-foreground">
+                            Click names to edit. Click trophy to set winner. Byes are auto-handled.
                         </p>
                         <span className="text-xs font-mono bg-muted px-2 py-1 rounded">
                             {teams.length} Teams • {matches.length} Matches

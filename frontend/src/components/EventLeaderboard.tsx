@@ -65,19 +65,19 @@ const EventLeaderboard = ({ eventSlug, eventName }: EventLeaderboardProps) => {
       <table className="w-full">
         <thead>
           <tr className="border-b border-border">
-            <th className="py-4 px-4 text-left text-primary uppercase tracking-wider text-sm">
-              Rank
+            <th className="py-2 px-2 md:py-4 md:px-4 text-left text-primary uppercase tracking-wider text-xs md:text-sm w-12 md:w-auto">
+              #
             </th>
-            <th className="py-4 px-4 text-left text-primary uppercase tracking-wider text-sm">
+            <th className="py-2 px-2 md:py-4 md:px-4 text-left text-primary uppercase tracking-wider text-xs md:text-sm">
               Team
             </th>
-            <th className="py-4 px-4 text-center text-primary uppercase tracking-wider text-sm">
-              Points
+            <th className="py-2 px-2 md:py-4 md:px-4 text-center text-primary uppercase tracking-wider text-xs md:text-sm">
+              Pts
             </th>
-            <th className="py-4 px-4 text-center text-primary uppercase tracking-wider text-sm">
+            <th className="py-2 px-2 md:py-4 md:px-4 text-center text-primary uppercase tracking-wider text-xs md:text-sm hidden sm:table-cell">
               Wins
             </th>
-            <th className="py-4 px-4 text-center text-primary uppercase tracking-wider text-sm">
+            <th className="py-2 px-2 md:py-4 md:px-4 text-center text-primary uppercase tracking-wider text-xs md:text-sm hidden sm:table-cell">
               Kills
             </th>
           </tr>
@@ -94,30 +94,30 @@ const EventLeaderboard = ({ eventSlug, eventName }: EventLeaderboardProps) => {
                 className={`border-b border-border/50 hover:bg-card/50 transition-colors ${currentRank <= 3 ? "bg-card/30" : ""
                   }`}
               >
-                <td className="py-4 px-4">
+                <td className="py-2 px-2 md:py-4 md:px-4">
                   <div className="flex items-center gap-2">
                     {getRankIcon(currentRank)}
                   </div>
                 </td>
-                <td className="py-4 px-4">
+                <td className="py-2 px-2 md:py-4 md:px-4">
                   <div className="flex flex-col gap-1">
-                    <span className={`font-bold ${getRankColor(currentRank)}`}>
+                    <span className={`font-bold text-sm md:text-base ${getRankColor(currentRank)}`}>
                       {team.name}
                     </span>
                     {team.participants && team.participants.length > 0 && (
-                      <span className="text-xs text-muted-foreground">
+                      <span className="text-[10px] md:text-xs text-muted-foreground truncate max-w-[120px] md:max-w-none block">
                         {team.participants.map((p) => p.name).join(", ")}
                       </span>
                     )}
                   </div>
                 </td>
-                <td className="py-4 px-4 text-center font-bold text-secondary text-lg">
+                <td className="py-2 px-2 md:py-4 md:px-4 text-center font-bold text-secondary text-base md:text-lg">
                   {team.totalPoints}
                 </td>
-                <td className="py-4 px-4 text-center text-muted-foreground">
+                <td className="py-2 px-2 md:py-4 md:px-4 text-center text-muted-foreground hidden sm:table-cell text-sm md:text-base">
                   {team.wins}
                 </td>
-                <td className="py-4 px-4 text-center text-muted-foreground">
+                <td className="py-2 px-2 md:py-4 md:px-4 text-center text-muted-foreground hidden sm:table-cell text-sm md:text-base">
                   {team.totalKills}
                 </td>
               </motion.tr>

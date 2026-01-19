@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAdminAuth } from "../hooks/useAdminAuth";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
-import { LogOut } from "lucide-react";
+import { LogOut, Users, Target, Trophy } from "lucide-react";
 import PageTransition from "../components/PageTransition";
 import GlitchText from "../components/GlitchText";
 import AdminLogin from "../components/admin/AdminLogin";
@@ -47,28 +47,31 @@ const Admin = () => {
               className="glitch-btn bg-red-500 text-white px-4 py-2 flex items-center gap-2 hover:bg-red-600"
             >
               <LogOut className="w-5 h-5" />
-              Logout
+              <div className="hidden md:block">Logout</div>
             </button>
           </div>
 
           <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-8">
-            <TabsList className="bg-card border-2 border-border p-1 grid grid-cols-3 gap-2">
+            <TabsList className="bg-card border-2 border-border grid grid-cols-3 gap-2">
               <TabsTrigger
                 value="teams"
-                className="flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+                className="flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-3"
               >
+                <Users className="w-5 h-5" />
                 <span className="hidden md:inline">Teams</span>
               </TabsTrigger>
               <TabsTrigger
                 value="scoring"
-                className="flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+                className="flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-3"
               >
+                <Target className="w-5 h-5" />
                 <span className="hidden md:inline">Scoring</span>
               </TabsTrigger>
               <TabsTrigger
                 value="brackets"
-                className="flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+                className="flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-3"
               >
+                <Trophy className="w-5 h-5" />
                 <span className="hidden md:inline">Brackets</span>
               </TabsTrigger>
             </TabsList>

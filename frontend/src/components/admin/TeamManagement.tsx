@@ -119,7 +119,7 @@ const TeamManagement = () => {
           className="glitch-btn bg-primary text-primary-foreground px-4 py-2 flex items-center gap-2"
         >
           <Plus className="w-5 h-5" />
-          Add Team
+          <div className="hidden md:block">Add Team</div>
         </button>
       </div>
 

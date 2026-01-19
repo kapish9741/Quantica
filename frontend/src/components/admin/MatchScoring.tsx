@@ -14,6 +14,8 @@ import {
 } from "@/components/ui/alert-dialog";
 import api from "../../lib/api";
 import { Event, Team, Match } from "../../hooks/useLeaderboard"; // Reuse types
+import { identifyGameType, calculatePoints, GameType } from "../../lib/scoringSchemes";
+import { GiTireIronCross } from "react-icons/gi";
 
 const MatchScoring = () => {
   const [events, setEvents] = useState<Event[]>([]);
@@ -25,6 +27,8 @@ const MatchScoring = () => {
   const [saving, setSaving] = useState(false);
   const [editingMatch, setEditingMatch] = useState<string | null>(null);
   const [matchToDelete, setMatchToDelete] = useState<string | null>(null);
+  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
+  const [pendingEventChange, setPendingEventChange] = useState<string | null>(null);
 
   // Helper to check if event is BGMI or Free Fire
   const isBattleRoyale = (eventId: string) => {
@@ -32,6 +36,13 @@ const MatchScoring = () => {
     if (!event) return false;
     const game = event.game?.toLowerCase() || '';
     return game.includes('bgmi') || game.includes('free fire') || game.includes('pubg');
+  };
+
+  // Get game type for scoring calculations
+  const getGameType = (eventId: string): GameType => {
+    const event = events.find(e => e.id === eventId);
+    if (!event) return 'OTHER';
+    return identifyGameType(event.game || '');
   };
 
   useEffect(() => {
@@ -121,6 +132,7 @@ const MatchScoring = () => {
   const handleCancelEdit = () => {
     setEditingMatch(null);
     setScores({});
+    setHasUnsavedChanges(false);
     fetchTeams(); // Reset to default state
     // Reset match number to next available
     if (matches.length > 0) {
@@ -131,13 +143,29 @@ const MatchScoring = () => {
   };
 
   const handleScoreChange = (teamId: string, field: 'placement' | 'kills' | 'points', value: number) => {
-    setScores(prev => ({
-      ...prev,
-      [teamId]: {
-        ...prev[teamId],
+    setHasUnsavedChanges(true);
+    setScores(prev => {
+      const currentScore = prev[teamId] || { placement: 0, kills: 0, points: 0 };
+      const updatedScore = {
+        ...currentScore,
         [field]: value
+      };
+
+      // Auto-calculate points for battle royale games
+      if (isBattleRoyale(selectedEvent) && (field === 'placement' || field === 'kills')) {
+        const gameType = getGameType(selectedEvent);
+        updatedScore.points = calculatePoints(
+          gameType,
+          field === 'placement' ? value : currentScore.placement,
+          field === 'kills' ? value : currentScore.kills
+        );
       }
-    }));
+
+      return {
+        ...prev,
+        [teamId]: updatedScore
+      };
+    });
   };
 
   const handleSaveMatch = async () => {
@@ -184,6 +212,7 @@ const MatchScoring = () => {
         setMatchNumber(matchNumber + 1);
       }
 
+      setHasUnsavedChanges(false);
       fetchTeams();
       fetchMatches();
     } catch (error: any) {
@@ -219,26 +248,59 @@ const MatchScoring = () => {
     }
   };
 
+  // Handle event selection change with validation
+  const handleEventChange = (newEventId: string) => {
+    // Check if user is currently editing
+    if (editingMatch) {
+      toast.error('Please save or cancel your current edit before switching events');
+      return;
+    }
+
+    // Check if there are unsaved changes
+    if (hasUnsavedChanges) {
+      toast.error('Please save or cancel your current changes before switching events');
+      return;
+    }
+
+    // If switching from an existing event, show confirmation
+    if (selectedEvent && selectedEvent !== newEventId) {
+      setPendingEventChange(newEventId);
+    } else {
+      setSelectedEvent(newEventId);
+    }
+  };
+
+  // Confirm event change
+  const confirmEventChange = () => {
+    if (pendingEventChange) {
+      setSelectedEvent(pendingEventChange);
+      setPendingEventChange(null);
+      setScores({});
+      setHasUnsavedChanges(false);
+    }
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-foreground">Match Scoring</h2>
+        <h2 className="text-lg md:text-2xl font-bold text-foreground">Match Scoring</h2>
         <div className="flex items-center gap-3">
-          <span className="text-sm text-muted-foreground">
+          <span className="text-xs md:text-sm text-muted-foreground">
             {editingMatch ? `Editing Match #${matchNumber}` : `Match #${matchNumber}`}
           </span>
           {editingMatch && (
             <button
               onClick={handleCancelEdit}
-              className="px-4 py-2 bg-card border-2 border-border hover:border-red-500 text-foreground text-sm"
+              className="px-2 py-1 md:px-4 md:py-2 bg-card border-2 border-border hover:border-red-500 text-foreground text-xs md:text-sm"
             >
-              Cancel
+              <GiTireIronCross />
+              <div className="hidden md:block">Cancel</div>
             </button>
           )}
           <button
             onClick={handleSaveMatch}
             disabled={saving || !selectedEvent}
-            className="glitch-btn bg-primary text-primary-foreground px-4 py-2 flex items-center gap-2 disabled:opacity-50"
+            className="glitch-btn bg-primary text-primary-foreground px-3 py-2 md:px-4 md:py-2 flex items-center gap-2 disabled:opacity-50 text-xs md:text-sm"
           >
             {saving ? (
               <>
@@ -248,7 +310,7 @@ const MatchScoring = () => {
             ) : (
               <>
                 <Save className="w-5 h-5" />
-                Save Match
+                <div className="hidden md:block">Save Match</div>
               </>
             )}
           </button>
@@ -261,7 +323,7 @@ const MatchScoring = () => {
         </label>
         <select
           value={selectedEvent}
-          onChange={(e) => setSelectedEvent(e.target.value)}
+          onChange={(e) => handleEventChange(e.target.value)}
           className="w-full px-4 py-3 bg-background border-2 border-border focus:border-primary outline-none text-foreground"
         >
           <option value="">Choose an event...</option>
@@ -278,25 +340,25 @@ const MatchScoring = () => {
           <table className="w-full">
             <thead className="bg-muted">
               <tr>
-                <th className="px-4 py-3 text-left text-primary uppercase tracking-wider text-sm">Team</th>
+                <th className="px-2 py-2 md:px-4 md:py-3 text-left text-primary uppercase tracking-wider text-xs md:text-sm">Team</th>
                 {isBattleRoyale(selectedEvent) ? (
                   <>
-                    <th className="px-4 py-3 text-center text-primary uppercase tracking-wider text-sm">Position</th>
-                    <th className="px-4 py-3 text-center text-primary uppercase tracking-wider text-sm">Kills</th>
+                    <th className="px-2 py-2 md:px-4 md:py-3 text-center text-primary uppercase tracking-wider text-xs md:text-sm">Pos</th>
+                    <th className="px-2 py-2 md:px-4 md:py-3 text-center text-primary uppercase tracking-wider text-xs md:text-sm">Kills</th>
+                    <th className="px-2 py-2 md:px-4 md:py-3 text-center text-primary uppercase tracking-wider text-xs md:text-sm">Pts</th>
                   </>
                 ) : (
-                  <th className="px-4 py-3 text-center text-primary uppercase tracking-wider text-sm">Points</th>
+                  <th className="px-2 py-2 md:px-4 md:py-3 text-center text-primary uppercase tracking-wider text-xs md:text-sm">Points</th>
                 )}
-                <th className="px-4 py-3 text-center text-primary uppercase tracking-wider text-sm">Total Points</th>
               </tr>
             </thead>
             <tbody>
               {teams.map((team) => (
                 <tr key={team.id} className="border-t border-border hover:bg-muted/50">
-                  <td className="px-4 py-3 font-bold">{team.name}</td>
+                  <td className="px-2 py-2 md:px-4 md:py-3 font-bold text-xs md:text-base">{team.name}</td>
                   {isBattleRoyale(selectedEvent) ? (
                     <>
-                      <td className="px-4 py-3">
+                      <td className="px-2 py-2 md:px-4 md:py-3 text-center">
                         <input
                           type="number"
                           min="0"
@@ -304,10 +366,10 @@ const MatchScoring = () => {
                           onChange={(e) =>
                             handleScoreChange(team.id, 'placement', parseInt(e.target.value) || 0)
                           }
-                          className="w-20 px-3 py-2 bg-background border-2 border-border focus:border-primary outline-none text-center text-foreground"
+                          className="w-12 md:w-20 px-1 py-1 md:px-3 md:py-2 bg-background border-2 border-border focus:border-primary outline-none text-center text-foreground text-xs md:text-base"
                         />
                       </td>
-                      <td className="px-4 py-3">
+                      <td className="px-2 py-2 md:px-4 md:py-3 text-center">
                         <input
                           type="number"
                           min="0"
@@ -315,12 +377,15 @@ const MatchScoring = () => {
                           onChange={(e) =>
                             handleScoreChange(team.id, 'kills', parseInt(e.target.value) || 0)
                           }
-                          className="w-20 px-3 py-2 bg-background border-2 border-border focus:border-primary outline-none text-center text-foreground"
+                          className="w-12 md:w-20 px-1 py-1 md:px-3 md:py-2 bg-background border-2 border-border focus:border-primary outline-none text-center text-foreground text-xs md:text-base"
                         />
+                      </td>
+                      <td className="px-2 py-2 md:px-4 md:py-3 text-center font-bold text-secondary text-xs md:text-base">
+                        {scores[team.id]?.points || 0}
                       </td>
                     </>
                   ) : (
-                    <td className="px-4 py-3 text-center">
+                    <td className="px-2 py-2 md:px-4 md:py-3 text-center">
                       <input
                         type="number"
                         min="0"
@@ -328,13 +393,10 @@ const MatchScoring = () => {
                         onChange={(e) =>
                           handleScoreChange(team.id, 'points', parseInt(e.target.value) || 0)
                         }
-                        className="w-20 px-3 py-2 bg-background border-2 border-border focus:border-primary outline-none text-center text-foreground"
+                        className="w-16 md:w-20 px-2 py-2 bg-background border-2 border-border focus:border-primary outline-none text-center text-foreground text-xs md:text-base"
                       />
                     </td>
                   )}
-                  <td className="px-4 py-3 text-center font-bold text-secondary">
-                    {team.totalPoints}
-                  </td>
                 </tr>
               ))}
             </tbody>
@@ -373,7 +435,7 @@ const MatchScoring = () => {
                     Delete
                   </button>
                   <CheckCircle className="w-4 h-4 text-green-500" />
-                  <span className="text-sm text-muted-foreground">{match.status}</span>
+                  <span className="text-sm text-muted-foreground hidden md:block">{match.status}</span>
                 </div>
               </div>
             ))}
@@ -394,6 +456,23 @@ const MatchScoring = () => {
             <AlertDialogCancel>Cancel</AlertDialogCancel>
             <AlertDialogAction onClick={confirmDeleteMatch} className="bg-red-600 hover:bg-red-700">
               Delete Match
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      <AlertDialog open={!!pendingEventChange} onOpenChange={(open) => !open && setPendingEventChange(null)}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Switch Event?</AlertDialogTitle>
+            <AlertDialogDescription>
+              Are you sure you want to switch to a different event? This will clear the current form.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={confirmEventChange} className="bg-primary hover:bg-primary/90">
+              Switch Event
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
