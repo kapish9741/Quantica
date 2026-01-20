@@ -15,38 +15,63 @@ const AudioController = () => {
   const [currentTrack, setCurrentTrack] = useState(0);
   const [volume, setVolume] = useState(0.3);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const audioContextRef = useRef<AudioContext | null>(null);
   const hoverAudioRef = useRef<HTMLAudioElement | null>(null);
   const clickAudioRef = useRef<HTMLAudioElement | null>(null);
+
   useEffect(() => {
     audioRef.current = new Audio(AMBIENT_TRACKS[currentTrack]);
     audioRef.current.loop = true;
     audioRef.current.volume = volume;
     hoverAudioRef.current = new Audio();
     clickAudioRef.current = new Audio();
+
+    // Initialize AudioContext
+    const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+    audioContextRef.current = new AudioContextClass();
+
+    const handleUserInteraction = () => {
+      if (audioContextRef.current && audioContextRef.current.state === "suspended") {
+        audioContextRef.current.resume();
+      }
+    };
+
+    document.addEventListener("click", handleUserInteraction);
+    document.addEventListener("keydown", handleUserInteraction);
+
     return () => {
       if (audioRef.current) {
         audioRef.current.pause();
         audioRef.current = null;
       }
+      document.removeEventListener("click", handleUserInteraction);
+      document.removeEventListener("keydown", handleUserInteraction);
+      if (audioContextRef.current) {
+        audioContextRef.current.close();
+      }
     };
   }, []);
+
   useEffect(() => {
     if (audioRef.current) {
       const wasPlaying = !audioRef.current.paused;
       audioRef.current.src = AMBIENT_TRACKS[currentTrack];
       audioRef.current.volume = volume;
       if (wasPlaying || isMusicOn) {
-        audioRef.current.play().catch(() => {});
+        audioRef.current.play().catch(() => { });
       }
     }
   }, [currentTrack]);
+
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.volume = volume;
     }
   }, [volume]);
+
   const toggleMusic = () => {
     if (!audioRef.current) return;
+
     if (isMusicOn) {
       audioRef.current.pause();
     } else {
@@ -57,46 +82,71 @@ const AudioController = () => {
     setIsMusicOn(!isMusicOn);
     playClickSound();
   };
+
   const playGlitchSound = () => {
-    if (!isSfxOn) return;
+    if (!isSfxOn || !audioContextRef.current) return;
+
+    // Only play if context is running (avoids warnings before user interaction)
+    if (audioContextRef.current.state !== "running") return;
+
     try {
-      const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+      const audioContext = audioContextRef.current;
       const oscillator = audioContext.createOscillator();
       const gainNode = audioContext.createGain();
+
       oscillator.connect(gainNode);
       gainNode.connect(audioContext.destination);
+
       oscillator.frequency.setValueAtTime(800 + Math.random() * 400, audioContext.currentTime);
       oscillator.type = "square";
+
       gainNode.gain.setValueAtTime(0.05, audioContext.currentTime);
       gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.05);
+
       oscillator.start(audioContext.currentTime);
       oscillator.stop(audioContext.currentTime + 0.05);
     } catch (e) {
+      // Ignore errors
     }
   };
+
   const playClickSound = () => {
-    if (!isSfxOn) return;
+    if (!isSfxOn || !audioContextRef.current) return;
+
+    // Try to resume if suspended (e.g. this is a click handler)
+    if (audioContextRef.current.state === "suspended") {
+      audioContextRef.current.resume().catch(() => { });
+    }
+
     try {
-      const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+      const audioContext = audioContextRef.current;
       const oscillator = audioContext.createOscillator();
       const gainNode = audioContext.createGain();
+
       oscillator.connect(gainNode);
       gainNode.connect(audioContext.destination);
+
       oscillator.frequency.setValueAtTime(200, audioContext.currentTime);
       oscillator.frequency.exponentialRampToValueAtTime(50, audioContext.currentTime + 0.1);
       oscillator.type = "sawtooth";
+
       gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
       gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.1);
+
       oscillator.start(audioContext.currentTime);
       oscillator.stop(audioContext.currentTime + 0.1);
     } catch (e) {
+      // Ignore errors
     }
   };
+
   useEffect(() => {
     if (!isSfxOn) return;
+
     const handleMouseEnter = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       if (!target || !target.classList) return;
+
       if (
         target.tagName === "BUTTON" ||
         target.tagName === "A" ||
@@ -107,9 +157,11 @@ const AudioController = () => {
         playGlitchSound();
       }
     };
+
     const handleClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       if (!target || !target.classList) return;
+
       if (
         target.tagName === "BUTTON" ||
         target.tagName === "A" ||
@@ -120,8 +172,10 @@ const AudioController = () => {
         playClickSound();
       }
     };
+
     document.addEventListener("mouseenter", handleMouseEnter, true);
     document.addEventListener("click", handleClick, true);
+
     return () => {
       document.removeEventListener("mouseenter", handleMouseEnter, true);
       document.removeEventListener("click", handleClick, true);
@@ -154,9 +208,8 @@ const AudioController = () => {
                 </div>
                 <button
                   onClick={toggleMusic}
-                  className={`w-12 h-6 rounded-none relative transition-colors ${
-                    isMusicOn ? "bg-primary" : "bg-muted"
-                  }`}
+                  className={`w-12 h-6 rounded-none relative transition-colors ${isMusicOn ? "bg-primary" : "bg-muted"
+                    }`}
                 >
                   <motion.div
                     className="absolute top-1 w-4 h-4 bg-foreground"
@@ -200,9 +253,8 @@ const AudioController = () => {
                     setIsSfxOn(!isSfxOn);
                     playClickSound();
                   }}
-                  className={`w-12 h-6 rounded-none relative transition-colors ${
-                    isSfxOn ? "bg-secondary" : "bg-muted"
-                  }`}
+                  className={`w-12 h-6 rounded-none relative transition-colors ${isSfxOn ? "bg-secondary" : "bg-muted"
+                    }`}
                 >
                   <motion.div
                     className="absolute top-1 w-4 h-4 bg-foreground"
@@ -227,11 +279,10 @@ const AudioController = () => {
           setIsExpanded(!isExpanded);
           playClickSound();
         }}
-        className={`w-14 h-14 flex items-center justify-center clip-corner transition-all ${
-          isMusicOn || isSfxOn
-            ? "bg-primary text-primary-foreground"
-            : "bg-card border border-border text-muted-foreground"
-        }`}
+        className={`w-14 h-14 flex items-center justify-center clip-corner transition-all ${isMusicOn || isSfxOn
+          ? "bg-primary text-primary-foreground"
+          : "bg-card border border-border text-muted-foreground"
+          }`}
       >
         {isMusicOn || isSfxOn ? (
           <Volume2 className="w-6 h-6" />
