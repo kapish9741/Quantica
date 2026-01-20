@@ -585,48 +585,45 @@ const About = () => {
       { }
       <section className="py-24 relative">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-              >
-                <p className="text-3xl md:text-6xl font-bold text-primary mb-2">
-                  10+
-                  10+
-                </p>
-                <p className="text-muted-foreground uppercase tracking-wider text-sm">
-                  Events Hosted
-                </p>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-              >
-                <p className="text-3xl md:text-6xl font-bold text-secondary mb-2">
-                  2K+
-                </p>
-                <p className="text-muted-foreground uppercase tracking-wider text-sm">
-                  Players
-                </p>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-              >
-                <p className="text-3xl md:text-6xl font-bold text-primary mb-2">
-                  ₹4L+
-                </p>
-                <p className="text-muted-foreground uppercase tracking-wider text-sm">
-                  Prize Distributed
-                </p>
-              </motion.div>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+            >
+              <p className="text-4xl md:text-6xl font-bold text-primary mb-2">
+                10+
+              </p>
+              <p className="text-muted-foreground uppercase tracking-wider text-sm">
+                Events Hosted
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+            >
+              <p className="text-4xl md:text-6xl font-bold text-secondary mb-2">
+                2K+
+              </p>
+              <p className="text-muted-foreground uppercase tracking-wider text-sm">
+                Players
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              <p className="text-4xl md:text-6xl font-bold text-primary mb-2">
+                ₹4L+
+              </p>
+              <p className="text-muted-foreground uppercase tracking-wider text-sm">
+                Prize Distributed
+              </p>
+            </motion.div>
           </div>
         </div>
       </section>
