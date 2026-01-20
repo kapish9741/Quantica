@@ -83,6 +83,18 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
     createSpinTimeline();
 
     const tickerFn = () => {
+      // If we have an active target, update positions constantly
+      if (activeTarget) {
+        const rect = activeTarget.getBoundingClientRect();
+        const { borderWidth, cornerSize } = constants;
+        targetCornerPositionsRef.current = [
+          { x: rect.left - borderWidth, y: rect.top - borderWidth },
+          { x: rect.right + borderWidth - cornerSize, y: rect.top - borderWidth },
+          { x: rect.right + borderWidth - cornerSize, y: rect.bottom + borderWidth - cornerSize },
+          { x: rect.left - borderWidth, y: rect.bottom + borderWidth - cornerSize }
+        ];
+      }
+
       if (!targetCornerPositionsRef.current || !cursorRef.current || !cornersRef.current) {
         return;
       }
@@ -215,7 +227,7 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
           ];
           const tl = gsap.timeline();
           corners.forEach((corner, index) => {
-            tl.to(corner, { x: positions[index].x, y: positions[index].y, duration: 0.3, ease: 'power3.out' }, 0);
+            tl.to(corner, { x: positions[index].x, y: positions[index].y, duration: 0, ease: 'none' }, 0);
           });
         }
         resumeTimeout = setTimeout(() => {
@@ -236,7 +248,7 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
             });
           }
           resumeTimeout = null;
-        }, 50);
+        }, 10);
         cleanupTarget(target);
       };
       currentLeaveHandler = leaveHandler;
