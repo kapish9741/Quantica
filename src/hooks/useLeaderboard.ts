@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from 'react';
-import api from '../lib/api';
+import axios from 'axios';
+// import api from '../lib/api'; // Commented out to use explicit axios
 
 // Define explicit types matching the backend response
 export interface Team {
@@ -52,6 +53,8 @@ export interface Event {
   slug: string;
 }
 
+const API_BASE_URL = 'https://quantica-1hkt.onrender.com/api';
+
 export function useLeaderboard(eventSlug: string) {
   const [teams, setTeams] = useState<Team[]>([]);
   const [loading, setLoading] = useState(true);
@@ -63,7 +66,7 @@ export function useLeaderboard(eventSlug: string) {
       try {
         setLoading(true);
         // 1. Get Event ID from Slug
-        const eventsRes = await api.get<Event[]>('/events');
+        const eventsRes = await axios.get<Event[]>(`${API_BASE_URL}/events`);
         const foundEvent = eventsRes.data.find(e => e.slug === eventSlug);
 
         if (!foundEvent) {
@@ -75,7 +78,7 @@ export function useLeaderboard(eventSlug: string) {
         setEvent(foundEvent);
 
         // 2. Fetch Teams for Event
-        const teamsRes = await api.get<Team[]>(`/teams?eventId=${foundEvent.id}`);
+        const teamsRes = await axios.get<Team[]>(`${API_BASE_URL}/teams?eventId=${foundEvent.id}`);
         setTeams(teamsRes.data);
         setError(null);
       } catch (err: any) {
@@ -104,7 +107,7 @@ export function useLiveMatches(eventSlug: string) {
   useEffect(() => {
     async function fetchMatches() {
       try {
-        const eventsRes = await api.get<Event[]>('/events');
+        const eventsRes = await axios.get<Event[]>(`${API_BASE_URL}/events`);
         const event = eventsRes.data.find(e => e.slug === eventSlug);
 
         if (!event) {
@@ -113,7 +116,7 @@ export function useLiveMatches(eventSlug: string) {
           return;
         }
 
-        const matchesRes = await api.get<Match[]>(`/matches?eventId=${event.id}`);
+        const matchesRes = await axios.get<Match[]>(`${API_BASE_URL}/matches?eventId=${event.id}`);
         setMatches(matchesRes.data);
       } catch (err) {
         console.error('Error fetching matches:', err);
@@ -137,18 +140,75 @@ export function useRoadmap() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchRoadmap() {
-      try {
-        const res = await api.get<RoadmapItem[]>('/roadmap');
-        setRoadmapItems(res.data);
-      } catch (err) {
-        console.error('Error fetching roadmap:', err);
-      } finally {
-        setLoading(false);
-      }
-    }
+    // Mock data for schedule
+    const mockSchedule: RoadmapItem[] = [
+      {
+        id: '1',
+        title: 'Registration Opens',
+        description: 'Team registrations go live for all events.',
+        date: '2026-01-25T10:00:00',
+        status: 'completed',
+      },
+      {
+        id: '2',
+        title: 'Krunker.io Qualifiers',
+        description: 'Online qualifiers - Top 32 teams advance.',
+        date: '2026-02-01T14:00:00',
+        status: 'ongoing',
+      },
+      {
+        id: '3',
+        title: 'Opening Ceremony',
+        description: 'Live stream kickoff with guest speakers and bracket reveal.',
+        date: '2026-02-07T09:00:00',
+        status: 'upcoming',
+      },
+      {
+        id: '4',
+        title: 'Valorant Quarter Finals',
+        description: 'Best of 3 matches. Main stage.',
+        date: '2026-02-07T11:30:00',
+        status: 'upcoming',
+      },
+      {
+        id: '5',
+        title: 'Lunch Break & Mini-Games',
+        description: 'Crowd interactions and giveaways.',
+        date: '2026-02-07T13:00:00',
+        status: 'upcoming',
+      },
+       {
+        id: '6',
+        title: 'BGMI Squad Battle',
+        description: 'Erangel & Miramar maps back-to-back.',
+        date: '2026-02-07T15:00:00',
+        status: 'upcoming',
+      },
+      {
+        id: '7',
+        title: 'Hackathon Keynote',
+        description: 'Theme announcement for 24h coding sprint.',
+        date: '2026-02-07T18:00:00',
+        status: 'upcoming',
+      },
+      {
+        id: '8',
+        title: 'Grand Finals - Valorant',
+        description: 'The ultimate showdown. Best of 5.',
+        date: '2026-02-08T16:00:00',
+        status: 'upcoming',
+      },
+       {
+        id: '9',
+        title: 'Prize Distribution',
+        description: 'Awards ceremony and closing remarks.',
+        date: '2026-02-08T20:00:00',
+        status: 'upcoming',
+      },
+    ];
 
-    fetchRoadmap();
+    setRoadmapItems(mockSchedule);
+    setLoading(false);
   }, []);
 
   return { roadmapItems, loading };
@@ -161,7 +221,7 @@ export function useEvents() {
   useEffect(() => {
     async function fetchEvents() {
       try {
-        const res = await api.get<Event[]>('/events');
+        const res = await axios.get<Event[]>(`${API_BASE_URL}/events`);
         setEvents(res.data);
       } catch (err) {
         console.error('Error fetching events:', err);

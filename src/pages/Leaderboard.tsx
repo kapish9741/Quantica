@@ -5,13 +5,11 @@ import PageTransition from "../components/PageTransition";
 import GlitchText from "../components/GlitchText";
 import EventLeaderboard from "../components/EventLeaderboard";
 import TournamentBracket from "../components/TournamentBracket";
-import RoadmapTimeline from "../components/RoadmapTimeline";
 import { events } from "../data/events";
 
 
 const Leaderboard = () => {
   const [activeEvent, setActiveEvent] = useState<string>(events[0]?.slug || "");
-  const [showRoadmap, setShowRoadmap] = useState(false);
 
   // Helper to check if event is BGMI or Free Fire
   const isBattleRoyale = (eventSlug: string) => {
@@ -42,57 +40,6 @@ const Leaderboard = () => {
         </div>
       </section>
 
-      <section className="pb-32">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex justify-center mb-8"
-          >
-            <button
-              onClick={() => setShowRoadmap(!showRoadmap)}
-              className="glitch-btn bg-primary text-primary-foreground px-6 py-4 font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 flex items-center gap-3 text-base md:text-sm group"
-            >
-              {showRoadmap ? (
-                <>
-                  <X className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" />
-                  <span>Close Roadmap</span>
-                </>
-              ) : (
-                <>
-                  <span>See the Road to Victory</span>
-                </>
-              )}
-            </button>
-          </motion.div>
-
-          <AnimatePresence>
-            {showRoadmap && (
-              <motion.div
-                initial={{ opacity: 0, height: 0, y: -20 }}
-                animate={{ opacity: 1, height: "auto", y: 0 }}
-                exit={{ opacity: 0, height: 0, y: -20 }}
-                transition={{
-                  duration: 0.5,
-                  ease: [0.4, 0, 0.2, 1],
-                }}
-                className="overflow-hidden"
-              >
-                <motion.div
-                  initial={{ scale: 0.95 }}
-                  animate={{ scale: 1 }}
-                  exit={{ scale: 0.95 }}
-                  transition={{ duration: 0.3 }}
-                  className="bg-background/50 backdrop-blur-sm border-2 border-primary/30 rounded-lg p-4 md:p-8 clip-corner"
-                >
-                  <RoadmapTimeline onClose={() => setShowRoadmap(false)} />
-                </motion.div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      </section>
-
       <section className="pb-24">
         <div className="container mx-auto px-4">
           <motion.div
@@ -100,9 +47,6 @@ const Leaderboard = () => {
             animate={{ opacity: 1, y: 0 }}
             className="mb-12"
           >
-            <h2 className="text-2xl md:text-5xl font-bold text-center mb-8">
-              <GlitchText text="EVENT LEADERBOARDS" className="text-foreground" />
-            </h2>
 
             <div className="flex flex-wrap justify-center gap-3 mb-8">
               {events.map((event) => (

@@ -1,4 +1,5 @@
 import { useParams, Link } from "react-router-dom";
+import React from "react";
 import { motion } from "framer-motion";
 import {
   Calendar,
@@ -46,7 +47,76 @@ const eventData = {
     ],
     registerLink: "#register",
     rulebook: "/rulebook/bgmi-rules.pdf",
-    rulebookText: `🥇 BGMI – 1st Prize: More Than a Win
+    rulebookText: `QUANTICA FEST Common Rules & Regulations: 
+    1. Identity Verification All players must carry a valid Aadhaar Card and School/College ID for verification. Failure to produce these documents when asked may result in disqualification. 
+    2. Damage to Property Any damage caused to equipment, venue assets, or college property by an individual or team will be the full responsibility of the respective team, and necessary compensation must be provided. 
+    3. Misconduct & Physical Altercations Any involvement in physical fights, aggressive behavior, or serious misconduct will result in strict action, including disqualification or further penalties, as decided by the Organising Team. 
+    4. Team Name Guidelines Team names must be appropriate and respectful. Names that are abusive, offensive, or hurt religious sentiments, individuals, or communities are strictly prohibited and may lead to disqualification. 
+    5. Authority of the Organising Team The Organising Team reserves the right to modify, amend, or introduce new rules at any time if required. All decisions made by the Organising Team will be final and binding in any matter. 
+    6. Prohibited Substances The consumption or possession of intoxicating substances, including alcohol, is strictly prohibited within the campus premises. Violation will result in immediate disciplinary action. 
+    
+    1. General Rules 
+      ● Eligibility: all players under the age of 28. 
+      ● Code of Conduct: 
+        ○ Sportsmanship: All players are expected to show good sportsmanship. Be respectful to fellow competitors and tournament organizers. Toxicity, harassment, or hate speech will not be tolerated and will result in immediate disqualification. 
+        ○ Competitive Integrity: Play to the best of your ability in every match. Intentionally losing, splitting prize money with other teams (collusion), or any form of match-fixing is strictly forbidden. 
+      ● Organizer's Authority: All decisions regarding rule interpretation, player eligibility, and penalties are at the sole discretion of the tournament organizers. All decisions are final. 
+    2. Team & Player Rules 
+      ● Roster Requirements: 
+        ○ Each team must consist of 4 starting players. 
+        ○ Teams can optionally register up to 1 substitute players. 
+        ○ The roster submitted at the time of registration is final. No changes will be allowed once the tournament begins, except in emergency situations approved by the organizers. 
+      ● Player Names (In-Game Name/IGN): 
+        ○ Your in-game name should be appropriate and non-offensive. 
+        ○ It is recommended to use the format: TeamTagPlayerName (e.g., SAGEJohn). 
+      ● Team Names: 
+        ○ Team names must be unique and appropriate. Offensive names will be rejected. 
+        ○ Team names cannot impersonate professional organizations without permission. 
+    3. In-Game Rules & Match Format Match Settings 
+      ● Mode: Third Person Perspective (TPP) 
+      ● Maps: Erangel, Miramar, Rondo 
+      ● Aim Assist: Disabled 
+      ● Sound Visualization: Disabled 
+      ● Disabled Items: Red Zone & Flare Guns 
+      ● Loot: All Weapons, Scopes, and Magazines spawn rate set to x3. Scoring System Points are awarded based on placement and finishes in each match. 
+      ● Placement Points: 
+        ○ 1st Place: 10 points 
+        ○ 2nd Place: 6 points 
+        ○ 3rd Place: 5 points 
+        ○ 4th Place: 4 points 
+        ○ 5th Place: 3 points 
+        ○ 6th Place: 2 points 
+        ○ 7th - 8th Place: 1 point 
+        ○ 9th - 16th Place: 0 points
+      ● Finish Points: Each finish (kill) is worth 1 point. 
+      Tiebreaker Rules If two teams have the same total points, the tie will be broken in the following order: 
+        1. Total number of Chicken Dinners (1st place finishes). 
+        2. Total accumulated placement points. 
+        3. Total accumulated finish points. 
+        4. Placement in the most recent match. 
+        5. Prohibited Actions & Fair Play 
+          ● No Cheating: Using any kind of cheating hardware, third-party software, hacks, mods, or cheat programs is strictly prohibited. This includes using emulators to play on a PC. 
+          ● No Exploiting Bugs: Intentionally using any in-game bug or glitch to gain an unfair advantage is forbidden. 
+          ● Use of self aid and emergency pickup is not allowed. Teams using these will get 0 points for that match. 
+          ● Authorized Devices: All games must be played on mobile phones or other handheld devices. 
+        Peripherals like controllers, adapters, or Bluetooth keyboards are not allowed. 
+    4. Competitive Integrity: 
+      POV Recording To ensure a fair playing field, all players are required to record their in-game point-of-view (POV) for every match. 
+        ● How to Record: Use your device's built-in screen recorder. Third-party recording apps are not allowed. 
+        ● Submission: Tournament organizers may request your POV recording at any time to investigate cheating allegations.
+        ● Penalty: Failure to provide a requested POV recording may result in point deductions or disqualification for your team. 
+    5. Match Procedures 
+        ● Lobby Information: Lobby ID and password will be shared with the Team Captain before each match. 
+        ● For qualified teams : Players are not permitted to leave their assigned positions until the match has officially ended, unless allowed by the organising team. 
+        ● Peeking, screen-watching, or any form of visual assistance from opponents’ screens is prohibited and will be treated as a serious violation. 
+        ● Punctuality: Teams are expected to be in the lobby and ready at the scheduled time. Delays may result in penalties. 
+        ● Disconnects & Restarts: ○ The tournament organizers may restart a match if multiple players face technical issues or disconnects at the very beginning of the game. 
+          ○ Once the game has progressed, it will not be restarted for individual player disconnections. 
+          
+    Players who disconnect may attempt to rejoin the match. 
+    Good luck to all participating teams! 
+    Let's have a great tournament. 🏆 `,
+    bountyText: `🥇 BGMI – 1st Prize: More Than a Win
 Winning QUANTICA BGMI isn’t the end of the journey —
 it’s the moment your grind gets recognized.
 This prize is built for teams who don’t just chase chicken dinners,
@@ -79,7 +149,7 @@ The agreement moves forward only if both sides align and agree.
 Here’s the best part:
 Your team does NOT lose its identity.
 If the agreement moves forward, your squad will compete as:
-INGLU Esports × Your Team Name
+INFLU Esports × Your Team Name
 Your legacy stays intact.
 Your brand gets amplified.
 Your name gets seen in bigger lobbies.
@@ -148,7 +218,21 @@ Carry your name — with INGLU Esports beside it. 🔥`,
     ],
     registerLink: "#register",
     rulebook: "/rulebook/valorant-rules.pdf",
-    rulebookText: `🥇 VALORANT – 1st Prize: Aim Higher
+    rulebookText: `QUANTICA FEST
+
+VALORANT – Tournament Rules &
+Regulations
+These rules are aligned with official VALORANT competitive tournament standards
+and must be strictly followed by all participants.
+
+1. Game & Platform
+● Game Title: VALORANT (Latest Version)
+● Platform: PC
+● Match Format: 5v5
+● Players must ensure the game is updated to the latest official version.
+
+[MORE RULES TO BE ADDED]`,
+    bountyText: `🥇 VALORANT – 1st Prize: Aim Higher
 Winning QUANTICA VALORANT isn’t just about clutch rounds and perfect executes —
 it’s about stepping into something bigger.
 This prize is built for teams who don’t just queue ranked,
@@ -249,9 +333,23 @@ Carry your name — with INGLU Esports beside it. 🔥`,
     ],
     registerLink: "#register",
     rulebook: "/rulebook/freefire-rules.pdf",
-    rulebookText: `🥇 FREE FIRE MAX – 1st Prize: From Battle to
+    rulebookText: `QUANTICA FEST
+
+FREE FIRE MAX – Tournament Rules &
+Regulations
+These rules are aligned with official FREE FIRE MAX competitive tournament standards
+and must be strictly followed by all participants.
+
+1. Game & Platform
+● Game Title: Free Fire MAX (Latest Version)
+● Platform: Mobile Only
+● Match Format: Squad (4 Players)
+● Players must ensure the game is updated to the latest official version.
+
+[MORE RULES TO BE ADDED]`,
+    bountyText: `🥇 FREE FIRE MAX – 1st Prize: From Battle to
 Breakthrough
-Winning QUANTICA FREE FIRE MAX isn’t just about Booyahs and highlights —
+Winning QUANTICA FREE FIRE MAX isn’t just about Bo  oyahs and highlights —
 it’s about proving you belong on a bigger stage.
 This prize is built for teams who don’t just play matches,
 but play to build a name.
@@ -318,6 +416,7 @@ Drop in.
 Dominate.
 Carry your name — with INGLU Esports beside it. 🔥`,
   },
+
   efootball: {
     title: "EFootball",
     game: "EFootball",
@@ -991,6 +1090,8 @@ match completion.`,
 };
 const EventDetail = () => {
   const { slug } = useParams<{ slug: string }>();
+  const [activeTab, setActiveTab] = React.useState<'rulebook' | 'bounty'>('rulebook');
+
 
   const event = eventData[slug as keyof typeof eventData];
   if (!event) {
@@ -1195,11 +1296,29 @@ const EventDetail = () => {
             viewport={{ once: true }}
             className={`max-w-4xl mx-auto border ${borderColor} p-4 clip-corner bg-background/50`}
           >
-            <div className="flex justify-between items-center mb-6 px-4">
+            <div className="flex flex-col md:flex-row justify-between items-center mb-6 px-4 gap-4">
               <h3 className={`text-2xl font-bold text-foreground ${textColor}`}>
-                OFFICIAL RULEBOOK
+                {(event as any).bountyText ? (
+                  <div className="flex gap-4">
+                    <button
+                      onClick={() => setActiveTab('rulebook')}
+                      className={`text-xl md:text-2xl font-bold transition-opacity hover:opacity-80 ${activeTab === 'rulebook' ? '' : 'opacity-40'}`}
+                    >
+                      OFFICIAL RULEBOOK
+                    </button>
+                    <div className="h-8 px-1 py-12 w-[2px] bg-muted-foreground/50 mx-2 skew-x-[-15deg] dotted" />
+                    <button
+                      onClick={() => setActiveTab('bounty')}
+                      className={`text-xl md:text-2xl font-bold transition-opacity hover:opacity-80 ${activeTab === 'bounty' ? '' : 'opacity-40'}`}
+                    >
+                      BOUNTY (INGLU ESPORTS)
+                    </button>
+                  </div>
+                ) : (
+                  "OFFICIAL RULEBOOK"
+                )}
               </h3>
-              {!(event as any).rulebookText && event.rulebook && (
+              {!(event as any).rulebookText && event.rulebook && activeTab === 'rulebook' && (
                 <a
                   href={event.rulebook}
                   target="_blank"
@@ -1212,21 +1331,21 @@ const EventDetail = () => {
             </div>
 
             <div
-              className={`w-full ${(event as any).rulebookText ? 'h-[600px] p-6 overflow-y-auto overscroll-y-none' : 'h-[600px] overflow-hidden'} bg-black/50 border border-white/10 rounded-sm custom-scrollbar relative z-20`}
+              className={`w-full h-[600px] p-6 overflow-y-auto overscroll-y-none bg-black/50 border border-white/10 rounded-sm custom-scrollbar relative z-20`}
               onWheel={(e) => e.stopPropagation()}
             >
-              {(event as any).rulebookText ? (
+              {activeTab === 'bounty' ? (
                 <div className="prose prose-invert max-w-none">
                   <pre className="whitespace-pre-wrap font-sans text-muted-foreground text-lg leading-relaxed">
-                    {(event as any).rulebookText}
+                    {(event as any).bountyText}
                   </pre>
                 </div>
               ) : (
-                <iframe
-                  src={`${event.rulebook}#toolbar=0&navpanes=0&scrollbar=0`}
-                  className="w-full h-full"
-                  title={`${event.title} Rulebook`}
-                />
+                <div className="prose prose-invert max-w-none">
+                  <pre className="whitespace-pre-wrap font-sans text-muted-foreground text-lg leading-relaxed">
+                    {(event as any).rulebookText || "Rules coming soon..."}
+                  </pre>
+                </div>
               )}
             </div>
             <div className="text-center mt-4">

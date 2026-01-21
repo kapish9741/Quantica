@@ -1,13 +1,14 @@
 
-import { motion, useTransform, useScroll } from "framer-motion";
+import { motion, useTransform, useScroll, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Calendar, Users, Trophy, MapPin } from "lucide-react";
+import { Calendar, Users, Trophy, MapPin, X } from "lucide-react";
 import PageTransition from "../components/PageTransition";
 import EventCard from "../components/EventCard";
 import GlitchText from "@/components/GlitchText";
 import { events as allEvents } from "@/data/events";
 import { useRef, useState, useLayoutEffect, useEffect } from "react";
 import GeneralPassSection from "@/components/GeneralPassSection";
+import RoadmapTimeline from "../components/RoadmapTimeline";
 
 type MiniGameLite = {
   title: string;
@@ -178,6 +179,8 @@ const MiniCard = ({ m }: { m: MiniGameLite }) => {
 };
 
 const Events = () => {
+  const [showRoadmap, setShowRoadmap] = useState(false);
+
   return (
     <PageTransition>
 
@@ -229,6 +232,57 @@ const Events = () => {
               <p className="text-muted-foreground text-sm">In-Kind Prize Pool Support</p>
             </div>
           </div>
+        </div>
+      </section> */}
+
+      {/* <section>
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex justify-center mb-8"
+          >
+            <button
+              onClick={() => setShowRoadmap(!showRoadmap)}
+              className="glitch-btn bg-primary text-primary-foreground px-6 py-4 font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 flex items-center gap-3 text-base md:text-sm group"
+            >
+              {showRoadmap ? (
+                <>
+                  <X className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" />
+                  <span>Close Roadmap</span>
+                </>
+              ) : (
+                <>
+                  <span>View Tournament Roadmap</span>
+                </>
+              )}
+            </button>
+          </motion.div>
+
+          <AnimatePresence>
+            {showRoadmap && (
+              <motion.div
+                initial={{ opacity: 0, height: 0, y: -20 }}
+                animate={{ opacity: 1, height: "auto", y: 0 }}
+                exit={{ opacity: 0, height: 0, y: -20 }}
+                transition={{
+                  duration: 0.5,
+                  ease: [0.4, 0, 0.2, 1],
+                }}
+                className="overflow-hidden"
+              >
+                <motion.div
+                  initial={{ scale: 0.95 }}
+                  animate={{ scale: 1 }}
+                  exit={{ scale: 0.95 }}
+                  transition={{ duration: 0.3 }}
+                  className="bg-background/50 backdrop-blur-sm border-2 border-primary/30 rounded-lg p-4 md:p-8 clip-corner"
+                >
+                  <RoadmapTimeline onClose={() => setShowRoadmap(false)} />
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence >
         </div>
       </section> */}
 

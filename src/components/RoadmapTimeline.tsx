@@ -14,22 +14,22 @@ const RoadmapTimeline = ({ onClose }: RoadmapTimelineProps) => {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case "completed":
-        return <CheckCircle className="w-6 h-6 text-green-500" />;
+        return <CheckCircle className="w-5 h-5 text-green-500" />;
       case "ongoing":
-        return <Clock className="w-6 h-6 text-secondary animate-pulse" />;
+        return <Clock className="w-5 h-5 text-secondary animate-pulse" />;
       default:
-        return <Circle className="w-6 h-6 text-muted-foreground" />;
+        return <Circle className="w-5 h-5 text-muted-foreground" />;
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
       case "completed":
-        return "border-green-500 bg-green-500/10";
+        return "border-l-green-500 bg-green-500/5";
       case "ongoing":
-        return "border-secondary bg-secondary/10";
+        return "border-l-secondary bg-secondary/5";
       default:
-        return "border-border bg-card";
+        return "border-l-muted bg-card/50";
     }
   };
 
@@ -42,88 +42,81 @@ const RoadmapTimeline = ({ onClose }: RoadmapTimelineProps) => {
   }
 
   return (
-    <div className="mb-8">
+    <div className="mb-8 w-full max-w-4xl mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="relative text-center mb-8"
+        className="relative text-center mb-10"
       >
         {onClose && (
           <button
             onClick={onClose}
             className="absolute right-0 top-0 p-2 text-muted-foreground hover:text-primary transition-colors duration-300 hover:rotate-90 transform"
-            aria-label="Close roadmap"
+            aria-label="Close schedule"
           >
             <GiSplitCross className="w-6 h-6" />
           </button>
         )}
         <h2 className="text-3xl md:text-5xl font-bold mb-2 font-play">
-          <GlitchText text="TOURNAMENT ROADMAP" className="text-foreground" />
+          <GlitchText text="TOURNAMENT SCHEDULE" className="text-foreground" />
         </h2>
-        <p className="text-muted-foreground">Track the tournament progress</p>
+        <p className="text-muted-foreground">Follow the action live</p>
       </motion.div>
 
-      <div className="relative max-w-4xl mx-auto">
-        <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border hidden md:block" />
+      <div className="relative space-y-4">
+          {roadmapItems.map((item, index) => {
+            const dateObj = new Date(item.date);
+            const dateStr = dateObj.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+            const timeStr = dateObj.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
 
-        <div className="space-y-8">
-          {roadmapItems.map((item, index) => (
+            return (
             <motion.div
               key={item.id}
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="relative"
+              className={`relative overflow-hidden group rounded-r-lg border-l-4 ${getStatusColor(item.status)} border-y border-r border-border/50 hover:border-border transition-all duration-300`}
             >
-              <div className="absolute left-8 top-6 w-4 h-4 -ml-2 rounded-full border-4 border-background bg-primary hidden md:block z-10" />
+              <div className="flex flex-col md:flex-row items-stretch"> 
+                {/* Date & Time Column */}
+                <div className="flex-shrink-0 w-full md:w-32 bg-black/20 flex flex-row md:flex-col items-center justify-center p-4 gap-2 md:gap-1 border-b md:border-b-0 md:border-r border-border/50 text-center">
+                   <div className="text-lg font-bold text-primary tracking-wider uppercase">{dateStr}</div>
+                   <div className="text-sm font-mono text-muted-foreground bg-background/50 px-2 py-0.5 rounded">{timeStr}</div>
+                </div>
 
-              <div className="md:ml-20">
-                <div
-                  className={`p-6 border-2 clip-corner ${getStatusColor(
-                    item.status
-                  )} transition-all hover:scale-[1.02]`}
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0">{getStatusIcon(item.status)}</div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-xl font-bold text-foreground">
+                {/* Content */}
+                <div className="flex-grow p-5 flex items-start gap-4">
+                    <div className="mt-1 flex-shrink-0">
+                      {getStatusIcon(item.status)}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center flex-wrap gap-3 mb-1">
+                        <h3 className="text-xl font-bold text-foreground truncate">
                           {item.title}
                         </h3>
-                        <span
-                          className={`text-xs uppercase px-2 py-1 rounded ${
+                         <span
+                          className={`text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full ${
                             item.status === "completed"
-                              ? "bg-green-500/20 text-green-500"
+                              ? "bg-green-500/10 text-green-500"
                               : item.status === "ongoing"
-                              ? "bg-secondary/20 text-secondary"
-                              : "bg-muted text-muted-foreground"
+                              ? "bg-secondary/10 text-secondary border border-secondary/20"
+                              : "bg-muted/50 text-muted-foreground"
                           }`}
                         >
                           {item.status}
                         </span>
                       </div>
+                      
                       {item.description && (
-                        <p className="text-muted-foreground mb-3">
+                        <p className="text-muted-foreground text-sm leading-relaxed">
                           {item.description}
                         </p>
                       )}
-                      <div className="flex items-center gap-2 text-sm text-primary">
-                        <Calendar className="w-4 h-4" />
-                        <span>
-                          {new Date(item.date).toLocaleDateString("en-US", {
-                            month: "long",
-                            day: "numeric",
-                            year: "numeric",
-                          })}
-                        </span>
-                      </div>
                     </div>
-                  </div>
                 </div>
               </div>
             </motion.div>
-          ))}
-        </div>
+          )})}
       </div>
     </div>
   );
