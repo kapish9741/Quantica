@@ -3,6 +3,7 @@ import { useState, useRef, useEffect, useMemo } from "react";
 import { Trophy, Clock, Edit2, Check } from "lucide-react";
 import { useLeaderboard, useLiveMatches, Match, Team } from "../hooks/useLeaderboard"; // reusing hooks for team data
 import LoaderLeader from "./loaderleader";
+import { DateTimePicker } from "./ui/date-time-picker";
 
 interface TournamentBracketProps {
     eventSlug: string;
@@ -378,11 +379,10 @@ const MatchCard = ({ match, teams, isEditable, onMatchUpdate, isLive, editingTea
             <div className="h-7 px-3 bg-black/20 text-[10px] text-muted-foreground flex items-center gap-2 border-t border-border/30">
                 <Clock className="w-3 h-3" />
                 {isEditable ? (
-                    <input
-                        type="datetime-local"
-                        className="bg-transparent border-none outline-none w-full text-muted-foreground"
-                        value={match.scheduledDate ? new Date(match.scheduledDate).toISOString().slice(0, 16) : ''}
-                        onChange={(e) => onMatchUpdate?.(match.id, { scheduledDate: e.target.value })}
+                    <DateTimePicker
+                        date={match.scheduledDate ? new Date(match.scheduledDate) : undefined}
+                        setDate={(date) => onMatchUpdate?.(match.id, { scheduledDate: date.toISOString() })}
+                        className="w-full h-auto p-0 border-none bg-transparent hover:bg-purple-600 text-[10px] text-foreground focus:ring-0"
                     />
                 ) : (
                     <span>
