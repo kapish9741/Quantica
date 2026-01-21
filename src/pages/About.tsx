@@ -304,6 +304,33 @@ const additionalTeams = [
       },
     ],
   },
+    {
+    title: "Decoration Team",
+    subtitle: "Orchestrating the Experience",
+    members: [
+      {
+        name: "Mayank Jangra",
+        role: "Decor Team",
+        image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768237647/Screenshot_2026-01-12_at_12.33.37_AM_-_Mayank_Jangra_mehjio.png",
+        linkedin: "http://www.linkedin.com/in/mayank-jangra-a3792a387",
+        email: "mayank.j25573@nst.rishihood.edu.in",
+      },
+      {
+        name: "Yanshika Rana",
+        role: "Decor Team",
+        image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1769018190/IMG-20251205-WA0025_2_-_Yanshika_Rana_x6zq9f.jpg",
+        linkedin: "https://www.linkedin.com/in/yanshika-rana-853171374/",
+        email: "yanshika.r25120@csds.rishihood.edu.in",
+      },
+      {
+        name: "Bhavya",
+        role: "Decor Team",
+        image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1769018265/88a4f051-5a6b-4a7f-94c4-fc29548f1337_-_Bhavya_l52spc.jpg",
+        linkedin: "https://www.linkedin.com/in/bhavya-saini-000561373/",
+        email: "bhavya.25019@csds.rishihood.edu.in",
+      },
+    ],
+  },
 ];
 const values = [
   {
