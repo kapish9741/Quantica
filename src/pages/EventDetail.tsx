@@ -48,74 +48,74 @@ const eventData = {
     registerLink: "#register",
     rulebook: "/rulebook/bgmi-rules.pdf",
     rulebookText: `QUANTICA FEST Common Rules & Regulations: 
-    1. Identity Verification All players must carry a valid Aadhaar Card and School/College ID for verification. Failure to produce these documents when asked may result in disqualification. 
-    2. Damage to Property Any damage caused to equipment, venue assets, or college property by an individual or team will be the full responsibility of the respective team, and necessary compensation must be provided. 
-    3. Misconduct & Physical Altercations Any involvement in physical fights, aggressive behavior, or serious misconduct will result in strict action, including disqualification or further penalties, as decided by the Organising Team. 
-    4. Team Name Guidelines Team names must be appropriate and respectful. Names that are abusive, offensive, or hurt religious sentiments, individuals, or communities are strictly prohibited and may lead to disqualification. 
-    5. Authority of the Organising Team The Organising Team reserves the right to modify, amend, or introduce new rules at any time if required. All decisions made by the Organising Team will be final and binding in any matter. 
-    6. Prohibited Substances The consumption or possession of intoxicating substances, including alcohol, is strictly prohibited within the campus premises. Violation will result in immediate disciplinary action. 
-    
-    1. General Rules 
-      ● Eligibility: all players under the age of 28. 
-      ● Code of Conduct: 
-        ○ Sportsmanship: All players are expected to show good sportsmanship. Be respectful to fellow competitors and tournament organizers. Toxicity, harassment, or hate speech will not be tolerated and will result in immediate disqualification. 
-        ○ Competitive Integrity: Play to the best of your ability in every match. Intentionally losing, splitting prize money with other teams (collusion), or any form of match-fixing is strictly forbidden. 
-      ● Organizer's Authority: All decisions regarding rule interpretation, player eligibility, and penalties are at the sole discretion of the tournament organizers. All decisions are final. 
-    2. Team & Player Rules 
-      ● Roster Requirements: 
-        ○ Each team must consist of 4 starting players. 
-        ○ Teams can optionally register up to 1 substitute players. 
-        ○ The roster submitted at the time of registration is final. No changes will be allowed once the tournament begins, except in emergency situations approved by the organizers. 
-      ● Player Names (In-Game Name/IGN): 
-        ○ Your in-game name should be appropriate and non-offensive. 
-        ○ It is recommended to use the format: TeamTagPlayerName (e.g., SAGEJohn). 
-      ● Team Names: 
-        ○ Team names must be unique and appropriate. Offensive names will be rejected. 
-        ○ Team names cannot impersonate professional organizations without permission. 
-    3. In-Game Rules & Match Format Match Settings 
-      ● Mode: Third Person Perspective (TPP) 
-      ● Maps: Erangel, Miramar, Rondo 
-      ● Aim Assist: Disabled 
-      ● Sound Visualization: Disabled 
-      ● Disabled Items: Red Zone & Flare Guns 
-      ● Loot: All Weapons, Scopes, and Magazines spawn rate set to x3. Scoring System Points are awarded based on placement and finishes in each match. 
-      ● Placement Points: 
-        ○ 1st Place: 10 points 
-        ○ 2nd Place: 6 points 
-        ○ 3rd Place: 5 points 
-        ○ 4th Place: 4 points 
-        ○ 5th Place: 3 points 
-        ○ 6th Place: 2 points 
-        ○ 7th - 8th Place: 1 point 
-        ○ 9th - 16th Place: 0 points
-      ● Finish Points: Each finish (kill) is worth 1 point. 
-      Tiebreaker Rules If two teams have the same total points, the tie will be broken in the following order: 
-        1. Total number of Chicken Dinners (1st place finishes). 
-        2. Total accumulated placement points. 
-        3. Total accumulated finish points. 
-        4. Placement in the most recent match. 
-        5. Prohibited Actions & Fair Play 
-          ● No Cheating: Using any kind of cheating hardware, third-party software, hacks, mods, or cheat programs is strictly prohibited. This includes using emulators to play on a PC. 
-          ● No Exploiting Bugs: Intentionally using any in-game bug or glitch to gain an unfair advantage is forbidden. 
-          ● Use of self aid and emergency pickup is not allowed. Teams using these will get 0 points for that match. 
-          ● Authorized Devices: All games must be played on mobile phones or other handheld devices. 
-        Peripherals like controllers, adapters, or Bluetooth keyboards are not allowed. 
-    4. Competitive Integrity: 
-      POV Recording To ensure a fair playing field, all players are required to record their in-game point-of-view (POV) for every match. 
-        ● How to Record: Use your device's built-in screen recorder. Third-party recording apps are not allowed. 
-        ● Submission: Tournament organizers may request your POV recording at any time to investigate cheating allegations.
-        ● Penalty: Failure to provide a requested POV recording may result in point deductions or disqualification for your team. 
-    5. Match Procedures 
-        ● Lobby Information: Lobby ID and password will be shared with the Team Captain before each match. 
-        ● For qualified teams : Players are not permitted to leave their assigned positions until the match has officially ended, unless allowed by the organising team. 
-        ● Peeking, screen-watching, or any form of visual assistance from opponents’ screens is prohibited and will be treated as a serious violation. 
-        ● Punctuality: Teams are expected to be in the lobby and ready at the scheduled time. Delays may result in penalties. 
-        ● Disconnects & Restarts: ○ The tournament organizers may restart a match if multiple players face technical issues or disconnects at the very beginning of the game. 
-          ○ Once the game has progressed, it will not be restarted for individual player disconnections. 
-          
-    Players who disconnect may attempt to rejoin the match. 
-    Good luck to all participating teams! 
-    Let's have a great tournament. 🏆 `,
+  1. Identity Verification All players must carry a valid Aadhaar Card and School/College ID for verification. Failure to produce these documents when asked may result in disqualification. 
+  2. Damage to Property Any damage caused to equipment, venue assets, or college property by an individual or team will be the full responsibility of the respective team, and necessary compensation must be provided. 
+  3. Misconduct & Physical Altercations Any involvement in physical fights, aggressive behavior, or serious misconduct will result in strict action, including disqualification or further penalties, as decided by the Organising Team. 
+  4. Team Name Guidelines Team names must be appropriate and respectful. Names that are abusive, offensive, or hurt religious sentiments, individuals, or communities are strictly prohibited and may lead to disqualification. 
+  5. Authority of the Organising Team The Organising Team reserves the right to modify, amend, or introduce new rules at any time if required. All decisions made by the Organising Team will be final and binding in any matter. 
+  6. Prohibited Substances The consumption or possession of intoxicating substances, including alcohol, is strictly prohibited within the campus premises. Violation will result in immediate disciplinary action. 
+  
+  1. General Rules 
+    ● Eligibility: all players under the age of 28. 
+    ● Code of Conduct: 
+      ○ Sportsmanship: All players are expected to show good sportsmanship. Be respectful to fellow competitors and tournament organizers. Toxicity, harassment, or hate speech will not be tolerated and will result in immediate disqualification. 
+      ○ Competitive Integrity: Play to the best of your ability in every match. Intentionally losing, splitting prize money with other teams (collusion), or any form of match-fixing is strictly forbidden. 
+    ● Organizer's Authority: All decisions regarding rule interpretation, player eligibility, and penalties are at the sole discretion of the tournament organizers. All decisions are final. 
+  2. Team & Player Rules 
+    ● Roster Requirements: 
+      ○ Each team must consist of 4 starting players. 
+      ○ Teams can optionally register up to 1 substitute players. 
+      ○ The roster submitted at the time of registration is final. No changes will be allowed once the tournament begins, except in emergency situations approved by the organizers. 
+    ● Player Names (In-Game Name/IGN): 
+      ○ Your in-game name should be appropriate and non-offensive. 
+      ○ It is recommended to use the format: TeamTagPlayerName (e.g., SAGEJohn). 
+    ● Team Names: 
+      ○ Team names must be unique and appropriate. Offensive names will be rejected. 
+      ○ Team names cannot impersonate professional organizations without permission. 
+  3. In-Game Rules & Match Format Match Settings 
+    ● Mode: Third Person Perspective (TPP) 
+    ● Maps: Erangel, Miramar, Rondo 
+    ● Aim Assist: Disabled 
+    ● Sound Visualization: Disabled 
+    ● Disabled Items: Red Zone & Flare Guns 
+    ● Loot: All Weapons, Scopes, and Magazines spawn rate set to x3. Scoring System Points are awarded based on placement and finishes in each match. 
+    ● Placement Points: 
+      ○ 1st Place: 10 points 
+      ○ 2nd Place: 6 points 
+      ○ 3rd Place: 5 points 
+      ○ 4th Place: 4 points 
+      ○ 5th Place: 3 points 
+      ○ 6th Place: 2 points 
+      ○ 7th - 8th Place: 1 point 
+      ○ 9th - 16th Place: 0 points
+    ● Finish Points: Each finish (kill) is worth 1 point. 
+    Tiebreaker Rules If two teams have the same total points, the tie will be broken in the following order: 
+      1. Total number of Chicken Dinners (1st place finishes). 
+      2. Total accumulated placement points. 
+      3. Total accumulated finish points. 
+      4. Placement in the most recent match. 
+      5. Prohibited Actions & Fair Play 
+        ● No Cheating: Using any kind of cheating hardware, third-party software, hacks, mods, or cheat programs is strictly prohibited. This includes using emulators to play on a PC. 
+        ● No Exploiting Bugs: Intentionally using any in-game bug or glitch to gain an unfair advantage is forbidden. 
+        ● Use of self aid and emergency pickup is not allowed. Teams using these will get 0 points for that match. 
+        ● Authorized Devices: All games must be played on mobile phones or other handheld devices. 
+      Peripherals like controllers, adapters, or Bluetooth keyboards are not allowed. 
+  4. Competitive Integrity: 
+    POV Recording To ensure a fair playing field, all players are required to record their in-game point-of-view (POV) for every match. 
+      ● How to Record: Use your device's built-in screen recorder. Third-party recording apps are not allowed. 
+      ● Submission: Tournament organizers may request your POV recording at any time to investigate cheating allegations.
+      ● Penalty: Failure to provide a requested POV recording may result in point deductions or disqualification for your team. 
+  5. Match Procedures 
+      ● Lobby Information: Lobby ID and password will be shared with the Team Captain before each match. 
+      ● For qualified teams : Players are not permitted to leave their assigned positions until the match has officially ended, unless allowed by the organising team. 
+      ● Peeking, screen-watching, or any form of visual assistance from opponents’ screens is prohibited and will be treated as a serious violation. 
+      ● Punctuality: Teams are expected to be in the lobby and ready at the scheduled time. Delays may result in penalties. 
+      ● Disconnects & Restarts: ○ The tournament organizers may restart a match if multiple players face technical issues or disconnects at the very beginning of the game. 
+        ○ Once the game has progressed, it will not be restarted for individual player disconnections. 
+        
+  Players who disconnect may attempt to rejoin the match. 
+  Good luck to all participating teams! 
+  Let's have a great tournament. 🏆 `,
     bountyText: `🥇 BGMI – 1st Prize: More Than a Win
 Winning QUANTICA BGMI isn’t the end of the journey —
 it’s the moment your grind gets recognized.
@@ -218,20 +218,192 @@ Carry your name — with INGLU Esports beside it. 🔥`,
     ],
     registerLink: "#register",
     rulebook: "/rulebook/valorant-rules.pdf",
-    rulebookText: `QUANTICA FEST
+    rulebookText: `QUANTICA FEST – VALORANT TOURNAMENT OFFICIAL RULEBOOK:
 
-VALORANT – Tournament Rules &
-Regulations
-These rules are aligned with official VALORANT competitive tournament standards
-and must be strictly followed by all participants.
+1. Game & Tournament Structure
+  ● Game: VALORANT (Riot Games)
+  ● Tournament Format: Single Elimination
+  ● Match Type: 5v5
+  ● Roster Limit:
+    ○ 5 Starting Players
+    ○ Up to 2 Substitutes
+  ● Eligibility:
+    ○ Open to Indian citizens only
+    ○ Players must comply with Riot Games’ Terms of Service
+  ● Communication Platform:
+    ○ Discord is mandatory for all participating teams
+    ○ All official announcements, match coordination, and admin
+      communication will take place via Discord.
 
-1. Game & Platform
-● Game Title: VALORANT (Latest Version)
-● Platform: PC
-● Match Format: 5v5
-● Players must ensure the game is updated to the latest official version.
+2. Tournament Schedule
+  ● Registrations: To be announced by Quantica Fest Organizers
+  ● Tournament Start Date: To be announced
+  ● Match Schedule:
+    ○ Shared on Discord prior to match day
+    ○ Teams are responsible for tracking their match timings.
 
-[MORE RULES TO BE ADDED]`,
+3. Match Execution & Check-In
+  3.1 Joining the Match
+    ● Teams must join the Quantica Fest Discord 30 minutes before
+      their scheduled match time.
+    ● Match lobby details will be shared with team captains only.
+    ● Captains must distribute lobby information to teammates.
+    ● Late Arrival Rule:
+      ○ 10-minute grace period from scheduled match time.
+      ○ Failure to join within this time results in automatic
+        disqualification.
+    ● No-Show Proof:
+      ○ Capture a lobby screenshot with timestamp.
+      ○ Submit it in the designated #results channel.
+  3.2 Preparation & Substitutions
+    ● Minimum 15 minutes break between consecutive matches.
+    ● Full team must be present in the lobby 10 minutes before
+      match start.
+    ● Substitutions:
+      ○ Must be communicated to admins at least 1 hour in advance.
+
+4. Match Rules
+  4.1 Match Format:
+    ● Best of 1 (BO1): All matches except Semi-Finals & Finals.
+    ● Best of 3 (BO3): Semi-Finals and Grand Finals.
+  4.2 Map Pool:
+    ● Ascent
+    ● Haven
+    ● Bind
+    ● Lotus
+    ● Sunset
+    ● Corrode (Maps will be assigned by the organisers. No map
+      veto process will be followed.)
+  4.3 In-Game Settings:
+    ● Game Mode: Tournament Mode.
+    ● Win Condition:
+      ○ First team to reach 13 rounds wins the match.
+      ○ No overtime will be played.
+    ● Warmup Time: 5 minutes.
+    ● Agent Select: Locked once match begins.
+    ● Agent Control Freeze: Enabled during pauses.
+  4.4 Game of Record (GoR):
+    A match is officially considered Game of Record when:
+      ● All 10 players have joined the lobby.
+      ● Map is loaded and freeze time has ended.
+    Restart Conditions:
+      ● In case of restart, score resets to 0–0.
+      ● Freeze time must expire again before GoR is re-established.
+
+5. Player Eligibility & Technical Issues
+  ● Minimum Players Required: 5 starting players.
+  ● Minimum Account Level: Level 25.
+  ● Rank Eligibility: Iron to Radiant (all ranks allowed).
+  Disconnect Rules:
+    ● Before first kill or spike plant (Round 1): Round restart.
+    ● After Round 1:
+      ○ Technical pause will be initiated.
+      ○ If player cannot reconnect:
+        ■ Match continues 4v5.
+        ■ If players drop below 4 → match forfeit.
+
+6. Gameplay Restrictions
+  6.1 Strictly Prohibited:
+    ● Exploits:
+      ○ Pixel walking
+      ○ Clipping
+      ○ Spike sound abuse
+      ○ Unintended map boosts
+    ● Third-Party Software:
+      ○ Scripts
+      ○ Modified game files
+      ○ HUD/radar/sprite alterations
+      ○ Discord or RivaTuner overlays
+    ● Communication Abuse:
+      ○ Harassment or offensive language
+      ○ Non-game-related communication during live rounds.
+  6.2 Pauses & Timeouts:
+    ● Technical Pauses:
+      ○ Maximum 5 minutes per match.
+    ● Timeouts:
+      ○ 2 per map.
+      ○ 60 seconds each.
+      ○ Can only be used during buy phase.
+    ● Emergency Pause:
+      ○ 1 per map.
+      ○ Maximum 10 minutes.
+      ○ Subject to admin review.
+
+7. Coaching & Spectating
+  ● Coaches:
+    ○ Allowed with prior declaration.
+    ○ Communication allowed only during:
+      ■ Timeouts
+      ■ Half-time
+      ■ Map switches (BO3 only)
+  ● Spectators:
+    ○ Only Quantica Fest staff are allowed in streamed matches.
+
+8. Conduct, Reporting & Penalties
+  8.1 Player Conduct:
+    Any form of the following will result in penalties or bans:
+      ● Racism or hate speech.
+      ● Cheating or hacking.
+      ● Bug abuse.
+      ● Match sabotage.
+      ● Misconduct toward admins, referees, or players.
+  8.2 Reporting Violations:
+    ● Email: contact@quanticafest.fun
+    ● Include:
+      ○ Match date & time.
+      ○ Lobby details.
+      ○ Player/team involved.
+      ○ Screenshots or video proof.
+  8.3 Team Responsibilities:
+    ● Captain Responsibilities:
+      ○ Sole point of contact with organisers.
+      ○ Result verification with screenshots.
+      ○ Relaying all official communication to team members.
+      ○ Signing off on team decisions.
+    ● Naming Policy:
+      ○ No offensive, abusive, or trademarked names allowed.
+
+9. Dispute Resolution
+  ● All disputes will be reviewed by Quantica Fest Organising Team.
+  ● Decisions taken by organisers and referees are final and binding.
+  ● Players will be given a fair opportunity to present their case.
+  ● Appeals after final judgment are not permitted.
+
+10. Common Rules & Regulations
+  ● Identity Verification:
+    ○ All players must carry a valid Aadhaar Card and College ID for
+      verification.
+    ○ Failure to produce these documents when asked may result in
+      disqualification.
+  ● Damage to Property:
+    ○ Any damage caused to equipment, venue assets, or college property
+      by an individual or team will be the full responsibility of the
+      respective team.
+    ○ Necessary compensation must be provided.
+  ● Misconduct & Physical Altercations:
+    ○ Any involvement in physical fights, aggressive behavior, or serious
+      misconduct will result in strict action, including disqualification
+      or further penalties as decided by the Organising Team.
+  ● Team Name Guidelines:
+    ○ Team names must be appropriate and respectful.
+    ○ Names that are abusive, offensive, or hurt religious sentiments,
+      individuals, or communities are strictly prohibited.
+    ○ Violations may lead to immediate disqualification.
+  ● Authority of the Organising Team:
+    ○ The Organising Team reserves the right to modify, amend, or
+      introduce new rules at any time.
+    ○ All decisions made by the Organising Team will be final and
+      binding.
+  ● Prohibited Substances:
+    ○ Consumption or possession of alcohol or intoxicating substances is
+      strictly prohibited within the campus premises.
+    ○ Violations will result in immediate disciplinary action.
+
+11. General Protocols
+  ● Players with active Riot Games or tournament bans are ineligible.
+  ● Teams found violating this will be immediately disqualified.
+  ● Intentional match fixing or throwing is strictly prohibited and will
+    result in bans.`,
     bountyText: `🥇 VALORANT – 1st Prize: Aim Higher
 Winning QUANTICA VALORANT isn’t just about clutch rounds and perfect executes —
 it’s about stepping into something bigger.
@@ -333,20 +505,139 @@ Carry your name — with INGLU Esports beside it. 🔥`,
     ],
     registerLink: "#register",
     rulebook: "/rulebook/freefire-rules.pdf",
-    rulebookText: `QUANTICA FEST
+    rulebookText: `QUANTICA FEST Common Rules & Regulations:
+  1. Identity Verification
+    All players must carry a valid Aadhaar Card and School/College ID for
+    verification. Failure to produce these documents when asked may result
+    in disqualification.
+  2. Damage to Property
+    Any damage caused to equipment, venue assets, or college property by an
+    individual or team will be the full responsibility of the respective team,
+    and necessary compensation must be provided.
+  3. Misconduct & Physical Altercations
+    Any involvement in physical fights, aggressive behavior, or serious
+    misconduct will result in strict action, including disqualification or
+    further penalties, as decided by the Organising Team.
+  4. Team Name Guidelines
+    Team names must be appropriate and respectful. Names that are abusive,
+    offensive, or hurt religious sentiments, individuals, or communities are
+    strictly prohibited and may lead to disqualification.
+  5. Authority of the Organising Team
+    The Organising Team reserves the right to modify, amend, or introduce
+    new rules at any time if required. All decisions made by the Organising
+    Team will be final and binding in any matter.
+  6. Prohibited Substances
+    The consumption or possession of intoxicating substances, including
+    alcohol, is strictly prohibited within the campus premises. Violation
+    will result in immediate disciplinary action.
 
-FREE FIRE MAX – Tournament Rules &
-Regulations
-These rules are aligned with official FREE FIRE MAX competitive tournament standards
-and must be strictly followed by all participants.
+  1. General Rules & Eligibility
+    ● 1.1. Game Title:
+      The official game title for this tournament is FreeFire MAX (FFM) on
+      the Mobile (iOS/Android) platform.
+    ● 1.2. Acceptance of Rules:
+      By registering, all participants agree to have read, understood, and
+      accepted these regulations.
+    ● 1.3. Eligibility:
+      All players under the age of 28.
+    ● 1.4. Team Roster:
+      ○ Teams must submit their final roster before the registration period
+        closes. Any changes after this are at the sole discretion of the
+        organizers.
+      ○ Players are not permitted to register with multiple teams or on
+        multiple accounts.
+    ● 1.5. Registration Information:
+      Every player must fill out their registration form with complete and
+      accurate information. Providing false or incorrect information can
+      lead to disqualification.
 
-1. Game & Platform
-● Game Title: Free Fire MAX (Latest Version)
-● Platform: Mobile Only
-● Match Format: Squad (4 Players)
-● Players must ensure the game is updated to the latest official version.
+  2. Tournament Format & Scoring
+    ● 2.1. Map Rotation:
+      Bermuda, Purgatory, Kalahari, Alpine, Nexetera, Solara.
+    ● 2.2. Scoring System:
+      1. Kill Points: 1 point per kill.
+      2. Placement Points:
+        ■ 1st Place (Booyah): 12 Points
+        ■ 2nd Place: 9 Points
+        ■ 3rd Place: 8 Points
+        ■ 4th Place: 7 Points
+        ■ 5th Place: 6 Points
+        ■ 6th Place: 5 Points
+        ■ 7th Place: 4 Points
+        ■ 8th Place: 3 Points
+        ■ 9th Place: 2 Points
+        ■ 10th Place: 1 Point
+    ● 2.3. Tiebreaker:
+      In the event of a tie, the winner will be determined in the following
+      order:
+        1. Total number of Booyahs.
+        2. Total kill count.
+        3. Best placement in the final match.
 
-[MORE RULES TO BE ADDED]`,
+  3. Player Conduct
+    All players must conduct themselves in a professional and fair manner
+    at all times. Failure to adhere to these conduct rules will result in
+    penalties.
+    ● 3.1. Prohibited Actions & Behavior:
+      ○ Cheating and Hacking:
+        There is a zero-tolerance policy for cheating. Using cheats, exploits,
+        bots, hacks, mods, or any unauthorized software designed to modify
+        or interfere with the game is strictly prohibited.
+      ○ Unfair Play:
+        Throwing a match, intentionally halting play, or showing a clear lack
+        of effort is a violation of conduct.
+      ○ Vulgarity and Abuse:
+        Any form of vulgarity, abuse, or dissent towards administrators,
+        spectators, or other players will not be tolerated.
+      ○ Harassment and Discrimination:
+        Abuse, bullying, harassment (including sexual/verbal), and
+        discrimination on the basis of sex, caste, race, or religion will be
+        taken with utmost seriousness.
+      ○ Impersonation:
+        Attempting to impersonate another player is strictly prohibited.
+      ○ Illegal Substances:
+        The use of alcohol, illegal drugs, or any performance-enhancing
+        drugs is strictly prohibited.
+
+  4. Penalties for Misconduct
+    ● 4.1. Right to Penalize:
+      If any of these regulations are violated, tournament organizers
+      reserve the right to impose penalties. The player(s) in question will
+      be given an opportunity to be heard before a final decision is made.
+    ● No Exploiting Bugs:
+      Intentionally using any in-game bug or glitch to gain an unfair
+      advantage is forbidden.
+    ● 4.2. Applicable Penalties:
+      ○ A formal warning or reprimand.
+      ○ Forfeiture of a game or the entire tournament.
+      ○ Disqualification of the player or the entire team from the
+        tournament.
+      ○ A ban from future tournaments hosted by the club, either
+        temporarily or permanently.
+
+  On-Site Player Conduct
+    1. Remain Seated:
+      Players must remain seated for the entire duration of a match. Getting
+      up or leaving the designated play area is not allowed. In case of a
+      critical issue or emergency, the player must raise their hand and get
+      explicit permission from a tournament moderator before leaving their
+      seat.
+    2. Screen Integrity:
+      Peeking or attempting to look at the screen or device of another team
+      is strictly forbidden and will be considered an act of cheating.
+    3. Remote Player Integrity:
+      For any player competing from a location outside the campus venue, it
+      is mandatory to have both a face/handcam recording running for the
+      entire duration of every match. These recordings must be made
+      available to the organizers upon request.
+
+  Section Z: Code of Conduct & Prohibited Actions
+    Z.1 Anti-Collusion Policy:
+      Teaming up with an opposing team or intentionally "donating" kills to
+      another team is a severe violation of competitive integrity. Any team
+      found guilty of such actions will face immediate disqualification.
+      This penalty will result in all associated teams being disqualified
+      from the tournament.`,
     bountyText: `🥇 FREE FIRE MAX – 1st Prize: From Battle to
 Breakthrough
 Winning QUANTICA FREE FIRE MAX isn’t just about Bo  oyahs and highlights —
