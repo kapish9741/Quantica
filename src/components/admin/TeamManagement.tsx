@@ -17,9 +17,13 @@ import api from "../../lib/api";
 import LoaderLeader from "../loaderleader";
 import { Event, Team } from "../../hooks/useLeaderboard"; // Reuse types
 
-const TeamManagement = () => {
+interface TeamManagementProps {
+  preSelectedEventId?: string;
+}
+
+const TeamManagement = ({ preSelectedEventId }: TeamManagementProps = {}) => {
   const [events, setEvents] = useState<Event[]>([]);
-  const [selectedEvent, setSelectedEvent] = useState<string>("");
+  const [selectedEvent, setSelectedEvent] = useState<string>(preSelectedEventId || "");
   const [teams, setTeams] = useState<Team[]>([]);
   // Participants are now included in Team object
   const [loading, setLoading] = useState(true);
@@ -31,6 +35,12 @@ const TeamManagement = () => {
   useEffect(() => {
     fetchEvents();
   }, []);
+
+  useEffect(() => {
+    if (preSelectedEventId) {
+      setSelectedEvent(preSelectedEventId);
+    }
+  }, [preSelectedEventId]);
 
   useEffect(() => {
     if (selectedEvent) {
@@ -123,23 +133,25 @@ const TeamManagement = () => {
         </button>
       </div>
 
-      <div>
-        <label className="block text-sm font-bold uppercase tracking-wider text-primary mb-2">
-          Select Event
-        </label>
-        <select
-          value={selectedEvent}
-          onChange={(e) => setSelectedEvent(e.target.value)}
-          className="w-full px-4 py-3 bg-background border-2 border-border focus:border-primary outline-none text-foreground"
-        >
-          <option value="">Choose an event...</option>
-          {events.map((event) => (
-            <option key={event.id} value={event.id}>
-              {event.name}
-            </option>
-          ))}
-        </select>
-      </div>
+      {!preSelectedEventId && (
+        <div>
+          <label className="block text-sm font-bold uppercase tracking-wider text-primary mb-2">
+            Select Event
+          </label>
+          <select
+            value={selectedEvent}
+            onChange={(e) => setSelectedEvent(e.target.value)}
+            className="w-full px-4 py-3 bg-background border-2 border-border focus:border-primary outline-none text-foreground"
+          >
+            <option value="">Choose an event...</option>
+            {events.map((event) => (
+              <option key={event.id} value={event.id}>
+                {event.name}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
 
       {showAddTeam && (
         <motion.div

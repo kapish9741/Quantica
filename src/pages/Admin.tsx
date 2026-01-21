@@ -11,7 +11,7 @@ import BracketManagement from "../components/admin/BracketManagement";
 import LoaderLeader from "@/components/loaderleader";
 
 const Admin = () => {
-  const { isAuthenticated, isLoading, login, logout } = useAdminAuth();
+  const { isAuthenticated, isLoading, login, logout, user } = useAdminAuth();
   const [activeTab, setActiveTab] = useState("teams");
 
   if (isLoading) {
@@ -77,15 +77,15 @@ const Admin = () => {
             </TabsList>
 
             <TabsContent value="teams" className="bg-card border-2 border-border p-6 mt-6">
-              <TeamManagement />
+              <TeamManagement preSelectedEventId={user?.managedEventId} />
             </TabsContent>
 
             <TabsContent value="scoring" className="bg-card border-2 border-border p-6 mt-6">
-              <MatchScoring />
+              <MatchScoring preSelectedEventId={user?.managedEventId} />
             </TabsContent>
 
             <TabsContent value="brackets" className="bg-card border-2 border-border p-6 mt-6">
-              <BracketManagement />
+              <BracketManagement preSelectedEventId={user?.managedEventId} />
             </TabsContent>
           </Tabs>
         </div>
