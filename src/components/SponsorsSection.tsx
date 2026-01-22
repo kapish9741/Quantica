@@ -29,6 +29,12 @@ const sponsors = [
 		link: "https://unstop.com",
 		className: "scale-80",
 	},
+	{
+		name: "Inglu",
+		logo: "https://i0.wp.com/ingluglobal.in/wp-content/uploads/2024/02/Untitled-1.png?w=1200&ssl=1",
+		link: "https://ingluglobal.in/",
+		className: "scale-80",
+	},
 	// {
 	// 	name: "ASUS",
 	// 	logo: "https://upload.wikimedia.org/wikipedia/commons/2/2e/ASUS_Logo.svg",
