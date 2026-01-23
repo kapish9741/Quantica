@@ -336,7 +336,8 @@ const MatchScoring = ({ preSelectedEventId }: MatchScoringProps = {}) => {
           </label>
           <select
             value={selectedEvent}
-            onChange={(e) => setSelectedEvent(e.target.value)}
+            onChange={(e) => handleEventChange(e.target.value)}
+
             className="w-full px-4 py-3 bg-background border-2 border-border focus:border-primary outline-none text-foreground"
           >
             <option value="">Choose an event...</option>

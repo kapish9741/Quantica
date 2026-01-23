@@ -15,7 +15,7 @@ const feedbacks = [
   {
     id: 2,
     name: "Ritik Yadav",
-    role: "Free Fire Player",
+    role: "EAFC Esports PRO",
     // image: "https://static.wikia.nocookie.net/liquipedia_game_wiki/images/4/4e/Scout.jpg",
     content: "Prize pool distribution is transparent. Best platform for aspiring pros.",
     rating: 5,

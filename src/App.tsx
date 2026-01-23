@@ -42,8 +42,8 @@ const AnimatedRoutes = () => {
         <Route path="/events/:slug" element={<EventDetail />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        {/* <Route path="/result" element={<Leaderboard />} />
-        <Route path="/admin" element={<Admin />} /> */}
+        <Route path="/result" element={<Leaderboard />} />
+        <Route path="/admin" element={<Admin />} />
         <Route path="/play-arena" element={<PlayArena />} />
 
         {/* CA Portal Routes */}

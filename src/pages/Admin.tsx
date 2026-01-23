@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import api from "../lib/api";
 import { useAdminAuth } from "../hooks/useAdminAuth";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
 import { LogOut, Users, Target, Trophy } from "lucide-react";
@@ -13,6 +14,31 @@ import LoaderLeader from "@/components/loaderleader";
 const Admin = () => {
   const { isAuthenticated, isLoading, login, logout, user } = useAdminAuth();
   const [activeTab, setActiveTab] = useState("teams");
+  const [managedGameName, setManagedGameName] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchGameDetails = async () => {
+      if (user?.managedEventId) {
+        try {
+          const { data } = await api.get('/events');
+          const event = data.find((e: any) => e.id === user.managedEventId);
+          if (event) {
+            setManagedGameName(event.name);
+          }
+        } catch (error) {
+          console.error("Failed to fetch game details", error);
+        }
+      }
+    };
+
+    if (isAuthenticated) {
+      if (user?.managedEventId) {
+        fetchGameDetails();
+      } else {
+        setManagedGameName("ADMIN");
+      }
+    }
+  }, [isAuthenticated, user?.managedEventId]);
 
   if (isLoading) {
     return (
@@ -40,6 +66,11 @@ const Admin = () => {
               </h1>
               <p className="text-muted-foreground flex items-center gap-2">
                 Manage leaderboard system
+                {managedGameName && (
+                  <span className="ml-2 px-3 py-1 bg-primary/20 border border-primary text-primary rounded text-sm font-bold uppercase">
+                    {managedGameName}
+                  </span>
+                )}
               </p>
             </div>
             <button
@@ -52,28 +83,34 @@ const Admin = () => {
           </div>
 
           <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-8">
-            <TabsList className="bg-card border-2 border-border grid grid-cols-3 gap-2">
+            <TabsList className="bg-card border-2 border-border flex w-full gap-2">
               <TabsTrigger
                 value="teams"
-                className="flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-3"
+                className="flex-1 flex items-center justify-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-3"
               >
                 <Users className="w-5 h-5" />
                 <span className="hidden md:inline">Teams</span>
               </TabsTrigger>
-              <TabsTrigger
-                value="scoring"
-                className="flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-3"
-              >
-                <Target className="w-5 h-5" />
-                <span className="hidden md:inline">Scoring</span>
-              </TabsTrigger>
-              <TabsTrigger
-                value="brackets"
-                className="flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-3"
-              >
-                <Trophy className="w-5 h-5" />
-                <span className="hidden md:inline">Brackets</span>
-              </TabsTrigger>
+
+              {(user?.role === 'admin' && !user.managedEventId) || (user?.email.includes('bgmi') || user?.email.includes('freefire')) ? (
+                <TabsTrigger
+                  value="scoring"
+                  className="flex-1 flex items-center justify-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-3"
+                >
+                  <Target className="w-5 h-5" />
+                  <span className="hidden md:inline">Scoring</span>
+                </TabsTrigger>
+              ) : null}
+
+              {(user?.role === 'admin' && !user.managedEventId) || !(user?.email.includes('bgmi') || user?.email.includes('freefire')) ? (
+                <TabsTrigger
+                  value="brackets"
+                  className="flex-1 flex items-center justify-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-3"
+                >
+                  <Trophy className="w-5 h-5" />
+                  <span className="hidden md:inline">Brackets</span>
+                </TabsTrigger>
+              ) : null}
             </TabsList>
 
             <TabsContent value="teams" className="bg-card border-2 border-border p-6 mt-6">

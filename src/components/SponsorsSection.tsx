@@ -33,7 +33,7 @@ const sponsors = [
 		name: "Inglu",
 		logo: "https://i0.wp.com/ingluglobal.in/wp-content/uploads/2024/02/Untitled-1.png?w=1200&ssl=1",
 		link: "https://ingluglobal.in/",
-		className: "scale-80",
+		className: "scale-120",
 	},
 	// {
 	// 	name: "ASUS",
@@ -64,6 +64,12 @@ const sponsors = [
 		logo: "https://metanovaesports.com/wp-content/uploads/2025/12/New-Project-2.png",
 		link: "https://metanovaesports.com/",
 		className: "scale-150",
+	},
+	{
+		name: "Eve Paper",
+		logo: "https://evepaper.com/wp-content/uploads/2026/01/EvePaper_Logo_White-removebg-e1769027876216.png",
+		link: "https://evepaper.com/",
+		className: "scale-100 brightness-0 invert",
 	},
 	// {
 	// 	name: "PlayStation",
@@ -110,12 +116,9 @@ const SponsorsSection = () => {
 					viewport={{ once: true }}
 					className="text-center"
 				>
-					<p className="text-secondary uppercase tracking-[0.3em] text-sm mb-4">
-						Powered By
-					</p>
 					<h2 className="text-3xl md:text-4xl font-bold text-foreground">
 						OUR{" "}
-						<span className="text-primary">SPONSORS</span>
+						<span className="text-primary">PARTNERS</span>
 					</h2>
 				</motion.div>
 			</div>
