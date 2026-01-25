@@ -339,6 +339,19 @@
   .no-spinner {
     -moz-appearance: textfield;
   }
+
+  /* Gradient animation utilities */
+  .bg-size-200 {
+    background-size: 200% 100%;
+  }
+
+  .bg-pos-0 {
+    background-position: 0% 0%;
+  }
+
+  .hover\:bg-pos-100:hover {
+    background-position: 100% 0%;
+  }
 }
 @keyframes glitch-skew {
   0% {

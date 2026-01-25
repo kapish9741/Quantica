@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
@@ -11,6 +12,7 @@ import LiveStreamSection from "../components/LiveStreamSection";
 import PastTournaments from "@/components/PastTournaments";
 import FeedbackSection from "@/components/FeedbackSection";
 import InfiniteGallery from "@/components/InfiniteGallery";
+import ExpandableCardDemo from "@/components/expandable-card-demo-grid";
 import {
   Carousel,
   CarouselContent,
@@ -27,6 +29,8 @@ const stats = [
   { value: "10+", label: "Events" },
 ];
 const Index = () => {
+  const [isHovering, setIsHovering] = useState(false);
+  
   return (
     <PageTransition>
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-20">
@@ -127,7 +131,7 @@ const Index = () => {
         <div className="hidden sm:block absolute bottom-24 right-8 w-24 h-24 border-r-2 border-b-2 border-primary/30" />
       </section>
       <section className="bg-primary py-4 overflow-hidden">
-        <div className="animate-marquee-fast animate-marquee md:animate-marquee whitespace-nowrap flex">
+        <div className="animate-marquee-fast md:animate-marquee whitespace-nowrap flex">
           {[...Array(20)].map((_, i) => (
             <span
               key={i}
@@ -161,6 +165,118 @@ const Index = () => {
           </div>
         </div>
       </section>
+      
+      <section className="relative bg-gradient-to-b from-card to-background overflow-hidden">
+        <div className="absolute inset-0 grid-bg opacity-5" />
+          <div className="container mx-auto px-4 relative z-10">
+          <div
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-8"
+            >
+              <motion.button
+                whileHover={{ scale: 1.05, skewX: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="group relative inline-flex items-center justify-center px-10 py-4 text-lg font-bold overflow-hidden bg-secondary bg-size-100 bg-pos-0 hover:bg-pos-100 transition-all duration-500 shadow-lg hover:shadow-2xl hover:shadow-primary/20"
+                style={{
+                  clipPath: "polygon(4% 0%, 100% 0%, 96% 100%, 0% 100%)",
+                  transform: "skewX(-3deg)",
+                }}
+              >
+                <span className="relative z-10 text-primary-foreground uppercase tracking-[0.3em] flex items-center gap-3" style={{ transform: "skewX(3deg)" }}>
+                  <GlitchText text="See What's On" />
+                </span>
+                
+                <motion.div
+                  className="absolute inset-0 opacity-20"
+                  animate={{
+                    backgroundPosition: isHovering ? ["0% 0%", "0% 100%"] : "0% 0%",
+                  }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                  style={{
+                    background: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.1) 2px, rgba(255,255,255,0.1) 4px)",
+                    backgroundSize: "100% 4px",
+                  }}
+                />
+                
+                {/* Corner accent lines */}
+                <div className="absolute top-0 left-4 w-12 h-0.5 bg-primary/50" />
+                <div className="absolute bottom-0 right-4 w-12 h-0.5 bg-primary/50" />
+                <div className="absolute top-0 left-0 w-0.5 h-8 bg-primary/50" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%)" }} />
+                <div className="absolute bottom-0 right-0 w-0.5 h-8 bg-primary/50" style={{ clipPath: "polygon(0 0, 100% 100%, 0 100%)" }} />
+              </motion.button>
+              
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: isHovering ? 1 : 0.6 }}
+                transition={{ duration: 0.3 }}
+                className="mt-4 text-sm text-muted-foreground uppercase tracking-widest"
+              >
+                {isHovering ? "Live Beats. Electric Nights. Real Energy." : "Hover. Unlock the Next Drop."}
+              </motion.p>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, height: 0, marginTop: 0 }}
+              animate={{ 
+                opacity: isHovering ? 1 : 0,
+                height: isHovering ? "auto" : 0,
+                marginTop: isHovering ? 48 : 0,
+              }}
+              transition={{ 
+                duration: 0.5,
+                ease: [0.4, 0, 0.2, 1],
+              }}
+              className="overflow-hidden"
+            >
+            <motion.div
+              initial={{ y: 20, scale: 0.95 }}
+              animate={{ 
+                y: isHovering ? 0 : 20,
+                scale: isHovering ? 1 : 0.95,
+              }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="relative"
+            >
+              {/* Glassmorphism container */}
+              <div className="relative backdrop-blur-xl bg-background/40 border border-primary/20 rounded-3xl p-8 shadow-2xl">
+                {/* Animated gradient border */}
+                <motion.div
+                  className="absolute inset-0 rounded-3xl opacity-50"
+                  animate={{
+                    background: isHovering
+                      ? [
+                          "linear-gradient(45deg, transparent, rgba(var(--primary-rgb, 59, 130, 246), 0.3), transparent)",
+                          "linear-gradient(90deg, transparent, rgba(var(--secondary-rgb, 168, 85, 247), 0.3), transparent)",
+                          "linear-gradient(135deg, transparent, rgba(var(--primary-rgb, 59, 130, 246), 0.3), transparent)",
+                        ]
+                      : "linear-gradient(45deg, transparent, transparent, transparent)"
+                  }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                  style={{ pointerEvents: "none" }}
+                />
+                
+                {/* Corner accents */}
+                <div className="absolute top-0 left-0 w-20 h-20 border-l-2 border-t-2 border-primary rounded-tl-3xl" />
+                <div className="absolute top-0 right-0 w-20 h-20 border-r-2 border-t-2 border-secondary rounded-tr-3xl" />
+                <div className="absolute bottom-0 left-0 w-20 h-20 border-l-2 border-b-2 border-secondary rounded-bl-3xl" />
+                <div className="absolute bottom-0 right-0 w-20 h-20 border-r-2 border-b-2 border-primary rounded-br-3xl" />
+                
+                <div className="relative z-10">
+                  <ExpandableCardDemo />
+                </div>
+              </div>
+            </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+      
       <section className="py-24 relative" id="tournaments">
         <div className="absolute inset-0 grid-bg opacity-10" />
         <div className="container mx-auto px-4 relative z-10">
