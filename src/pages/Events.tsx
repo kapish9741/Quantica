@@ -21,7 +21,7 @@ type MiniGameLite = {
 const miniGames: MiniGameLite[] = [
   {
     title: "Super Mario Bros",
-    image: "/mario-8bit.png",
+    image: "/mario-8bit.png",g
     slug: "mario-bros",
   },
   // {
