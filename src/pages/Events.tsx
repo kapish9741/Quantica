@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Calendar, Users, Trophy, MapPin, X } from "lucide-react";
 import PageTransition from "../components/PageTransition";
 import EventCard from "../components/EventCard";
+import ExpandableCardDemo from "@/components/ui/expandable-card-demo-grid";
 import GlitchText from "@/components/GlitchText";
 import { events as allEvents } from "@/data/events";
 import { useRef, useState, useLayoutEffect, useEffect } from "react";
@@ -321,6 +322,17 @@ const Events = () => {
         </div>
       </section>
 
+      {/* Exclusive Events */}
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 matrix-bg opacity-30 pointer-events-none" />
+        <div className="container mx-auto px-4 relative z-10">
+          <h2 className="text-center text-4xl md:text-6xl font-bold text-foreground mb-12 font-play tracking-wider">
+            EXCLUSIVE <span className="text-primary">EVENTS</span>
+          </h2>
+          <ExpandableCardDemo />
+        </div>
+      </section>
+
       {/* Mini Games */}
       <section>
         <div className="container mx-auto px-4">
@@ -382,7 +394,7 @@ const Events = () => {
           </motion.div>
         </div>
       </section>
-    </PageTransition>
+    </PageTransition >
   );
 };
 export default Events;

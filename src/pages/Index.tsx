@@ -292,6 +292,7 @@ const Index = () => {
             <h2 className="text-4xl md:text-5xl font-bold text-foreground">
               CHOOSE YOUR <span className="text-secondary text-[28px] mt-8 md:text-[48px]">BATTLEFIELD</span>
             </h2>
+
           </motion.div>
           <Carousel
             opts={{
@@ -411,6 +412,8 @@ const Index = () => {
           </motion.div>
         </div>
       </section>
+
+
     </PageTransition>
   );
 };

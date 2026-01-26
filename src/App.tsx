@@ -63,6 +63,7 @@ const AnimatedRoutes = () => {
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
     if (isLoading) {
       document.body.style.overflow = "hidden";
@@ -70,6 +71,7 @@ const App = () => {
       document.body.style.overflow = "unset";
     }
   }, [isLoading]);
+
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -78,6 +80,7 @@ const App = () => {
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
