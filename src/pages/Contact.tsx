@@ -241,7 +241,7 @@ const Contact = () => {
               Fill out the feedback form below and we'll get back to you as soon as possible.
             </p>
             <a href="https://forms.gle/1etR6SeTA9njygFb8" target="_blank" rel="noopener noreferrer">
-              <button type="submit" className="cyber-btn w-[100] flex w-full items-center justify-center gap-2">
+              <button type="submit" className="cyber-btn flex w-full items-center justify-center gap-2">
                 <Send size={18} />
                 Submit Form
               </button>

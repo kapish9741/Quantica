@@ -224,7 +224,7 @@ const PlayArena = () => {
                     placeholder="SEARCH GAMES..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full bg-black/20 border-2 border-muted focus:border-primary text-primary px-4 pl-9 py-3 text-xs w-full transition-colors outline-none font-bold"
+                    className="bg-black/20 border-2 border-muted focus:border-primary text-primary px-4 pl-9 py-3 text-xs w-full transition-colors outline-none font-bold"
                     style={{ fontFamily: "'Press Start 2P', monospace" }}
                   />
                   <div className="absolute inset-0 border-2 border-primary/20 pointer-events-none group-hover:border-primary/40 transition-colors" />
