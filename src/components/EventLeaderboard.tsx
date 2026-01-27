@@ -71,17 +71,18 @@ const EventLeaderboard = ({ eventSlug, eventName }: EventLeaderboardProps) => {
             <th className="py-2 px-2 md:py-4 md:px-4 text-left text-primary uppercase tracking-wider text-xs md:text-sm">
               Team
             </th>
-            <th className="py-2 px-2 md:py-4 md:px-4 text-center text-primary uppercase tracking-wider text-xs md:text-sm">
-              Pts
-            </th>
             <th className="py-2 px-2 md:py-4 md:px-4 text-center text-primary uppercase tracking-wider text-xs md:text-sm hidden sm:table-cell">
               Wins
             </th>
             <th className="py-2 px-2 md:py-4 md:px-4 text-center text-primary uppercase tracking-wider text-xs md:text-sm hidden sm:table-cell">
               Kills
             </th>
+            <th className="py-2 px-2 md:py-4 md:px-4 text-center text-primary uppercase tracking-wider text-xs md:text-sm">
+              Pts
+            </th>
           </tr>
         </thead>
+        
         <tbody>
           {teams.map((team, index) => {
             const currentRank = team.rank || index + 1;
@@ -91,7 +92,12 @@ const EventLeaderboard = ({ eventSlug, eventName }: EventLeaderboardProps) => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.05 }}
-                className={`border-b border-border/50 hover:bg-card/50 transition-colors ${currentRank <= 3 ? "bg-card/30" : ""
+                className={`border-b border-border/50 hover:bg-card/50 transition-colors ${
+                  (eventName.toLowerCase().includes('bgmi') || eventName.toLowerCase().includes('free fire')) && currentRank <= 4
+                    ? "bg-green-500/10 border-l-4 border-l-green-500" 
+                    : currentRank <= 3 
+                      ? "bg-card/30" 
+                      : ""
                   }`}
               >
                 <td className="py-2 px-2 md:py-4 md:px-4">
@@ -111,27 +117,20 @@ const EventLeaderboard = ({ eventSlug, eventName }: EventLeaderboardProps) => {
                     )}
                   </div>
                 </td>
-                <td className="py-2 px-2 md:py-4 md:px-4 text-center font-bold text-secondary text-base md:text-lg">
-                  {team.totalPoints}
-                </td>
                 <td className="py-2 px-2 md:py-4 md:px-4 text-center text-muted-foreground hidden sm:table-cell text-sm md:text-base">
                   {team.wins}
                 </td>
                 <td className="py-2 px-2 md:py-4 md:px-4 text-center text-muted-foreground hidden sm:table-cell text-sm md:text-base">
                   {team.totalKills}
                 </td>
+                <td className="py-2 px-2 md:py-4 md:px-4 text-center font-bold text-secondary text-base md:text-lg">
+                  {team.totalPoints}
+                </td>
               </motion.tr>
             );
           })}
         </tbody>
       </table>
-
-      <div className="mt-4 p-4 bg-card/30 border border-border/50 rounded">
-        <p className="text-xs text-muted-foreground text-center">
-          <span className="inline-block w-2 h-2 bg-green-400 rounded-full mr-2 mb-[2px] animate-pulse"></span>
-          Live updates enabled - Leaderboard refreshes automatically
-        </p>
-      </div>
     </motion.div>
   );
 };
