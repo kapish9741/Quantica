@@ -138,7 +138,7 @@ const TournamentBracket = ({ eventSlug, isEditable = false, onMatchUpdate, onTea
     return (
         <div className="w-full overflow-x-auto p-4 custom-scrollbar">
             {eventData?.status === 'ongoing' && !isEditable && (
-                <div className="bg-red-500/10 border border-red-500/20 text-red-500 p-2 text-center text-xs font-bold uppercase tracking-widest animate-pulse mx-4 mt-4 rounded mb-8 w-fit mx-auto">
+                <div className="bg-red-500/10 border border-red-500/20 text-red-500 p-2 text-center text-xs font-bold uppercase tracking-widest animate-pulse mt-4 rounded mb-8 w-fit mx-auto">
                     ● Event is Live
                 </div>
             )}
