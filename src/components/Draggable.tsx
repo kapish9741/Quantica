@@ -8,42 +8,42 @@ export function DraggableCardDemo() {
   const items = [
     {
       title: "Excellence",
-      image: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1767977877/E-sports_DSC09749_nhemcg.jpg",
+      image: "https://ik.imagekit.io/vdigjljlu/Aaryan%20Barthwal%20Aug%2030%202025.jpg?updatedAt=1769276670077",
     },
     {
       title: "Community",
       image:
-        "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1767973388/WhatsApp_Image_2026-01-09_at_16.55.36_gffopg.jpg",
+        "https://ik.imagekit.io/vdigjljlu/Aaryan%20Barthwal%20Aug%2030%202025%20(1).jpg?updatedAt=1769276693087",
     },
     {
       title: "Competition",
       image:
-        "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1767969917/Screenshot_2026-01-09_at_7.19.05_PM_eeqkoy.png",
+        "https://ik.imagekit.io/vdigjljlu/Screenshot%202026-01-09%20at%207.20.10%E2%80%AFPM.png?updatedAt=1769411913176",
     },
     {
       title: "Innovation",
       image:
-        "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1767969919/Screenshot_2026-01-09_at_7.20.29_PM_jyqzfd.png",
+        "https://ik.imagekit.io/vdigjljlu/Screenshot%202026-01-09%20at%207.20.29%E2%80%AFPM.png?updatedAt=1769411914324",
     },
     {
       title: "Gaming",
       image:
-        "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1767976985/Aaryan_Barthwal_Aug_30_2025_2_uytioq.jpg",
+        "https://ik.imagekit.io/vdigjljlu/20250830_115438.jpg?updatedAt=1769276686027",
     },
     {
       title: "Fair Play",
       image:
-        "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1767974506/WhatsApp_Image_2026-01-09_at_16.55.35_m6hwta.jpg",
+        "https://ik.imagekit.io/vdigjljlu/Aaryan%20Barthwal%20Aug%2030%202025%20(2).jpg?updatedAt=1769276665991",
     },
     {
       title: "Integrity",
       image:
-        "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1767969918/Screenshot_2026-01-09_at_7.18.00_PM_jamzso.png",
+        "https://ik.imagekit.io/vdigjljlu/Screenshot%202026-01-09%20at%209.54.14%E2%80%AFPM.png?updatedAt=1769411871209",
     },
     {
       title: "Transparency",
       image:
-        "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1767969916/Screenshot_2026-01-09_at_1.19.09_PM_mefufa.png",
+        "https://ik.imagekit.io/vdigjljlu/Camera%20Photo%20DSC09751.JPG?updatedAt=1769276694916",
     },
   ];
 

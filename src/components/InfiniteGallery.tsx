@@ -3,72 +3,72 @@ import { useState, useRef, useEffect } from "react";
 
 const galleryImages = [
   {
-    src: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1767974506/WhatsApp_Image_2026-01-09_at_16.55.35_m6hwta.jpg",
+    src: "https://ik.imagekit.io/vdigjljlu/Screenshot%202026-01-09%20at%207.19.05%E2%80%AFPM.png?updatedAt=1769411914278",
     title: "BGMI Championship Finals",
     category: "Tournament",
   },
   {
-    src: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1767973389/WhatsApp_Image_2026-01-09_at_16.55.37_p1o7ol.jpg",
+    src: "https://ik.imagekit.io/vdigjljlu/Screenshot%202026-01-09%20at%207.20.29%E2%80%AFPM.png?updatedAt=1769411914324",
     title: "Sudden Showdown",
     category: "Tournament",
   },
   {
-    src: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1767973327/Screenshot_2026-01-09_at_9.05.31_PM_qo2pcy.png",
+    src: "https://ik.imagekit.io/vdigjljlu/Screenshot%202026-01-09%20at%208.59.46%E2%80%AFPM.png?updatedAt=1769411879928",
     title: "Live Music Shows",
     category: "Events",
   },
   {
-    src: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1767973389/WhatsApp_Image_2026-01-09_at_16.55.38_xjuefk.jpg",
+    src: "https://ik.imagekit.io/vdigjljlu/Screenshot%202026-01-09%20at%209.05.31%E2%80%AFPM.png?updatedAt=1769411887253",
     title: "DJ Performance",
     category: "Events",
   },
   {
-    src: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1767969920/Screenshot_2026-01-09_at_7.20.59_PM_hv0pty.png",
+    src: "https://ik.imagekit.io/vdigjljlu/Screenshot%202026-01-09%20at%207.18.00%E2%80%AFPM.png?updatedAt=1769411910700",
     title: "Redbull Sponsorship",
     category: "Sponsorship",
   },
   {
-    src: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1767969919/Screenshot_2026-01-09_at_7.20.29_PM_jyqzfd.png",
+    src: "https://ik.imagekit.io/vdigjljlu/Screenshot%202026-01-09%20at%207.19.54%E2%80%AFPM.png?updatedAt=1769411899434",
     title: "Team Work",
     category: "Community",
   },
   {
-    src: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1767969917/Screenshot_2026-01-09_at_7.19.05_PM_eeqkoy.png",
+    src: "https://ik.imagekit.io/vdigjljlu/Screenshot%202026-01-09%20at%207.20.10%E2%80%AFPM.png?updatedAt=1769411913176",
     title: "Intense Gameplay",
     category: "Tournament",
   },
   {
-    src: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1767969918/Screenshot_2026-01-09_at_7.18.00_PM_jamzso.png",
+    src: "https://ik.imagekit.io/vdigjljlu/Screenshot%202026-01-09%20at%207.20.59%E2%80%AFPM.png?updatedAt=1769411910175",
     title: "Caffeinated Players",
     category: "Production",
   },
   {
-    src: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1767969916/Screenshot_2026-01-09_at_7.18.44_PM_caxmwt.png",
+    src: "https://ik.imagekit.io/vdigjljlu/WhatsApp%20Image%202026-01-09%20at%2016.55.36.jpeg?updatedAt=1769276560688",
     title: "Pro Players",
     category: "Tournament",
   },
   {
-    src: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1767973316/Screenshot_2026-01-09_at_9.02.22_PM_vjl86g.png",
+    src: "https://ik.imagekit.io/vdigjljlu/Screenshot%202026-01-09%20at%209.02.22%E2%80%AFPM.png?updatedAt=1769411855253",
     title: "Gaurav Kapoor Live",
     category: "Events",
   },
   {
-    src: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1767969917/Screenshot_2026-01-09_at_7.19.54_PM_wjgkxn.png",
-    title: "Strategic Timeout",
-    category: "Strategy",
+    src: "https://ik.imagekit.io/vdigjljlu/Camera%20Photo%20DSC09696.JPG?updatedAt=1769276695006",
+    title: "Intense Gameplay",
+    category: "Gaming",
   },
   {
-    src: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1767973388/WhatsApp_Image_2026-01-09_at_16.55.33_qa9qpk.jpg",
+    src: "https://ik.imagekit.io/vdigjljlu/WhatsApp%20Image%202026-01-09%20at%2016.55.33.jpeg?updatedAt=1769276561120",
     title: "Moments You’ll Carry Forever",
     category: "Events",
   },
   {
-    src: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1767973316/Screenshot_2026-01-09_at_8.58.59_PM_vojjgg.png",
+    src: "https://ik.imagekit.io/vdigjljlu/Screenshot%202026-01-09%20at%208.58.59%E2%80%AFPM.png?updatedAt=1769411867926",
     title: "Vibe Session",
     category: "Events",
   },
   {
-    src: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1767973316/Screenshot_2026-01-09_at_8.59.46_PM_d5e7wn.png",
+    src: "https://ik.imagekit.io/vdigjljlu/WhatsApp%20Image%202026-01-09%20at%2016.55.38.jpeg?updatedAt=1769276561299",
     title: "Rhythm Live",
     category: "Events",
   },

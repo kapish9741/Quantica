@@ -9,28 +9,28 @@ const coreTeam = [
   {
     name: "Deepanshu Chaudhary",
     role: "Founder",
-    image: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1768044124/IMG_9480_bdbhb9.jpg",
+    image: "https://ik.imagekit.io/vdigjljlu/IMG_9480.JPG",
     linkedin: "https://www.linkedin.com/in/deepanshu-chaudhary17/",
     email: "deepanshu.chaudhary2024@nst.rishihood.edu.in",
   },
   {
     name: "Sarabjeet singh",
     role: "Tournament Director",
-    image: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1768042995/Image_Converter_Output_u6ovyq.png",
+    image: "https://ik.imagekit.io/vdigjljlu/Image%20Converter%20Output.png",
     linkedin: "https://www.linkedin.com/in/sarabjeet-singh-0695a8310/",
     email: "sarabjeet.singh2024@nst.rishihood.edu.in",
   },
   {
     name: "Somil Thakur",
-    role: "Marketing Head",
-    image: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1768042608/IMG_2138_s3t05c.jpg",
+    role: "Operations Head",
+    image: "https://ik.imagekit.io/vdigjljlu/IMG_2138.JPG",
     linkedin: "https://www.linkedin.com/in/somil-thakur-682817323/",
     email: "somil.thakur2024@makers.rishihood.edu.in",
   },
   {
     name: "Kapish Rohilla",
     role: "Technical Lead",
-    image: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1768042237/Screenshot_2026-01-10_at_4.16.14_PM_kgcctf.png",
+    image: "https://ik.imagekit.io/vdigjljlu/Screenshot%202026-01-10%20at%204.16.14%E2%80%AFPM.png?updatedAt=1769411838200",
     // image: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1768044091/Screenshot_2026-01-10_at_4.50.48_PM_dng2eg.png",
     linkedin: "https://www.linkedin.com/in/kapishrohilla/",
     email: "kapish.rohilla2024@nst.rishihood.edu.in",
@@ -38,28 +38,28 @@ const coreTeam = [
   {
     name: "Neelanshu karn",
     role: "Sponsorship Head",
-    image: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1768198438/WhatsApp_Image_2026-01-12_at_00.52.58_p23jjf.jpg",
+    image: "https://ik.imagekit.io/vdigjljlu/WhatsApp%20Image%202026-01-12%20at%2000.52.58.jpeg",
     linkedin: "https://www.linkedin.com/in/neelanshu-karn-05146130a/",
     email: "neelanshu.2024@nst.rishihood.edu.in",
   },
   {
-    name: "Saumya Verma",
+    name: "Anindya Sarkar",
     role: "Outreach Head",
-    image: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1768043928/IMG_0272_vf1xci.jpg",
-    linkedin: "https://www.linkedin.com/in/saumya-verma-bab439365/",
-    email: "saumya.v25413@nst.rishihood.edu.in",
+    image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768237644/Picture_-_Anindya_Sarkar_y1ol4o.jpg",
+    linkedin: "https://www.linkedin.com/in/anindya-sarkar2007/",
+    email: "anindya.s25058@nst.rishihood.edu.in",
   },
   {
     name: "Kaustubh Singh",
     role: "Design Lead",
-    image: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1768042241/WhatsApp_Image_2026-01-10_at_16.16.49_qyfd44.jpg",
+    image: "https://ik.imagekit.io/vdigjljlu/WhatsApp%20Image%202026-01-10%20at%2016.16.49.jpeg",
     linkedin: "https://www.linkedin.com/in/ikaustubhsingh/",
     email: "kaustubh.s25008@design.rishihood.edu.in",
   },
   {
     name: "Kushagra Maheshwari",
     role: "Content Lead",
-    image: "https://res.cloudinary.com/dxo4ulvnf/image/upload/v1768198235/WhatsApp_Image_Jan_12_2026_from_Kushagra_Maheshwari_kfqxkg.jpg",
+    image: "https://ik.imagekit.io/vdigjljlu/WhatsApp%20Image%20Jan%2012%202026%20from%20Kushagra%20Maheshwari.jpeg",
     linkedin: "https://www.linkedin.com/in/kushm11/",
     email: "kushagra.maheshwari2024@nst.rishihood.edu.in",
   },
@@ -118,6 +118,13 @@ const additionalTeams = [
     subtitle: "Partnerships That Win Games.",
     members: [
       {
+        name: "Anshika Srivastava",
+        role: "Sponsorship Team",
+        image: "https://ik.imagekit.io/vdigjljlu/WhatsApp%20Image%202026-01-22%20at%2016.52.24.jpeg",
+        linkedin: "https://www.linkedin.com/in/anshika-srivastava-b5a046356/",
+        email: "anshika.s25071@nst.rishihood.edu.in",
+      },
+      {
         name: "Keshav Goel",
         role: "Sponsorship Team",
         image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768237642/IMG_20241006_195320_-_Keshav_Goel_kuyxv0.jpg",
@@ -145,13 +152,6 @@ const additionalTeams = [
     subtitle: "Ping Sent. Connection Made.",
     members: [
       {
-        name: "Anindya Sarkar",
-        role: "Outreach Team",
-        image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768237644/Picture_-_Anindya_Sarkar_y1ol4o.jpg",
-        linkedin: "https://www.linkedin.com/in/anindya-sarkar2007/",
-        email: "anindya.s25058@nst.rishihood.edu.in",
-      },
-      {
         name: "Dhaval sethi",
         role: "Outreach Team",
         image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768237641/20251201_004223_-_Dhaval_Sethi_d1guoj.jpg",
@@ -159,25 +159,11 @@ const additionalTeams = [
         email: "dhaval.s25141@nst.rishihood.edu.in",
       },
       {
-        name: "Garvit Gandhi",
-        role: "Outreach Team",
-        image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768238614/dc8d3997-de7e-40d9-b577-ca36b6cea119_-_Garvit_Gandhi_p1vhxl.jpg",
-        linkedin: "http://www.linkedin.com/in/garvit-gandhi-26321a362",
-        email: "garvit.g25166@nst.rishihood.edu.in",
-      },
-      {
         name: "Ansh singh",
         role: "Outreach Team",
         image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768237646/Screenshot_2026-01-12-11-32-02-59_92460851df6f172a4592fca41cc2d2e6_-_Ansh_Singh_kp5f2n.jpg",
         linkedin: "https://www.linkedin.com/in/ansh-singh-nst",
         email: "ansh.s25070@nst.rishihood.edu.in",
-      },
-      {
-        name: "Manya Juneja",
-        role: "Outreach Team",
-        image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768450643/IMG_0770_-_Manya_Juneja_uqmoxc.jpg",
-        linkedin: "https://www.linkedin.com/in/manya-juneja-671a23342/",
-        email: "manya.j25691@nst.rishihood.edu.in",
       },
     ],
   },
@@ -199,13 +185,13 @@ const additionalTeams = [
         linkedin: "https://www.linkedin.com/in/alok-rawat-1698172aa/",
         email: "alok.r25012@csds.rishihood.edu.in",
       },
-      {
-        name: "Lakshay Chaudhary",
-        role: "Marketing Team",
-        image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768237645/IMG_20251212_182736_-_Lakshay_Chaudhary_uhohoh.jpg",
-        linkedin: "/",
-        email: "lakshay.c25623@nst.rishihood.edu.in",
-      },
+      // {
+      //   name: "Lakshay Chaudhary",
+      //   role: "Marketing Team",
+      //   image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768237645/IMG_20251212_182736_-_Lakshay_Chaudhary_uhohoh.jpg",
+      //   linkedin: "/",
+      //   email: "lakshay.c25623@nst.rishihood.edu.in",
+      // },
       {
         name: "Parth Mittal",
         role: "Marketing Team",
@@ -213,20 +199,13 @@ const additionalTeams = [
         linkedin: "https://www.linkedin.com/in/parth-mittal-159228371/",
         email: "parth.m25657@nst.rishihood.edu.in",
       },
-      {
-        name: "Krishna Agarwal",
-        role: "Marketing Team",
-        image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768237642/IMG_3337_-_Krishna_Agarwal_yivrtu.png",
-        linkedin: "https://www.linkedin.com/in/krishna-agarwal-1a963626b/",
-        email: "krishna.a25010@design.rishihood.edu.in",
-      },
-      {
-        name: "Sneha Rawat",
-        role: "Marketing Team",
-        image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768239223/48240D19-7A60-4372-BEE0-58BF9751600F_1_201_a_-_Sneha_Rawat_gxqb3u.jpg",
-        linkedin: "https://www.linkedin.com/in/sneha-rawat-74093535a/",
-        email: "sneha.r25034@design.rishihood.edu.in",
-      },
+      // {
+      //   name: "Krishna Agarwal",
+      //   role: "Marketing Team",
+      //   image: "https://res.cloudinary.com/dqh5g2nmn/image/upload/v1768237642/IMG_3337_-_Krishna_Agarwal_yivrtu.png",
+      //   linkedin: "https://www.linkedin.com/in/krishna-agarwal-1a963626b/",
+      //   email: "krishna.a25010@design.rishihood.edu.in",
+      // },
       {
         name: "Saurav Singh",
         role: "Marketing Team",
@@ -304,7 +283,7 @@ const additionalTeams = [
       },
     ],
   },
-    {
+  {
     title: "Decoration Team",
     subtitle: "Orchestrating the Experience",
     members: [
@@ -411,7 +390,7 @@ const About = () => {
             >
               <div className="clip-corner overflow-hidden border border-primary">
                 <img
-                  src="https://res.cloudinary.com/dxo4ulvnf/image/upload/v1768039904/image_te3zex.png"
+                  src="https://ik.imagekit.io/vdigjljlu/E-sports%20DSC09749.JPG?updatedAt=1769276693186"
                   alt="Gaming Setup"
                   className="w-full h-[400px] object-cover"
                 />

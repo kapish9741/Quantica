@@ -43,7 +43,7 @@ const Index = () => {
             className="w-full h-full object-cover opacity-60"
           >
             <source
-              src="https://res.cloudinary.com/dxo4ulvnf/video/upload/v1/Sage_Web_2_svea3j.mp4"
+              src="https://ik.imagekit.io/vdigjljlu/Sage%20Web%20(2).mp4?updatedAt=1769276754132"
               type="video/mp4"
             />
           </video>
