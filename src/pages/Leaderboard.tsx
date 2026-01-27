@@ -11,7 +11,6 @@ import { events } from "../data/events";
 const Leaderboard = () => {
   const [activeEvent, setActiveEvent] = useState<string>(events[0]?.slug || "");
 
-  // Helper to check if event is BGMI or Free Fire
   const isBattleRoyale = (eventSlug: string) => {
     const event = events.find((e) => e.slug === eventSlug);
     if (!event) return false;
@@ -36,6 +35,9 @@ const Leaderboard = () => {
             <h1 className="text-4xl md:text-7xl font-bold">
               <GlitchText text="LEADERBOARD" className="text-foreground" />
             </h1>
+            <h3 className="text-lg md:text-2xl font-light text-secondary underline uppercase tracking-wider">
+              College Qualifiers
+            </h3>
           </motion.div>
         </div>
       </section>
