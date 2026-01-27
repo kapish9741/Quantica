@@ -15,30 +15,36 @@ const Admin = () => {
   const { isAuthenticated, isLoading, login, logout, user } = useAdminAuth();
   const [activeTab, setActiveTab] = useState("teams");
   const [managedGameName, setManagedGameName] = useState<string | null>(null);
+  const [effectiveManagedEventId, setEffectiveManagedEventId] = useState<string | undefined>(undefined);
 
   useEffect(() => {
-    const fetchGameDetails = async () => {
-      if (user?.managedEventId) {
-        try {
-          const { data } = await api.get('/events');
-          const event = data.find((e: any) => e.id === user.managedEventId);
-          if (event) {
-            setManagedGameName(event.name);
+    const determineUserScope = async () => {
+      try {
+        const { data } = await api.get('/events');
+
+        if (user && user.email) {
+          // Check if user should be restricted to a specific event based on email
+          const matchedEvent = data.find((e: any) =>
+            user.email.toLowerCase().includes(e.slug.toLowerCase())
+          );
+
+          if (matchedEvent) {
+            setEffectiveManagedEventId(matchedEvent.id);
+            setManagedGameName(matchedEvent.name);
+          } else {
+            setEffectiveManagedEventId(undefined); // Super Admin
+            setManagedGameName("ADMIN");
           }
-        } catch (error) {
-          console.error("Failed to fetch game details", error);
         }
+      } catch (error) {
+        console.error("Failed to fetch game details", error);
       }
     };
 
     if (isAuthenticated) {
-      if (user?.managedEventId) {
-        fetchGameDetails();
-      } else {
-        setManagedGameName("ADMIN");
-      }
+      determineUserScope();
     }
-  }, [isAuthenticated, user?.managedEventId]);
+  }, [isAuthenticated, user]);
 
   if (isLoading) {
     return (
@@ -92,7 +98,7 @@ const Admin = () => {
                 <span className="hidden md:inline">Teams</span>
               </TabsTrigger>
 
-              {(user?.role === 'admin' && !user.managedEventId) || (user?.email.includes('bgmi') || user?.email.includes('freefire')) ? (
+              {(!effectiveManagedEventId) || (user?.email.includes('bgmi') || user?.email.includes('freefire')) ? (
                 <TabsTrigger
                   value="scoring"
                   className="flex-1 flex items-center justify-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-3"
@@ -102,7 +108,7 @@ const Admin = () => {
                 </TabsTrigger>
               ) : null}
 
-              {(user?.role === 'admin' && !user.managedEventId) || !(user?.email.includes('bgmi') || user?.email.includes('freefire')) ? (
+              {(!effectiveManagedEventId) || !(user?.email.includes('bgmi') || user?.email.includes('freefire')) ? (
                 <TabsTrigger
                   value="brackets"
                   className="flex-1 flex items-center justify-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-3"
@@ -114,15 +120,15 @@ const Admin = () => {
             </TabsList>
 
             <TabsContent value="teams" className="bg-card border-2 border-border p-6 mt-6">
-              <TeamManagement preSelectedEventId={user?.managedEventId} />
+              <TeamManagement preSelectedEventId={effectiveManagedEventId} />
             </TabsContent>
 
             <TabsContent value="scoring" className="bg-card border-2 border-border p-6 mt-6">
-              <MatchScoring preSelectedEventId={user?.managedEventId} />
+              <MatchScoring preSelectedEventId={effectiveManagedEventId} />
             </TabsContent>
 
             <TabsContent value="brackets" className="bg-card border-2 border-border p-6 mt-6">
-              <BracketManagement preSelectedEventId={user?.managedEventId} />
+              <BracketManagement preSelectedEventId={effectiveManagedEventId} />
             </TabsContent>
           </Tabs>
         </div>
