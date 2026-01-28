@@ -53,7 +53,7 @@ export interface Event {
   slug: string;
 }
 
-const API_BASE_URL = 'https://quantica-1hkt.onrender.com/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 export function useLeaderboard(eventSlug: string) {
   const [teams, setTeams] = useState<Team[]>([]);
@@ -230,7 +230,7 @@ export function useRoadmap() {
         date: '2026-02-07T13:00:00',
         status: 'upcoming',
       },
-       {
+      {
         id: '6',
         title: 'BGMI Squad Battle',
         description: 'Erangel & Miramar maps back-to-back.',
@@ -251,7 +251,7 @@ export function useRoadmap() {
         date: '2026-02-08T16:00:00',
         status: 'upcoming',
       },
-       {
+      {
         id: '9',
         title: 'Prize Distribution',
         description: 'Awards ceremony and closing remarks.',
