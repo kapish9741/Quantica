@@ -16,6 +16,7 @@ import {
 import api from "../../lib/api";
 import LoaderLeader from "../loaderleader";
 import { Event, Team } from "../../hooks/useLeaderboard"; // Reuse types
+import { useTeamStats } from "../../hooks/useTeamStats";
 
 interface TeamManagementProps {
   preSelectedEventId?: string;
@@ -24,13 +25,13 @@ interface TeamManagementProps {
 const TeamManagement = ({ preSelectedEventId }: TeamManagementProps = {}) => {
   const [events, setEvents] = useState<Event[]>([]);
   const [selectedEvent, setSelectedEvent] = useState<string>(preSelectedEventId || "");
-  const [teams, setTeams] = useState<Team[]>([]);
-  // Participants are now included in Team object
-  const [loading, setLoading] = useState(true);
   const [editingTeam, setEditingTeam] = useState<string | null>(null);
   const [newTeamName, setNewTeamName] = useState("");
   const [showAddTeam, setShowAddTeam] = useState(false);
   const [teamToDelete, setTeamToDelete] = useState<string | null>(null);
+
+  // Use the new hook to get teams with calculated statistics
+  const { teams, loading, error, refetch } = useTeamStats({ eventId: selectedEvent });
 
   useEffect(() => {
     fetchEvents();
@@ -42,12 +43,6 @@ const TeamManagement = ({ preSelectedEventId }: TeamManagementProps = {}) => {
     }
   }, [preSelectedEventId]);
 
-  useEffect(() => {
-    if (selectedEvent) {
-      fetchTeams();
-    }
-  }, [selectedEvent]);
-
   const fetchEvents = async () => {
     try {
       const { data } = await api.get<Event[]>('/events');
@@ -55,19 +50,6 @@ const TeamManagement = ({ preSelectedEventId }: TeamManagementProps = {}) => {
     } catch (error) {
       console.error("Error fetching events", error);
       toast.error("Failed to fetch events");
-    }
-  };
-
-  const fetchTeams = async () => {
-    setLoading(true);
-    try {
-      const { data } = await api.get<Team[]>(`/teams?eventId=${selectedEvent}`);
-      setTeams(data);
-    } catch (error) {
-      console.error("Error fetching teams", error);
-      toast.error("Failed to fetch teams");
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -81,7 +63,7 @@ const TeamManagement = ({ preSelectedEventId }: TeamManagementProps = {}) => {
       });
       setNewTeamName("");
       setShowAddTeam(false);
-      fetchTeams();
+      refetch(); // Refetch teams with calculated stats
       toast.success("Team added successfully");
     } catch (error) {
       console.error("Error adding team", error);
@@ -99,7 +81,7 @@ const TeamManagement = ({ preSelectedEventId }: TeamManagementProps = {}) => {
     try {
       await api.delete(`/teams/${teamToDelete}`);
       toast.success("Team deleted successfully");
-      fetchTeams();
+      refetch(); // Refetch teams with calculated stats
     } catch (error: any) {
       console.error('Error deleting team:', error);
       toast.error(error.response?.data?.message || 'Failed to delete team');
@@ -112,7 +94,7 @@ const TeamManagement = ({ preSelectedEventId }: TeamManagementProps = {}) => {
     try {
       await api.put(`/teams/${teamId}`, { name: newName });
       setEditingTeam(null);
-      fetchTeams();
+      refetch(); // Refetch teams with calculated stats
       toast.success("Team updated");
     } catch (error) {
       console.error("Error updating team", error);

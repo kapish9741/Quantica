@@ -79,7 +79,60 @@ export function useLeaderboard(eventSlug: string) {
 
         // 2. Fetch Teams for Event
         const teamsRes = await axios.get<Team[]>(`${API_BASE_URL}/teams?eventId=${foundEvent.id}`);
-        setTeams(teamsRes.data);
+        const rawTeams = teamsRes.data;
+
+        // 3. Fetch Matches with Scores for Event
+        const matchesRes = await axios.get<Match[]>(`${API_BASE_URL}/matches?eventId=${foundEvent.id}`);
+        const matches = matchesRes.data;
+
+        // 4. Calculate team statistics from match scores
+        const teamStats = new Map<string, { totalPoints: number; totalKills: number; wins: number }>();
+
+        // Initialize stats for all teams
+        rawTeams.forEach(team => {
+          teamStats.set(team.id, { totalPoints: 0, totalKills: 0, wins: 0 });
+        });
+
+        // Aggregate stats from all match scores
+        matches.forEach(match => {
+          if (match.scores && match.scores.length > 0) {
+            // Find the winning team (highest placement i.e., placement === 1 for Battle Royale)
+            const winningScore = match.scores.reduce((best, current) => {
+              return current.placement === 1 ? current : best;
+            }, match.scores[0]);
+
+            match.scores.forEach(score => {
+              const stats = teamStats.get(score.teamId);
+              if (stats) {
+                stats.totalPoints += score.points || 0;
+                stats.totalKills += score.kills || 0;
+                if (score.teamId === winningScore?.teamId && winningScore.placement === 1) {
+                  stats.wins += 1;
+                }
+              }
+            });
+          }
+        });
+
+        // 5. Merge calculated stats with team data
+        const enrichedTeams = rawTeams.map(team => {
+          const stats = teamStats.get(team.id) || { totalPoints: 0, totalKills: 0, wins: 0 };
+          return {
+            ...team,
+            totalPoints: stats.totalPoints,
+            totalKills: stats.totalKills,
+            wins: stats.wins,
+          };
+        });
+
+        // 6. Sort by totalPoints descending and assign ranks
+        const sortedTeams = enrichedTeams.sort((a, b) => (b.totalPoints || 0) - (a.totalPoints || 0));
+        const rankedTeams = sortedTeams.map((team, index) => ({
+          ...team,
+          rank: index + 1,
+        }));
+
+        setTeams(rankedTeams);
         setError(null);
       } catch (err: any) {
         console.error('Error fetching leaderboard:', err);
