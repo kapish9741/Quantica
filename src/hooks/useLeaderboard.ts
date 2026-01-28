@@ -144,9 +144,6 @@ export function useLeaderboard(eventSlug: string) {
 
     if (eventSlug) {
       fetchLeaderboard();
-      // Simple polling
-      const interval = setInterval(fetchLeaderboard, 30000);
-      return () => clearInterval(interval);
     }
   }, [eventSlug]);
 
@@ -180,8 +177,6 @@ export function useLiveMatches(eventSlug: string) {
 
     if (eventSlug) {
       fetchMatches();
-      const interval = setInterval(fetchMatches, 30000);
-      return () => clearInterval(interval);
     }
   }, [eventSlug]);
 
