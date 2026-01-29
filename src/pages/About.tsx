@@ -400,10 +400,31 @@ const values = [
       "Pushing boundaries with cutting-edge production and unique gaming experiences.",
   },
 ];
+// Helper to optimize images from CDN
+const getOptimizedImage = (url: string, width = 400) => {
+  if (!url) return "";
+
+  // ImageKit Optimization
+  if (url.includes("ik.imagekit.io")) {
+    if (url.includes("?")) {
+      return `${url}&tr=w-${width},q-80,f-auto`;
+    }
+    return `${url}?tr=w-${width},q-80,f-auto`;
+  }
+
+  // Cloudinary Optimization
+  if (url.includes("res.cloudinary.com")) {
+    // Insert transformation after /upload/
+    return url.replace("/upload/", `/upload/w_${width},q_auto,f_auto/`);
+  }
+
+  return url;
+};
+
 const About = () => {
   return (
     <PageTransition>
-      { }
+      {/* Hero Section */}
       <section className="pt-32 pb-24 relative">
         <div className="absolute inset-0 grid-bg opacity-10" />
         <div className="container mx-auto px-4 relative z-10">
@@ -421,7 +442,8 @@ const About = () => {
           </motion.div>
         </div>
       </section>
-      { }
+
+      {/* Story Section */}
       <section className="py-24 bg-card">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -453,9 +475,11 @@ const About = () => {
             >
               <div className="clip-corner overflow-hidden border border-primary">
                 <img
-                  src="https://ik.imagekit.io/vdigjljlu/E-sports%20DSC09749.JPG?updatedAt=1769276693186"
+                  src={getOptimizedImage("https://ik.imagekit.io/vdigjljlu/E-sports%20DSC09749.JPG?updatedAt=1769276693186", 800)}
                   alt="Gaming Setup"
                   className="w-full h-[400px] object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div className="absolute -bottom-6 -left-6 w-32 h-32 border-2 border-secondary" />
@@ -463,7 +487,8 @@ const About = () => {
           </div>
         </div>
       </section>
-      { }
+
+      {/* Values Section */}
       <section className="py-24 relative">
         <div className="absolute inset-0 grid-bg opacity-10" />
         <div className="container mx-auto px-4 relative z-10">
@@ -482,27 +507,11 @@ const About = () => {
           </motion.div>
           <div className="gap-8">
             <DraggableCardDemo />
-            {/* {values.map((value, index) => (
-              <motion.div
-                key={value.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center p-8 border border-border hover:border-primary transition-colors clip-corner-sm"
-              >
-                <value.icon className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-bold text-foreground mb-3">
-                  {value.title}
-                </h3>
-                <p className="text-muted-foreground text-sm">
-                  {value.description}
-                </p>
-              </motion.div>
-            ))} */}
           </div>
         </div>
       </section>
+
+      {/* Core Team Section */}
       <section className="py-24 bg-card">
         <div className="container mx-auto px-4">
           <motion.div
@@ -530,9 +539,11 @@ const About = () => {
               >
                 <div className="relative overflow-hidden clip-corner mb-4">
                   <img
-                    src={member.image}
+                    src={getOptimizedImage(member.image)}
                     alt={member.name}
                     className="w-full h-64 object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                    loading="lazy"
+                    decoding="async"
                   />
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
@@ -562,6 +573,7 @@ const About = () => {
         </div>
       </section>
 
+      {/* Extended Squad Section */}
       <section className="py-24 relative">
         <div className="absolute inset-0 grid-bg opacity-10" />
         <div className="container mx-auto px-4 relative z-10">
@@ -610,9 +622,11 @@ const About = () => {
                       >
                         <div className="relative overflow-hidden clip-corner mb-4">
                           <img
-                            src={member.image}
+                            src={getOptimizedImage(member.image)}
                             alt={member.name}
                             className="w-full h-64 object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                            loading="lazy"
+                            decoding="async"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                         </div>
@@ -651,7 +665,8 @@ const About = () => {
           )}
         </div>
       </section>
-      { }
+
+      {/* Statistics Section */}
       <section className="py-24 relative">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
