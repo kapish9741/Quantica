@@ -9,7 +9,7 @@ const Footer = () => {
     <footer className="relative overflow-hidden border-t border-border">
       <div className="absolute inset-0 z-0">
         <img
-          src="https://res.cloudinary.com/dxo4ulvnf/image/upload/v1768039872/FooterBG_hgl0zb.png"
+          src="https://ik.imagekit.io/vdigjljlu/Quantica%20Overview%20700x400%20(2).png"
           alt="Footer Background"
           className="w-full h-full object-cover opacity-15 select-none"
         />
