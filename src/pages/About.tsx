@@ -152,6 +152,13 @@ const additionalTeams = [
     subtitle: "Ping Sent. Connection Made.",
     members: [
       {
+        name: "Ishan Maheshwari",
+        role: "Outreach Lead",
+        image: "https://ik.imagekit.io/vdigjljlu/WhatsApp%20Image%202026-01-29%20at%2012.40.48.jpeg",
+        linkedin: "https://www.linkedin.com/in/ishan-maheshwari-4b6154323/",
+        email: "ishan.maheshwari2024@nst.rishihood.edu.in",
+      },
+      {
         name: "Dhaval sethi",
         role: "Outreach Team",
         image: "https://ik.imagekit.io/vdigjljlu/Upload%20a%20Clear%20Photograph%20(File%20responses)/20251201_004223%20-%20Dhaval%20Sethi.jpg?updatedAt=1769665004508",
@@ -264,7 +271,7 @@ const additionalTeams = [
       {
         name: "Aayush Kumar",
         role: "Events Team",
-        image: "https://ik.imagekit.io/vdigjljlu/Upload%20a%20Clear%20Photograph%20(File%20responses)/WhatsApp%20Image%202026-01-13%20at%2023.08.41%20-%20Saurav%20Kumar.jpeg?updatedAt=1769665002987",
+        image: "https://ik.imagekit.io/vdigjljlu/Upload%20a%20Clear%20Photograph%20(File%20responses)/IMG-20251201-WA0161%20-%20Aayush%20Kumar.jpg?updatedAt=1769665003953",
         linkedin: "https://www.linkedin.com/in/aayush-kumar2007",
         email: "aayush.k25011@nst.rishihood.edu.in",
       },
@@ -323,13 +330,13 @@ const additionalTeams = [
         linkedin: "https://www.linkedin.com/in/jai-shastri-46a080380",
         email: "jai.s25689@nst.rishihood.edu.in",
       },
-      // {
-      //   name: "Akshat Agrawal",
-      //   role: "Operations & Logistics",
-      //   image: "",
-      //   linkedin: "https://www.linkedin.com/in/akshat-agrawal-955347316",
-      //   email: "akshat.agrawal2024@nst.rishihood.edu.in",
-      // },
+      {
+        name: "Akshat Agrawal",
+        role: "Operations & Logistics",
+        image: "https://ik.imagekit.io/vdigjljlu/Upload%20a%20Clear%20Photograph%20(File%20responses)/IMG_1416%20-%20Akshat%20Agrawal.jpeg?updatedAt=1769665004260",
+        linkedin: "https://www.linkedin.com/in/akshat-agrawal-955347316",
+        email: "akshat.agrawal2024@nst.rishihood.edu.in",
+      },
     ],
   },
   {
