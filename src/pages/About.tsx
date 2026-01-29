@@ -323,13 +323,13 @@ const additionalTeams = [
         linkedin: "https://www.linkedin.com/in/jai-shastri-46a080380",
         email: "jai.s25689@nst.rishihood.edu.in",
       },
-      {
-        name: "Akshat Agrawal",
-        role: "Operations & Logistics",
-        image: "https://ik.imagekit.io/vdigjljlu/Upload%20a%20Clear%20Photograph%20(File%20responses)/48240D19-7A60-4372-BEE0-58BF9751600F_1_201_a%20-%20Sneha%20Rawat.jpeg?updatedAt=1769665003116",
-        linkedin: "https://www.linkedin.com/in/akshat-agrawal-955347316",
-        email: "akshat.agrawal2024@nst.rishihood.edu.in",
-      },
+      // {
+      //   name: "Akshat Agrawal",
+      //   role: "Operations & Logistics",
+      //   image: "",
+      //   linkedin: "https://www.linkedin.com/in/akshat-agrawal-955347316",
+      //   email: "akshat.agrawal2024@nst.rishihood.edu.in",
+      // },
     ],
   },
   {
